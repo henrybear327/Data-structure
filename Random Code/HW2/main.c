@@ -1,0 +1,63 @@
+#include <stdio.h>
+
+int main()
+{
+    char c;
+    int i;
+    int total_rows = 0; //++ when \n was read
+    int total_character = 0;
+    int cnt[26 + 10] = {0};
+    int flag_newline = 0;
+    while ((c = getchar()) != EOF) {
+        if ('a' <= c && c <= 'z') {
+            //小寫
+            flag_newline = 0;
+            cnt[c - 'a']++;
+            total_character++;
+        } else if ('A' <= c && c <= 'Z') {
+            //大寫
+            flag_newline = 0;
+            cnt[c - 'A']++;
+            total_character++;
+        } else if ('0' <= c && c <= '9') {
+            //數字
+            flag_newline = 0;
+            cnt[c - '0' + 26]++;
+            total_character++;
+        } else if (c == '\n') {
+            total_rows++;
+            flag_newline = 1;
+        }
+    }
+
+    if (total_rows > 0 && flag_newline == 1) {
+        total_rows--; // If there isn't anything after the last newline
+    }
+
+    printf("Total rows:%d\n", total_rows);
+
+    printf("--number--\n");
+    for (i = 26; i < 36; i++) {
+        printf("%d,%d\n", i - 26, cnt[i]);
+    }
+
+    printf("--alphabet—\n");
+    int max_character, max_cnt = 0;
+    int min_character, min_cnt = 1e9;
+    for (i = 0; i < 26; i++) {
+        printf("%c,%d\n", i + 'a', cnt[i]);
+        if (max_cnt < cnt[i]) {
+            max_cnt = cnt[i];
+            max_character = i;
+        }
+        if (min_cnt > cnt[i]) {
+            min_cnt = cnt[i];
+            min_character = i;
+        }
+    }
+    printf("--\n");
+    printf("Max:%c,%d\n", max_character + 'a', max_cnt);
+    printf("Min:%c,%d\n", min_character + 'a', min_cnt);
+
+    return 0;
+}
