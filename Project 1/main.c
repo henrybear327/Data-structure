@@ -6,7 +6,12 @@ Walking mouse in a maze
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define DEBUG 1
+/*
+DEBUG ARGUMENT
+<= 1 Show all debug information
+
+*/
+#define DEBUG 2
 
 int maze[2][110][110];
 
@@ -37,12 +42,12 @@ void read_maze()
                     maze[floor][j][k] = ROAD;
                 else if (inp[k] == 'o')
                     maze[floor][j][k] = STAIR;
-		//printf("%d %c %d\n", k, inp[k], maze[floor][j][k]);
+                // printf("%d %c %d\n", k, inp[k], maze[floor][j][k]);
             }
         }
     }
 
-#if DEBUG
+#if DEBUG <= 1
     const char conversion_to_maze[3] = {'X', '.', 'o'};
     for (int i = 0; i < 2; i++) {
         printf("%d\n", i + 1);
@@ -59,8 +64,8 @@ void read_maze()
 int main()
 {
     read_maze();
-    
-    
 
+    
+    
     return 0;
 }
