@@ -8,8 +8,8 @@ Walking mouse in a maze
 
 /*
 DEBUG ARGUMENT
-<= 1 Show all debug information
-
+1 Show read_maze debug info
+2
 */
 #define DEBUG 2
 
@@ -61,11 +61,48 @@ void read_maze()
 #endif
 }
 
+typedef struct state {
+    int f, x, y;
+    int next_dir;
+} State;
+
+const int dirA[4][2] = {{1, 0}, {0, -1}, {0, 1}, {-1, 0}};
+const int dirB[4][2] = {{-1, 0}, {0, 1}, {0, -1}, {1, 0}};
+
+State stackA[MAZE_ROW * MAZE_COL * 2 + 10];
+State stackB[MAZE_ROW * MAZE_COL * 2 + 10];
+int posA = 0, posB = 0;
+
+bool is_same_location(State A, State B)
+{
+    return A.x == B.x && A.y == B.y && A.f == B.f;
+}
+
+bool is_A_dest(State A)
+{
+    return A.f == 1 && A.x == 99 && A.y == 99;
+}
+
+bool is_B_dest(State B)
+{
+    return B.f == 0 && B.x == 1 && B.y == 1;
+}
+
 int main()
 {
-    read_maze();
+    read_maze(); // get input from file
 
-    
-    
+    // init
+    State ratA = {0, 1, 1, 0};
+    State ratB = {1, 99, 99, 0};
+
+    stackA[posA++] = ratA;
+    stackB[posB++] = ratB;
+
+    // if one of them reached the dest. or they meet, terminate
+    while (!is_A_dest(ratA) && !is_B_dest(ratB) &&
+           !is_same_location(ratA, ratB) == false) {
+    }
+
     return 0;
 }
