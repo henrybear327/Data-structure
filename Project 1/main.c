@@ -10,7 +10,7 @@ Walking mouse in a maze
 /*
 DEBUG ARGUMENT
 1 Show read_maze debug info
-2
+2 Show rats met info
 */
 #define DEBUG 3
 
