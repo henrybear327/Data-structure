@@ -5,6 +5,7 @@ Walking mouse in a maze
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 
 /*
 DEBUG ARGUMENT
@@ -88,6 +89,11 @@ bool is_B_dest(State B)
     return B.f == 0 && B.x == 1 && B.y == 1;
 }
 
+bool is_bounded(State A)
+{
+    return 0 <= A.x && A.x < MAZE_ROW && 0 <= A.y && A.y < MAZE_COL;
+}
+
 int main()
 {
     read_maze(); // get input from file
@@ -96,12 +102,65 @@ int main()
     State ratA = {0, 1, 1, 0};
     State ratB = {1, 99, 99, 0};
 
+    posA = posB = 0;
     stackA[posA++] = ratA;
     stackB[posB++] = ratB;
 
+    bool visitedA[2][MAZE_ROW][MAZE_COL], visitedB[2][MAZE_ROW][MAZE_COL];
+    memset(visitedA, 0, sizeof(visitedA));
+    memset(visitedB, 0, sizeof(visitedB));
+
     // if one of them reached the dest. or they meet, terminate
-    while (!is_A_dest(ratA) && !is_B_dest(ratB) &&
-           !is_same_location(ratA, ratB) == false) {
+    while (!is_A_dest(stackA[posA - 1]) && !is_B_dest(stackB[posB - 1]) &&
+           is_same_location(stackA[posA - 1], stackB[posB - 1]) == false) {
+        // write down all of the var and struct first
+        // plan the manually crafted DFS flow
+
+        State curr;
+        // walk mouse A
+
+        // printf("Walk Mouse A\n");
+        while (posA != 0) {
+            curr = stackA[posA - 1];
+            visitedA[curr.f][curr.x][curr.y] = true;
+            // printf("curr -> %d %d %d %d\n", curr.f, curr.x, curr.y, curr.next_dir);
+
+            bool has_next_step = false;
+            if (maze[curr.f][curr.x][curr.y] == STAIR && curr.f == 0) {
+                // RatA can only go up once!
+                curr.f = 1;
+                stackA[posA++] = curr;
+                has_next_step = true;
+            } else {
+                for (int i = curr.next_dir; i < 4; i++) {
+                    // printf("Trying %d dirA\n", i);
+                    State tmp = curr;
+                    tmp.x = curr.x + dirA[i][0];
+                    tmp.y = curr.y + dirA[i][1];
+                    tmp.next_dir = 0;
+                    // printf("tmp -> %d %d %d %d\n", tmp.f, tmp.x, tmp.y, tmp.next_dir);
+                    if (is_bounded(tmp) && maze[tmp.f][tmp.x][tmp.y] != WALL &&
+                        visitedA[tmp.f][tmp.x][tmp.y] == false) {
+                        // printf("posA %d\n", posA);
+
+                        stackA[posA - 1].next_dir = i + 1;
+                        stackA[posA++] = tmp;
+                        has_next_step = true;
+                        break;
+                    }
+                }
+            }
+
+            if (has_next_step == false) {
+                posA--;
+            } else {
+                printf("RatA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
+                       stackA[posA - 1].y);
+                break;
+            }
+        }
+
+        // walk mouse B (walk one mouse first)
     }
 
     return 0;
