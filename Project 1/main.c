@@ -153,14 +153,61 @@ int main()
 
             if (has_next_step == false) {
                 posA--;
+                printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
+                       stackA[posA - 1].y);
+                break;
             } else {
-                printf("RatA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
+                printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
                        stackA[posA - 1].y);
                 break;
             }
         }
 
         // walk mouse B (walk one mouse first)
+
+        // printf("Walk Mouse B\n");
+        while (posB != 0) {
+            curr = stackB[posB - 1];
+            visitedB[curr.f][curr.x][curr.y] = true;
+            // printf("curr -> %d %d %d %d\n", curr.f, curr.x, curr.y, curr.next_dir);
+
+            bool has_next_step = false;
+            if (maze[curr.f][curr.x][curr.y] == STAIR && curr.f == 1) {
+                // RatB can only go down once!
+                curr.f = 0;
+                stackB[posB++] = curr;
+                has_next_step = true;
+            } else {
+                for (int i = curr.next_dir; i < 4; i++) {
+                    // printf("Trying %d dirB\n", i);
+                    State tmp = curr;
+                    tmp.x = curr.x + dirB[i][0];
+                    tmp.y = curr.y + dirB[i][1];
+                    tmp.next_dir = 0;
+                    // printf("tmp -> %d %d %d %d\n", tmp.f, tmp.x, tmp.y, tmp.next_dir);
+                    if (is_bounded(tmp) && maze[tmp.f][tmp.x][tmp.y] != WALL &&
+                        visitedB[tmp.f][tmp.x][tmp.y] == false) {
+                        // printf("posB %d\n", posB);
+
+                        stackB[posB - 1].next_dir = i + 1;
+                        stackB[posB++] = tmp;
+                        has_next_step = true;
+                        break;
+                    }
+                }
+            }
+
+            if (has_next_step == false) {
+                posB--;
+                printf("ratB(%d,%d,%d)\n", stackB[posB - 1].f, stackB[posB - 1].x,
+                       stackB[posB - 1].y);
+                break;
+            } else {
+                printf("ratB(%d,%d,%d)\n", stackB[posB - 1].f, stackB[posB - 1].x,
+                       stackB[posB - 1].y);
+                break;
+            }
+        }
     }
 
     return 0;
