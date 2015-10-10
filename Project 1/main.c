@@ -66,8 +66,8 @@ typedef struct state {
     int next_dir;
 } State;
 
-const int dirA[4][2] = {{1, 0}, {0, -1}, {0, 1}, {-1, 0}};
-const int dirB[4][2] = {{-1, 0}, {0, 1}, {0, -1}, {1, 0}};
+const int dirA[4][2] = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+const int dirB[4][2] = {{0, -1}, {-1, 0}, {1, 0}, {0, 1}};
 
 State stackA[MAZE_ROW * MAZE_COL * 2 + 10];
 State stackB[MAZE_ROW * MAZE_COL * 2 + 10];
