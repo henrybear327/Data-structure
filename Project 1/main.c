@@ -97,6 +97,15 @@ bool is_bounded(State A)
 int main()
 {
     read_maze(); // get input from file
+    const char conversion_to_maze[3] = {'X', '.', 'o'};
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < MAZE_ROW; j++) {
+            for (int k = 0; k < MAZE_COL; k++) {
+                printf("%c", conversion_to_maze[maze[i][j][k]]);
+            }
+            printf("\n");
+        }
+    }
 
     // init
     State ratA = {0, 1, 1, 0};
@@ -111,10 +120,12 @@ int main()
     memset(visitedB, 0, sizeof(visitedB));
 
     // if one of them reached the dest. or they meet, terminate
-    while (!is_A_dest(stackA[posA - 1]) && !is_B_dest(stackB[posB - 1]) &&
-           is_same_location(stackA[posA - 1], stackB[posB - 1]) == false) {
+    bool need_continue = true;
+    while (need_continue) {
         // write down all of the var and struct first
         // plan the manually crafted DFS flow
+
+        bool reach_A_dest = false, reach_B_dest = false;
 
         State curr;
         // walk mouse A
@@ -139,26 +150,26 @@ int main()
                     if (maze[tmp.f][tmp.x][tmp.y] == STAIR && tmp.f == 0) {
                         // RatA can only go up once!
                         tmp.f = 1;
-                        stackA[posA++] = tmp;
-                        has_next_step = true;
                     } else {
                         stackA[posA - 1].next_dir = i + 1;
-                        stackA[posA++] = tmp;
-                        has_next_step = true;
                     }
 
+                    stackA[posA++] = tmp;
+                    has_next_step = true;
                     break;
                 }
             }
 
+            if (is_A_dest(stackA[posA - 1])) {
+                reach_A_dest = true;
+                need_continue = false;
+                break;
+            }
+
             if (has_next_step == false) {
                 posA--;
-                printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
-                       stackA[posA - 1].y);
                 break;
             } else {
-                printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
-                       stackA[posA - 1].y);
                 break;
             }
         }
@@ -185,28 +196,40 @@ int main()
                     if (maze[tmp.f][tmp.x][tmp.y] == STAIR && tmp.f == 1) {
                         // RatB can only go down once!
                         tmp.f = 0;
-                        stackB[posB++] = tmp;
-                        has_next_step = true;
-                        break;
                     } else {
                         stackB[posB - 1].next_dir = i + 1;
-                        stackB[posB++] = tmp;
-                        has_next_step = true;
-                        break;
                     }
+
+                    stackB[posB++] = tmp;
+                    has_next_step = true;
+                    break;
                 }
+            }
+
+            if (is_B_dest(stackB[posB - 1])) {
+                reach_B_dest = true;
+                need_continue = false;
+                break;
             }
 
             if (has_next_step == false) {
                 posB--;
-                printf("ratB(%d,%d,%d)\n", stackB[posB - 1].f, stackB[posB - 1].x,
-                       stackB[posB - 1].y);
                 break;
             } else {
-                printf("ratB(%d,%d,%d)\n", stackB[posB - 1].f, stackB[posB - 1].x,
-                       stackB[posB - 1].y);
                 break;
             }
+        }
+
+        if (reach_A_dest || reach_B_dest) {
+            printf("rats didn't encounter each other in this maze\n");
+        } else if (is_same_location(stackA[posA - 1], stackB[posB - 1])) {
+            printf("rats met each other in (%d,%d,%d)\n", stackB[posB].f,
+                   stackB[posB].x, stackB[posB].y);
+        } else {
+            printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
+                   stackA[posA - 1].y);
+            printf("ratB(%d,%d,%d)\n", stackB[posB - 1].f, stackB[posB - 1].x,
+                   stackB[posB - 1].y);
         }
     }
 

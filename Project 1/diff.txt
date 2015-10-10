@@ -1,5 +1,0 @@
-6451,6452c6451
-< ratA(1,99,99)
-< ratB(0,25,39)
----
-> rats didn't encounter each other in this maze
