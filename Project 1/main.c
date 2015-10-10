@@ -12,7 +12,7 @@ DEBUG ARGUMENT
 1 Show read_maze debug info
 2
 */
-#define DEBUG 2
+#define DEBUG 3
 
 int maze[2][110][110];
 
@@ -223,8 +223,16 @@ int main()
         if (reach_A_dest || reach_B_dest) {
             printf("rats didn't encounter each other in this maze\n");
         } else if (is_same_location(stackA[posA - 1], stackB[posB - 1])) {
+#if DEBUG <= 2
+            printf("meet!\n");
+            printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
+                   stackA[posA - 1].y);
+            printf("ratB(%d,%d,%d)\n", stackB[posB - 1].f, stackB[posB - 1].x,
+                   stackB[posB - 1].y);
+#endif
             printf("rats met each other in (%d,%d,%d)\n", stackB[posB].f,
-                   stackB[posB].x, stackB[posB].y);
+                   stackB[posB - 1].x, stackB[posB - 1].y);
+            need_continue = false;
         } else {
             printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
                    stackA[posA - 1].y);
