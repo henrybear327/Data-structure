@@ -126,28 +126,28 @@ int main()
             // printf("curr -> %d %d %d %d\n", curr.f, curr.x, curr.y, curr.next_dir);
 
             bool has_next_step = false;
-            if (maze[curr.f][curr.x][curr.y] == STAIR && curr.f == 0) {
-                // RatA can only go up once!
-                curr.f = 1;
-                stackA[posA++] = curr;
-                has_next_step = true;
-            } else {
-                for (int i = curr.next_dir; i < 4; i++) {
-                    // printf("Trying %d dirA\n", i);
-                    State tmp = curr;
-                    tmp.x = curr.x + dirA[i][0];
-                    tmp.y = curr.y + dirA[i][1];
-                    tmp.next_dir = 0;
-                    // printf("tmp -> %d %d %d %d\n", tmp.f, tmp.x, tmp.y, tmp.next_dir);
-                    if (is_bounded(tmp) && maze[tmp.f][tmp.x][tmp.y] != WALL &&
-                        visitedA[tmp.f][tmp.x][tmp.y] == false) {
-                        // printf("posA %d\n", posA);
-
+            for (int i = curr.next_dir; i < 4; i++) {
+                // printf("Trying %d dirA\n", i);
+                State tmp = curr;
+                tmp.x = curr.x + dirA[i][0];
+                tmp.y = curr.y + dirA[i][1];
+                tmp.next_dir = 0;
+                // printf("tmp -> %d %d %d %d\n", tmp.f, tmp.x, tmp.y, tmp.next_dir);
+                if (is_bounded(tmp) && maze[tmp.f][tmp.x][tmp.y] != WALL &&
+                    visitedA[tmp.f][tmp.x][tmp.y] == false) {
+                    // printf("posA %d\n", posA);
+                    if (maze[tmp.f][tmp.x][tmp.y] == STAIR && tmp.f == 0) {
+                        // RatA can only go up once!
+                        tmp.f = 1;
+                        stackA[posA++] = tmp;
+                        has_next_step = true;
+                    } else {
                         stackA[posA - 1].next_dir = i + 1;
                         stackA[posA++] = tmp;
                         has_next_step = true;
-                        break;
                     }
+
+                    break;
                 }
             }
 
@@ -172,23 +172,23 @@ int main()
             // printf("curr -> %d %d %d %d\n", curr.f, curr.x, curr.y, curr.next_dir);
 
             bool has_next_step = false;
-            if (maze[curr.f][curr.x][curr.y] == STAIR && curr.f == 1) {
-                // RatB can only go down once!
-                curr.f = 0;
-                stackB[posB++] = curr;
-                has_next_step = true;
-            } else {
-                for (int i = curr.next_dir; i < 4; i++) {
-                    // printf("Trying %d dirB\n", i);
-                    State tmp = curr;
-                    tmp.x = curr.x + dirB[i][0];
-                    tmp.y = curr.y + dirB[i][1];
-                    tmp.next_dir = 0;
-                    // printf("tmp -> %d %d %d %d\n", tmp.f, tmp.x, tmp.y, tmp.next_dir);
-                    if (is_bounded(tmp) && maze[tmp.f][tmp.x][tmp.y] != WALL &&
-                        visitedB[tmp.f][tmp.x][tmp.y] == false) {
-                        // printf("posB %d\n", posB);
-
+            for (int i = curr.next_dir; i < 4; i++) {
+                // printf("Trying %d dirB\n", i);
+                State tmp = curr;
+                tmp.x = curr.x + dirB[i][0];
+                tmp.y = curr.y + dirB[i][1];
+                tmp.next_dir = 0;
+                // printf("tmp -> %d %d %d %d\n", tmp.f, tmp.x, tmp.y, tmp.next_dir);
+                if (is_bounded(tmp) && maze[tmp.f][tmp.x][tmp.y] != WALL &&
+                    visitedB[tmp.f][tmp.x][tmp.y] == false) {
+                    // printf("posB %d\n", posB);
+                    if (maze[tmp.f][tmp.x][tmp.y] == STAIR && tmp.f == 1) {
+                        // RatB can only go down once!
+                        tmp.f = 0;
+                        stackB[posB++] = tmp;
+                        has_next_step = true;
+                        break;
+                    } else {
                         stackB[posB - 1].next_dir = i + 1;
                         stackB[posB++] = tmp;
                         has_next_step = true;
