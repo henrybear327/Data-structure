@@ -11,6 +11,7 @@ Walking mouse in a maze
 DEBUG ARGUMENT
 1 Show read_maze debug info
 2 Show rats met info
+3 Disable all debugging info
 */
 #define DEBUG 3
 
