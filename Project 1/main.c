@@ -26,6 +26,9 @@ int maze[2][110][110];
 
 void read_maze()
 {
+    /*
+    Read the maze from the input file using terminal and file redirection <
+    */
     for (int i = 0; i < 2; i++) {
         int floor;
         scanf("%d", &floor);
@@ -63,14 +66,17 @@ void read_maze()
 #endif
 }
 
+// rat's position data
 typedef struct state {
     int f, x, y;
     int next_dir;
 } State;
 
+// rat A and rat B's moving direction, default order
 const int dirA[4][2] = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
 const int dirB[4][2] = {{0, -1}, {-1, 0}, {1, 0}, {0, 1}};
 
+// stack for rat A and rat B
 State stackA[MAZE_ROW * MAZE_COL * 2 + 10];
 State stackB[MAZE_ROW * MAZE_COL * 2 + 10];
 int posA = 0, posB = 0;
@@ -97,7 +103,10 @@ bool is_bounded(State A)
 
 int main()
 {
-    read_maze(); // get input from file
+    // get input from file
+    read_maze();
+
+    // print out the maze
     const char conversion_to_maze[3] = {'X', '.', 'o'};
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < MAZE_ROW; j++) {
@@ -108,7 +117,7 @@ int main()
         }
     }
 
-    // init
+    // initialize the stacks and map
     State ratA = {0, 1, 1, 0};
     State ratB = {1, 99, 99, 0};
 
@@ -123,9 +132,6 @@ int main()
     // if one of them reached the dest. or they meet, terminate
     bool need_continue = true;
     while (need_continue) {
-        // write down all of the var and struct first
-        // plan the manually crafted DFS flow
-
         bool reach_A_dest = false, reach_B_dest = false;
 
         State curr;
