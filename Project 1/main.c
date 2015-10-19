@@ -1,6 +1,11 @@
 /*
 DS Project 1
 Walking mouse in a maze
+
+Compile using:
+clang-format main.c && astyle main.c && clang-3.6 -Wall -Wextra main.c -o main.o
+\
+&& ./main.o < ./test_data/1_maze.txt > my.txt && diff my.txt ./ans/1ans.txt
 */
 #include <stdio.h>
 #include <stdlib.h>
