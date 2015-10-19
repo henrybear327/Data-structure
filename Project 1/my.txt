@@ -18526,4 +18526,5 @@ ratA(1,27,1)
 ratB(0,1,3)
 ratA(1,26,1)
 ratB(0,1,2)
+ratA(1,25,1)
 rats didn't encounter each other in this maze

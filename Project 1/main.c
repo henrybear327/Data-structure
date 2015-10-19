@@ -228,7 +228,24 @@ int main()
         }
 
         if (reach_A_dest || reach_B_dest) {
-            printf("rats didn't encounter each other in this maze\n");
+            // rat(s) reached dest.
+            // According to the ans., when the rat reaches the dest., that coor.
+            // doesn't need to be printed out!
+
+            if (reach_A_dest && reach_B_dest) {
+                // reach dest. at the same time, no coor. to be printed
+                printf("rats didn't encounter each other in this maze\n");
+            } else if (reach_A_dest) {
+                // A reaches the dest. only (ans1), print msg. and terminate the program
+                // now!
+                printf("rats didn't encounter each other in this maze\n");
+            } else {
+                // B reaches the dest. only, so print A's coor and the msg., then
+                // terminate the program
+                printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
+                       stackA[posA - 1].y);
+                printf("rats didn't encounter each other in this maze\n");
+            }
         } else if (is_same_location(stackA[posA - 1], stackB[posB - 1])) {
 #if DEBUG <= 2
             printf("meet!\n");
@@ -237,7 +254,10 @@ int main()
             printf("ratB(%d,%d,%d)\n", stackB[posB - 1].f, stackB[posB - 1].x,
                    stackB[posB - 1].y);
 #endif
-            printf("rats met each other in (%d,%d,%d)\n", stackB[posB].f,
+            // print out A's coor and then print the msg, then terminate the program
+            printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
+                   stackA[posA - 1].y);
+            printf("rats encounter each other in (%d,%d,%d)\n", stackB[posB].f,
                    stackB[posB - 1].x, stackB[posB - 1].y);
             need_continue = false;
         } else {
