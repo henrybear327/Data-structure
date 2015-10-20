@@ -4,8 +4,6 @@ Walking mouse in a maze
 
 Compile using:
 clang-format main.c && astyle main.c && clang-3.6 -Wall -Wextra main.c -o main.o
-\
-&& ./main.o < ./test_data/1_maze.txt > my.txt && diff my.txt ./ans/1ans.txt
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -108,6 +106,9 @@ bool is_bounded(State A)
 
 int main()
 {
+    freopen("maze.txt", "r", stdin);
+    freopen("result.txt", "w", stdout);
+
     // get input from file
     read_maze();
 
