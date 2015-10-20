@@ -263,7 +263,8 @@ int main()
             // print out A's coor and then print the msg, then terminate the program
             printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
                    stackA[posA - 1].y);
-            printf("rats encounter each other in (%d,%d,%d)\n", stackB[posB].f,
+            // Bug fixed, thanks to Bemg
+            printf("rats encounter each other in (%d,%d,%d)\n", stackB[posB - 1].f,
                    stackB[posB - 1].x, stackB[posB - 1].y);
             need_continue = false;
         } else {
