@@ -82,9 +82,11 @@ int main()
     // freopen("result.txt", "w", stdout);
 
     // get input from file
+    // 讀地圖
     read_maze();
 
     // print out the maze
+    // 輸出地圖
     const char conversion_to_maze[3] = {'X', '.', 'o'};
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < MAZE_ROW; j++) {
@@ -96,67 +98,86 @@ int main()
     }
 
     // initialize the stacks and map
+    // 初始化: 把起始位置丟進stack
     State ratA = {0, 1, 1};
     State ratB = {1, 99, 99};
 
     posA = posB = 0;
     stackA[posA++] = ratA;
     stackB[posB++] = ratB;
-    visitedA[0][1][1] = visitedB[1][99][99] = true;
+    visitedA[0][1][1] = visitedB[1][99][99] = true; // 起始位置要記得記成為已經走訪過！
 
     // if one of them reached the dest. or they meet, terminate
+    // 迴圈將於任一隻老鼠到達終點話是他們相遇時停止
     while (1) {
         State curr;
 
         // walk mouse A
-
+        // 先動老鼠A
         // check stackA status
+        // 我偷懶沒像課本一樣包裝stack的push pop成一個函數，所以在這裡直接檢查
         if (posA == 0) {
             printf("Empty stack A! Something is wrong!\n");
             return 0;
         }
 
+        // 把stack最頂端的那個位置，也就是老鼠現在的位置，拿出來
         curr = stackA[posA - 1]; // get the top element from stack
-        bool has_next_step = false;
+        bool has_next_step = false; // 後面有說明
 
         for (int i = 0; i < 4; i++) {
             // calculate the next location to go to
+            // 利用剛剛從stack拿出來的老鼠現在位置，按照順序試試看下一步可以往哪裡走
             int tmpf = curr.f;
             int tmpx = curr.x + dirA[i][0];
             int tmpy = curr.y + dirA[i][1];
+            
+            // 只要是符合三個條件的: 在迷宮裡、不是牆壁、走訪過的地方，都是老鼠下一步可以走去的地方
+            // ，如果是就準備丟進stack裡面，成為下一步!
+            // if the calculated new location is not out-of-maze, not the wall, and
+            // not visited
             if (is_bounded(tmpx, tmpy) && maze[tmpf][tmpx][tmpy] != WALL &&
                 visitedA[tmpf][tmpx][tmpy] == false) {
-                // if the calculated new location is not out-of-maze, not the wall, and
-                // not visited
-                visitedA[tmpf][tmpx][tmpy] =
-                    true; // go to that location and mark it as visited
+                //記得，只要走過，都要標記為已經走訪
+                visitedA[tmpf][tmpx][tmpy] = true; // go to that location and mark it as visited
 
                 // check if this location is a stair and if this mouse is allow to go
                 // through that stair
+                // 檢查看看這個準備被丟進stack的地點是不是樓梯，如果是，看看這隻老鼠能不能走這個樓梯!
+                // (我的意思是，像說A老鼠只能上樓，所以如果他已經在樓上，他就不能再走樓梯下樓囉!)
                 if (maze[tmpf][tmpx][tmpy] == STAIR && tmpf == 0) {
-                    State next_step = {1, tmpx, tmpy}; // push the location AFTER going
-                    // through the stair into the stack
+                    // 將走完樓梯的點push到stack，才符合題意
+                    // push the location AFTER going through the stair into the stack
+                    State next_step = {1, tmpx, tmpy};
                     stackA[posA++] = next_step;
-                    visitedA[1][tmpx][tmpy] = true; // mark the location after going
-                    // through the stair as visited
+                    
+                    // mark the location after going through the stair as visited
+                    // 標記一下走為樓梯的點為已經走訪過!
+                    visitedA[1][tmpx][tmpy] = true; 
+                
                     has_next_step = true;
                 } else {
+                    // push the visited location into the stack
+                    // 如果不是樓梯，就不用麻煩了! 直接push進去stack!
                     State next_step = {tmpf, tmpx, tmpy};
-                    stackA[posA++] = next_step; // push the visited location into the
-                    // stack
+                    stackA[posA++] = next_step; 
+                    
                     has_next_step = true;
                 }
                 break;
             }
         }
 
-        if (has_next_step == false)
+        if (has_next_step == false) 
+            // 假設老鼠的周遭都是已經走訪過的、或是牆壁等等，造成死路一條，那就要往回走一步囉!
+            // 因此，只要pop掉stack目前的這一步，就可以回到上一步啦!
             /*
             has_next_step means if the mouse can not move to the next location, then
             go back to the previous location.
             */
             posA--;
 
+        // B老鼠的code和A是一樣的，我懶惰所以沒改成function。
         // walk mouse B(the code is just copy paste from the walk mouse A, so check
         // the comments above)
 
@@ -195,24 +216,29 @@ int main()
             posB--;
 
         // print result
+        // 印結果的部分，就是按照助教的測資就是了，哀~~
         if (is_same_location(stackA[posA - 1], stackB[posB - 1])) {
+            // 如果相遇了，就印出A座標和相遇的訊息
             // if at same location, print A location and the message
             printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
                    stackA[posA - 1].y);
             printf("rats encounter each other in (%d,%d,%d)\n", stackA[posA - 1].f,
                    stackA[posA - 1].x, stackA[posA - 1].y);
             break;
+        } else if (is_A_dest(stackA[posA - 1])) {
+            // 如果A到達了終點，那就直接印出沒有相遇的訊息
+            // if reaches A, then just print the message
+            printf("rats didn't encounter each other in this maze\n");
+            break;
         } else if (is_B_dest(stackB[posB - 1])) {
+            // 如果B到達了終點，那就印出A的座標，並且印出沒有相遇的訊息
             // if reaches B, print A's location and the message
             printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
                    stackA[posA - 1].y);
             printf("rats didn't encounter each other in this maze\n");
             break;
-        } else if (is_A_dest(stackA[posA - 1])) {
-            // if reaches A, then just print the message
-            printf("rats didn't encounter each other in this maze\n");
-            break;
         } else {
+            // 其餘狀況就直接印出A B的座標即可，並且繼續執行!
             // just print both A and B's location
             printf("ratA(%d,%d,%d)\n", stackA[posA - 1].f, stackA[posA - 1].x,
                    stackA[posA - 1].y);
