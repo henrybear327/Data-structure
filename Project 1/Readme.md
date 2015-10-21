@@ -24,3 +24,9 @@ One stupid bug that I have stumble upon is setting the wrong direction arrays. I
 Another bug is that the floors are actually 0 and 1 in C language instead of 1 and 2.
 
 Also, I designed the stack pointer pointing to the one-pass-the-last element. This led to a trivial bug, where I printed the element directly pointed by the pointer.
+
+### Implementation
+
+Set up two stacks initially. Walk both rat A and rat B in one cycle, and push the next possible step into the stack(not out-of-bound, not visited, and not wall). However, if there isn't any possible steps, return the the previous location stored in the stack, which is the top element in it.
+
+Repeat these steps until one rat reaches the end, both rats reaches the end, or they meet. 
