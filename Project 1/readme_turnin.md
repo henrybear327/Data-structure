@@ -1,5 +1,7 @@
 # Project 1
 
+### Stack and Queue -- Walking rats in a maze
+
 Tseng, Chun-Hung 403410033
 
 ### Compilation
@@ -8,7 +10,7 @@ Using clang -Wall -Wextra -o main.o main.c, which have been written to a makefil
 
 ### Usage
 
-As required, the program automatically loads a file named `maze.txt`, and outputs a file named `result.txt` 
+As required, the program automatically loads a file named `maze.txt`, and outputs a file named `result.txt`
 
 ### Intro and first thought
 
@@ -29,3 +31,7 @@ Also, I designed the stack pointer pointing to the one-pass-the-last element. Th
 Set up two stacks initially, starting at (0, 1, 1) and (1, 99, 99) respectively. Walk both rat A and rat B in one cycle, and push the next possible step into the stack(if not out-of-bound, not visited, and not wall). However, if there isn't any possible steps, return the the previous location stored in the stack, which is the top element in it.
 
 Repeat these steps until one rat reaches the end(which is the starting point of another rat in the maze), both rats reach the end, or they meet.
+
+# Sidenotes
+
+It's a good idea to try [this problem](http://140.116.249.152/e-Tutor/mod/programming/view.php?a=11600 "ITSA 38 [Problem 4] 迷宮路徑") first.
