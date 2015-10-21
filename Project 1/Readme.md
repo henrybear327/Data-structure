@@ -29,4 +29,8 @@ Also, I designed the stack pointer pointing to the one-pass-the-last element. Th
 
 Set up two stacks initially. Walk both rat A and rat B in one cycle, and push the next possible step into the stack(not out-of-bound, not visited, and not wall). However, if there isn't any possible steps, return the the previous location stored in the stack, which is the top element in it.
 
-Repeat these steps until one rat reaches the end, both rats reaches the end, or they meet. 
+Repeat these steps until one rat reaches the end, both rats reaches the end, or they meet.
+
+### Compilation
+
+Using clang -Wall -Wextra -o main.o main.c
