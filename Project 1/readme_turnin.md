@@ -2,6 +2,14 @@
 
 Tseng, Chun-Hung 403410033
 
+### Compilation
+
+Using clang -Wall -Wextra -o main.o main.c, which have been written to a makefile. Just `make` it!
+
+### Usage
+
+As required, the program automatically loads a file named `maze.txt`, and outputs a file named `result.txt` 
+
 ### Intro and first thought
 
 This is a typical maze problem which can be solved by using simple DFS algorithm. Without using the stack, there is actually a way to dfs both rats in the maze and record both the paths and the timestamps. After that, we can simply run a for loop over both the recorded path and timestamps, and check whether the rats have met or not.
@@ -21,7 +29,3 @@ Also, I designed the stack pointer pointing to the one-pass-the-last element. Th
 Set up two stacks initially, starting at (0, 1, 1) and (1, 99, 99) respectively. Walk both rat A and rat B in one cycle, and push the next possible step into the stack(if not out-of-bound, not visited, and not wall). However, if there isn't any possible steps, return the the previous location stored in the stack, which is the top element in it.
 
 Repeat these steps until one rat reaches the end(which is the starting point of another rat in the maze), both rats reach the end, or they meet.
-
-### Compilation
-
-Using clang -Wall -Wextra -o main.o main.c
