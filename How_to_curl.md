@@ -12,9 +12,9 @@
 
 3. 複製網址，應該會類似這樣
 
-`
+```
 https://gist.githubusercontent.com/anonymous/fdac431f9feb9ca08ffd/raw/ede9847a104b4f36ac2b4c2e4a6f4572a8118326/test
-`
+```
 
 4. 登入工作站。 _注意:_ 要用turnin功能，需要在csie0.cs.ccu.edu.tw登入才能用!
 
@@ -22,9 +22,9 @@ https://gist.githubusercontent.com/anonymous/fdac431f9feb9ca08ffd/raw/ede9847a10
 
 例如:
 
-`
+```
 curl https://gist.githubusercontent.com/anonymous/09ea94690ef5583be1c5/raw/d59088b9c9c9b255c53dd8ab69b2bfa43922759a/test > test.txt
-`
+```
 
 這樣就會把網址所指向的code存到test.txt中!
 
