@@ -2,7 +2,7 @@
 
 如果要貼code到工作站，又怕code格式跑掉，可以使用`curl`這個功能! 這個功能方便又有效!
 
-感謝[丕佑](https://github.com/BeMg "丕佑的github")提供技術支援!
+感謝[丕祐](https://github.com/BeMg "丕佑的github")提供技術支援!
 
 # 基本操作
 
