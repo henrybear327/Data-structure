@@ -16,7 +16,7 @@
 ![Link](https://github.com/henrybear327/Data-structure/blob/master/Tutorial/Curl/link.png)
 
 ```
-https://gist.githubusercontent.com/anonymous/fdac431f9feb9ca08ffd/raw/ede9847a104b4f36ac2b4c2e4a6f4572a8118326/test
+https://gist.githubusercontent.com/anonymous/6f7be483bdd78b37a60d/raw/a667ea4f2576c9583ce8b0330b2543c16b1c481b/%25E6%25B8%25AC%25E8%25A9%25A6
 ```
 
 * 登入工作站。 _注意:_ 要用turnin功能，需要在csie0.cs.ccu.edu.tw登入才能用!
@@ -27,7 +27,7 @@ https://gist.githubusercontent.com/anonymous/fdac431f9feb9ca08ffd/raw/ede9847a10
 例如(這樣code就會被下載到test.txt中!!):
 
 ```
-curl https://gist.githubusercontent.com/anonymous/09ea94690ef5583be1c5/raw/d59088b9c9c9b255c53dd8ab69b2bfa43922759a/test > test.txt
+curl https://gist.githubusercontent.com/anonymous/6f7be483bdd78b37a60d/raw/a667ea4f2576c9583ce8b0330b2543c16b1c481b/%25E6%25B8%25AC%25E8%25A9%25A6 > test.txt
 ```
 ![Curl terminal](https://github.com/henrybear327/Data-structure/blob/master/Tutorial/Curl/curl%20terminal.png)
 ![Downloaded txt](https://github.com/henrybear327/Data-structure/blob/master/Tutorial/Curl/test.txt.png)
