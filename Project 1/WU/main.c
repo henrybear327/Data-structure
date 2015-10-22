@@ -89,7 +89,7 @@ bool is_bounded(int x, int y)
 
 int main()
 {
-    freopen("3_maze.txt","r",stdin);
+    freopen("maze.txt","r",stdin);
     freopen("result.txt","w",stdout);
     read();
     const char conversion_to_maze[3] = {'X', '.', 'o'};
