@@ -6,7 +6,7 @@ Tseng, Chun-Hung 403410033
 
 ### Compilation
 
-Using clang -Wall -Wextra -o main.o main.c, which have been written to a makefile. Just `make` it!
+Using `clang -Wall -Wextra -o main.o main.c`, which have been written to a makefile. Just `make` it!
 
 ### Usage
 
@@ -14,9 +14,9 @@ As required, the program automatically loads a file named `maze.txt`, and output
 
 ### Intro and first thought
 
-This is a typical maze problem which can be solved by using simple DFS algorithm. Without using the stack, there is actually a way to dfs both rats in the maze and record both the paths and the timestamps. After that, we can simply run a for loop over both the recorded path and timestamps, and check whether the rats have met or not.
+This is a typical maze problem which can be solved by using simple DFS algorithm. Without using the stack, there is actually a way to DFS both rats in the maze and record both the paths and the timestamps. After that, we can simply run a for loop over both the recorded path and timestamps, and check whether the rats have met or not.
 
-By using stack, the idea is just like dfs, but without using recursion. Just push every step into the stack, and pop out the top element whenever we return.
+By using stack, the idea is just like DFS, but without using recursion. Just push every step into the stack, and pop out the top element whenever we return.
 
 ### Adversity and bugs
 
