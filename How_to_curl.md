@@ -21,7 +21,7 @@ https://gist.githubusercontent.com/anonymous/fdac431f9feb9ca08ffd/raw/ede9847a10
 * 在你要存檔案的地方，輸入`curl` 加上 `你剛剛複製的網址`，並且輸入 ` > `
 加上`你希望的檔案名稱`，這樣就會把網址所指向的code存到`你希望的檔案名稱`中!
 
-例如:
+例如(這樣code就會被下載到test.txt中!!):
 
 ```
 curl https://gist.githubusercontent.com/anonymous/09ea94690ef5583be1c5/raw/d59088b9c9c9b255c53dd8ab69b2bfa43922759a/test > test.txt
