@@ -27,6 +27,6 @@ https://gist.githubusercontent.com/anonymous/fdac431f9feb9ca08ffd/raw/ede9847a10
 curl https://gist.githubusercontent.com/anonymous/09ea94690ef5583be1c5/raw/d59088b9c9c9b255c53dd8ab69b2bfa43922759a/test > test.txt
 ```
 
-
-
 * 輸入`turnin ds.HWA `，加上你要交的檔案名稱。 例如: `turnin ds.HWA main.c readme.txt` ，這樣就會一次繳交main.c 和 readme.txt
+
+* 輸入`turnin -ls ds.HWA`，就可以看到剛剛交的作業囉!
