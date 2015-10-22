@@ -7,6 +7,7 @@
 # 基本操作
 
 * 進入[Gists](https://gist.github.com/ "Gists from github")，將code貼上，並按下create public gist
+![Gists](https://github.com/henrybear327/Data-structure/blob/master/Tutorial/Curl/gists.png)
 
 * 點螢幕中間的`raw`，會顯示_純文字_版本的code
 
