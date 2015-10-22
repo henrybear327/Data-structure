@@ -2,11 +2,11 @@
 
 如果要貼code到工作站，又怕code格式跑掉，可以使用`curl`這個功能! 這個功能方便又有效!
 
-感謝丕佑提供技術支援!
+感謝[丕佑](https://github.com/BeMg "丕佑的github")提供技術支援!
 
 # 基本操作
 
-* 進入[Gists](https://gist.github.com/ "Gists from github")，並將code貼上，並按下create public gist
+* 進入[Gists](https://gist.github.com/ "Gists from github")，將code貼上，並按下create public gist
 
 * 點螢幕中間的`raw`，會顯示_純文字_版本的code
 
