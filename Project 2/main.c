@@ -44,7 +44,7 @@ Node *create_node()
 
 Node *BST_search(Node *curr, int key)
 {
-    if (curr != NULL)
+    if (curr == NULL)
         return NULL;
     else if (curr->data == key)
         return curr;
@@ -94,6 +94,16 @@ void BST_insert()
     }
 }
 
+void BST_inorder_terversal(Node *curr)
+{
+    if (curr == NULL)
+        return;
+
+    BST_inorder_terversal(curr->left);
+    printf("%d \n", curr->data);
+    BST_inorder_terversal(curr->right);
+}
+
 void binary_search_tree()
 {
     printf("==================\n");
@@ -130,6 +140,7 @@ void binary_search_tree()
         case 'P':
         case 'p':
             // print
+            BST_inorder_terversal(BST_start_ptr);
             break;
         case 'R':
         case 'r':
