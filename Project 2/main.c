@@ -30,6 +30,18 @@ int welcome_msg()
     return command_prompt[0];
 }
 
+Node *create_node()
+{
+    Node *new = malloc(sizeof(Node));
+    assert(new != NULL);
+
+    new->data = 0;
+    new->left = NULL;
+    new->right = NULL;
+
+    return new;
+}
+
 Node *BST_search(Node *curr, int key)
 {
     if (curr != NULL)
@@ -47,18 +59,38 @@ Node *BST_search(Node *curr, int key)
 void BST_insert()
 {
     printf("Please enter a number: ");
-    int inp;
-    scanf("%d", &inp);
+    int key;
+    scanf("%d", &key);
+
+    if (BST_search(BST_start_ptr, key) != NULL) {
+        printf("The number %d already exists.\n", key);
+        return;
+    }
 
     if (BST_start_ptr == NULL) {
-        Node *new = malloc(sizeof(Node));
-        assert(new != NULL);
-
-        BST_start_ptr = new;
-        new->data = inp;
-        new->left = NULL;
-        new->right = NULL;
+        BST_start_ptr = create_node();
+        BST_start_ptr->data = key;
     } else {
+        Node *curr = BST_start_ptr;
+        Node *to_insert = create_node();
+        to_insert->data = key;
+        while (1) {
+            if (key > curr->data) {
+                if (curr->right == NULL) {
+                    curr->right = to_insert;
+                    break;
+                } else {
+                    curr = curr->right;
+                }
+            } else {
+                if (curr->left == NULL) {
+                    curr->left = to_insert;
+                    break;
+                } else {
+                    curr = curr->left;
+                }
+            }
+        }
     }
 }
 
