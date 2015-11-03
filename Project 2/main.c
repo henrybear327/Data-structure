@@ -13,11 +13,17 @@ typedef struct node {
 
 Node *BST_start_ptr;
 
+/*
+Clears the terminal screen.
+*/
 void clear_screen()
 {
     printf("\033[2J");
 }
 
+/*
+Print out the menu and return the first character in the input string.
+*/
 int welcome_msg()
 {
     printf("(B)inary Search Tree.\n");
@@ -30,11 +36,18 @@ int welcome_msg()
     return command_prompt[0];
 }
 
+/*
+If a new node is successfully created, the return value will be a pointer to the
+newly created node.
+Also, the node will be initialized with data = 0, and left and right pointer to
+NULL.
+*/
 Node *create_node()
 {
     Node *new = malloc(sizeof(Node));
     assert(new != NULL);
 
+    // init.
     new->data = 0;
     new->left = NULL;
     new->right = NULL;
@@ -42,6 +55,10 @@ Node *create_node()
     return new;
 }
 
+/*
+If the key is found, the return value will be the pointer to that node.
+Otherwise, the return value is NULL.
+*/
 Node *BST_search(Node *curr, int key)
 {
     if (curr == NULL)
@@ -56,6 +73,13 @@ Node *BST_search(Node *curr, int key)
     }
 }
 
+/*
+Get the value to be inserted.
+
+The function first checks for duplicated key.
+If this happenes, the key is not inserted.
+Otherwise, the key will be inserted according to the BST rule.
+*/
 void BST_insert()
 {
     printf("Please enter a number: ");
@@ -94,6 +118,9 @@ void BST_insert()
     }
 }
 
+/*
+Perform an inorder traversal on the given BST tree.
+*/
 void BST_inorder_terversal(Node *curr)
 {
     if (curr == NULL)
@@ -104,6 +131,10 @@ void BST_inorder_terversal(Node *curr)
     BST_inorder_terversal(curr->right);
 }
 
+/*
+Prints the menu for BST homework.
+Also, calls the appropriate functions to do the demanded jobs.
+*/
 void binary_search_tree()
 {
     printf("==================\n");
