@@ -167,6 +167,13 @@ void binary_search_tree()
         case 'S':
         case 's':
             // search
+            printf("Which number do you want to search? ");
+            int key;
+            scanf("%d", &key);
+            if (BST_search(BST_start_ptr, key) == NULL)
+                printf("The number %d doesn't exist in the BST.\n\n", key);
+            else
+                printf("The number %d is in the tree.\n\n", key);
             break;
         case 'P':
         case 'p':
@@ -176,6 +183,8 @@ void binary_search_tree()
         case 'R':
         case 'r':
             // return
+            clear_screen();
+            return;
             break;
         default:
             printf("Invalid command\n");
