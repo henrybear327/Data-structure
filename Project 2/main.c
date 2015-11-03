@@ -4,6 +4,10 @@
 
 #define DEBUG 1
 
+typedef struct node {
+
+} Node;
+
 void clear_screen()
 {
     printf("\033[2J");
@@ -25,7 +29,43 @@ void binary_search_tree()
 {
     printf("==================\n");
     printf("Binary Search Tree\n");
-    printf("==================\n");
+    printf("==================\n\n");o
+    
+    while(1) {
+	printf("(I)nsert a number.\n");
+	printf("(D)elete a number.\n");
+	printf("(S)earch a number.\n");
+	printf("(P)rint in infix & level order.\n");
+	printf("(R)eturn\n\n");
+
+	char command_prompt[1000];
+	scanf("%s", command_prompt);
+	
+	switch(command_prompt[0]) {
+	    case 'I':
+	    case 'i':
+		//insert
+		break;
+	    case 'D':
+	    case 'd':
+		//delete
+		break;
+	    case 'S':
+	    case 's':
+		//search
+		break;
+	    case 'P':
+	    case 'p':
+		//print
+		break;
+	    case 'R':
+	    case 'r':
+		//return
+		break;
+	    default:
+		printf("Invalid command\n");
+	}
+    }
 }
 
 int main()
