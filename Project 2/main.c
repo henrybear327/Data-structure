@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <assert.h>
 
 #define DEBUG 1
 
 typedef struct node {
-
+    int data;
+    struct node *left;
+    struct node *right;
 } Node;
+
+Node *BST_start_ptr;
 
 void clear_screen()
 {
@@ -25,46 +30,82 @@ int welcome_msg()
     return command_prompt[0];
 }
 
+Node *BST_search(Node *curr, int key)
+{
+    if (curr != NULL)
+        return NULL;
+    else if (curr->data == key)
+        return curr;
+    else {
+        if (curr->data < key)
+            return BST_search(curr->right, key);
+        else
+            return BST_search(curr->left, key);
+    }
+}
+
+void BST_insert()
+{
+    printf("Please enter a number: ");
+    int inp;
+    scanf("%d", &inp);
+
+    if (BST_start_ptr == NULL) {
+        Node *new = malloc(sizeof(Node));
+        assert(new != NULL);
+
+        BST_start_ptr = new;
+        new->data = inp;
+        new->left = NULL;
+        new->right = NULL;
+    } else {
+    }
+}
+
 void binary_search_tree()
 {
     printf("==================\n");
     printf("Binary Search Tree\n");
-    printf("==================\n\n");o
-    
-    while(1) {
-	printf("(I)nsert a number.\n");
-	printf("(D)elete a number.\n");
-	printf("(S)earch a number.\n");
-	printf("(P)rint in infix & level order.\n");
-	printf("(R)eturn\n\n");
+    printf("==================\n\n");
 
-	char command_prompt[1000];
-	scanf("%s", command_prompt);
-	
-	switch(command_prompt[0]) {
-	    case 'I':
-	    case 'i':
-		//insert
-		break;
-	    case 'D':
-	    case 'd':
-		//delete
-		break;
-	    case 'S':
-	    case 's':
-		//search
-		break;
-	    case 'P':
-	    case 'p':
-		//print
-		break;
-	    case 'R':
-	    case 'r':
-		//return
-		break;
-	    default:
-		printf("Invalid command\n");
-	}
+    // Init.
+    BST_start_ptr = NULL;
+
+    while (1) {
+        printf("(I)nsert a number.\n");
+        printf("(D)elete a number.\n");
+        printf("(S)earch a number.\n");
+        printf("(P)rint in infix & level order.\n");
+        printf("(R)eturn\n\n");
+
+        char command_prompt[1000];
+        scanf("%s", command_prompt);
+
+        switch (command_prompt[0]) {
+        case 'I':
+        case 'i':
+            // insert
+            BST_insert();
+            break;
+        case 'D':
+        case 'd':
+            // delete
+            break;
+        case 'S':
+        case 's':
+            // search
+            break;
+        case 'P':
+        case 'p':
+            // print
+            break;
+        case 'R':
+        case 'r':
+            // return
+            break;
+        default:
+            printf("Invalid command\n");
+        }
     }
 }
 
