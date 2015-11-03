@@ -1,0 +1,15 @@
+Hi: 
+HW#B已經公布，詳細請看以下連結： 
+HW#B document 
+https://ecourse.ccu.edu.tw/35960/textbook/hw/HWB/HomeworkB_v3.pdf 
+
+HW#B demo 
+https://ecourse.ccu.edu.tw/35960/textbook/hw/HWB/HomeworkB_demo.pdf 
+
+PS1:這次作業請『務必』『一定』『必須』要使用Makefile compile，並確認自己的程式可以在workstation上執行，並在turnin時一併繳交Makefile檔案，若是沒有上傳Makefile或是無法正確執行，這次的作業將無法得到分數。 
+PS2:turnin時必須繳交(1)Source Code (2)Makefile (3)README.TXT 
+
+Deadline:2015/11/19 11:59pm 
+
+Thanks 
+TAs
