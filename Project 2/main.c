@@ -154,18 +154,13 @@ void binary_search_tree()
         char command_prompt[1000];
         scanf("%s", command_prompt);
 
-        switch (command_prompt[0]) {
-        case 'I':
-        case 'i':
+        char choice = command_prompt[0];
+        if (choice == 'I' || choice == 'i') {
             // insert
             BST_insert();
-            break;
-        case 'D':
-        case 'd':
+        } else if (choice == 'D' || choice == 'd') {
             // delete
-            break;
-        case 'S':
-        case 's':
+        } else if (choice == 'S' || choice == 's') {
             // search
             printf("Which number do you want to search? ");
             int key;
@@ -174,19 +169,14 @@ void binary_search_tree()
                 printf("The number %d doesn't exist in the BST.\n\n", key);
             else
                 printf("The number %d is in the tree.\n\n", key);
-            break;
-        case 'P':
-        case 'p':
+        } else if (choice == 'P' || choice == 'p') {
             // print
             BST_inorder_terversal(BST_start_ptr);
-            break;
-        case 'R':
-        case 'r':
+        } else if (choice == 'R' || choice == 'r') {
             // return
             clear_screen();
             return;
-            break;
-        default:
+        } else {
             printf("Invalid command\n");
         }
     }
