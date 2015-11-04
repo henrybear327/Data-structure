@@ -75,19 +75,24 @@ Node *BST_search(Node *curr, int key)
 }
 
 /*
-Get the value to be inserted.
+The parameters are the pointer to the starting node, and the key to be inserted.
 
-The function first checks for duplicated key.
-If this happenes, the key is not inserted.
-Otherwise, the key will be inserted according to the BST rule.
+The key will be inserted according to the BST rule, and the BST_head pointer will
+be returned.
 */
-Node *BST_insert(Node *curr)
+Node *BST_insert(Node *BST_head, int key)
 {
-    printf("Please enter a number: ");
-    int key;
-    scanf("%d", &key);
+    if (BST_head == NULL) // The first node!
+        return create_node(key);
 
-    return curr;
+    if (BST_head->key < key) // go to right subtree
+        BST_head->right = BST_insert(BST_head->right, key);
+    else if (BST_head->key > key) // go to left subtree
+        BST_head->left = BST_insert(BST_head->left, key);
+    else // duplicated key
+        return BST_head;
+
+    return BST_head;
 }
 
 /*
@@ -146,7 +151,11 @@ void binary_search_tree()
         char choice = command_prompt[0];
         if (choice == 'I' || choice == 'i') {
             // insert
-            BST_insert(BST_head);
+            printf("Please enter a number: ");
+            int key;
+            scanf("%d", &key);
+
+            BST_head = BST_insert(BST_head, key);
         } else if (choice == 'D' || choice == 'd') {
             // delete
             BST_delete(BST_head);
