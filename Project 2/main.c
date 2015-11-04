@@ -210,9 +210,7 @@ Node *BST_delete(Node *curr, int key)
 #endif
                 // case 3, guaranteed to have 2 children
                 Node *min_right_subtree_node = min_node(curr->right);
-#if DEBUG == 1
-                printf("min_right_subtree_node %p\n", min_right_subtree_node);
-#endif
+
                 // update curr
                 curr->key = min_right_subtree_node->key;
                 // deal with the min_node, find prev
