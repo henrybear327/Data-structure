@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <assert.h>
 
-#define DEBUG 0
+#define DEBUG 1
 
 typedef struct node {
     int key;
@@ -109,24 +109,34 @@ void BST_inorder_terversal(Node *curr)
 {
     if (curr == NULL)
         return;
-#if DEBUG == 1
-    printf("Traversal %p curr = %d, left %p, right %p\n", curr, curr->key,
-           curr->left, curr->right);
-#endif
 
     BST_inorder_terversal(curr->left);
-#if DEBUG == 1
-    printf("Traversal print %p curr = %d, left %p, right %p\n", curr, curr->key,
-           curr->left, curr->right);
-#else
     printf("%d ", curr->key);
-#endif
-
     BST_inorder_terversal(curr->right);
 }
 
+#if DEBUG == 1
 /*
-The parameter is a pointer to start themin_node search.
+More info BST_inorder_terversal() for debugging
+*/
+void BST_inorder_terversal_verbose(Node *curr)
+{
+    if (curr == NULL)
+        return;
+    printf("Traversal %p curr = %d, left %p, right %p\n", curr, curr->key,
+           curr->left, curr->right);
+
+    BST_inorder_terversal_verbose(curr->left);
+
+    printf("Traversal print %p curr = %d, left %p, right %p\n", curr, curr->key,
+           curr->left, curr->right);
+
+    BST_inorder_terversal_verbose(curr->right);
+}
+#endif
+
+/*
+The parameter is a pointer to start the min_node search.
 
 The return value is the pointer to the min_node.
 */
@@ -248,6 +258,9 @@ void binary_search_tree()
         printf("(D)elete a number.\n");
         printf("(S)earch a number.\n");
         printf("(P)rint in infix & level order.\n");
+#if DEBUG == 1
+        printf("(V)rint in infix verbosely\n");
+#endif
         printf("(R)eturn\n\n");
 
         char command_prompt[1000];
@@ -283,7 +296,15 @@ void binary_search_tree()
             printf("The tree in infix order: ");
             BST_inorder_terversal(BST_head);
             printf("\n");
-        } else if (choice == 'R' || choice == 'r') {
+        }
+#if DEBUG == 1
+        else if (choice == 'V' || choice == 'v') {
+            printf("The tree in infix order (verbosely):\n");
+            BST_inorder_terversal_verbose(BST_head);
+            printf("\n");
+        }
+#endif
+        else if (choice == 'R' || choice == 'r') {
             // return
             clear_screen();
             return;
