@@ -6,7 +6,7 @@
 #define DEBUG 1
 
 typedef struct node {
-    int data;
+    int key;
     struct node *left;
     struct node *right;
 } Node;
@@ -39,16 +39,16 @@ int welcome_msg()
 /*
 If a new node is successfully created, the return value will be a pointer to the
 newly created node.
-Also, the node will be initialized with data = 0, and left and right pointer to
+Also, the node will be initialized with key passed in, and left and right
+pointer to
 NULL.
 */
-Node *create_node()
+Node *create_node(int key)
 {
     Node *new = malloc(sizeof(Node));
     assert(new != NULL);
 
-    // init.
-    new->data = 0;
+    new->key = key;
     new->left = NULL;
     new->right = NULL;
 
@@ -63,10 +63,10 @@ Node *BST_search(Node *curr, int key)
 {
     if (curr == NULL)
         return NULL;
-    else if (curr->data == key)
+    else if (curr->key == key)
         return curr;
     else {
-        if (curr->data < key)
+        if (curr->key < key)
             return BST_search(curr->right, key);
         else
             return BST_search(curr->left, key);
@@ -92,14 +92,12 @@ void BST_insert()
     }
 
     if (BST_start_ptr == NULL) {
-        BST_start_ptr = create_node();
-        BST_start_ptr->data = key;
+        BST_start_ptr = create_node(key);
     } else {
         Node *curr = BST_start_ptr;
-        Node *to_insert = create_node();
-        to_insert->data = key;
+        Node *to_insert = create_node(key);
         while (1) {
-            if (key > curr->data) {
+            if (key > curr->key) {
                 if (curr->right == NULL) {
                     curr->right = to_insert;
                     break;
@@ -127,7 +125,7 @@ void BST_inorder_terversal(Node *curr)
         return;
 
     BST_inorder_terversal(curr->left);
-    printf("%d \n", curr->data);
+    printf("%d \n", curr->key);
     BST_inorder_terversal(curr->right);
 }
 
@@ -142,7 +140,6 @@ void BST_delete()
         printf("The number %d doesn't exist!\n", inp);
         return;
     }
-
 }
 
 /*
