@@ -431,7 +431,7 @@ Node *modified_BST_search(Node *curr, int key, int path[], int idx)
         return NULL;
 
 #if DEBUG == 1
-    printf("%d ", curr->key);
+// printf("%d ", curr->key);
 #endif
     path[idx++] = curr->key;
 
@@ -499,11 +499,11 @@ void treasure_hunter()
 #if DEBUG == 1
     printf("The tree in infix order before using modified_BST_search: ");
     BST_inorder_terversal(BST_head);
-    printf("\n");
+    printf("\n\n");
 
     printf("The tree in level order before using modified_BST_search: ");
     BST_level_order_terversal(BST_head);
-    printf("\n");
+    printf("\n\n");
 #endif
 
     if (BST_head == NULL) {
@@ -559,11 +559,11 @@ void treasure_hunter()
 #if DEBUG == 1
     printf("The tree in infix order after using modified_BST_search: ");
     BST_inorder_terversal(BST_head);
-    printf("\n");
+    printf("\n\n");
 
     printf("The tree in level order after using modified_BST_search: ");
     BST_level_order_terversal(BST_head);
-    printf("\n\n\n");
+    printf("\n\n");
 
     printf("Path recorded:\n");
     int tmp_idx = 0;
@@ -572,14 +572,14 @@ void treasure_hunter()
     while (path_to_key[tmp_idx] != INT_MIN) {
         printf("%d ", path_to_key[tmp_idx++]);
     }
-    printf("\n");
+    printf("\n\n");
 
     tmp_idx = 0;
     printf("path_to_treasure: ");
     while (path_to_treasure[tmp_idx] != INT_MIN) {
         printf("%d ", path_to_treasure[tmp_idx++]);
     }
-    printf("\n");
+    printf("\n\n");
 #endif
 
     if (key_exist == true && treasure_exist == true) {
@@ -611,7 +611,8 @@ void treasure_hunter()
         for (int i = cnt - 1; path_to_treasure[i] != INT_MIN; i++) {
             if (path_to_treasure[i + 1] == INT_MIN)
                 printf("%d\n\n", path_to_treasure[i]);
-            printf("%d->", path_to_treasure[i]);
+            else
+                printf("%d->", path_to_treasure[i]);
         }
     }
 
