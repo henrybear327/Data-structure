@@ -342,7 +342,7 @@ void binary_search_tree()
         printf("(S)earch a number.\n");
         printf("(P)rint in infix & level order.\n");
 #if DEBUG == 1
-        printf("(V)rint in infix verbosely\n");
+        printf("(V)erbosely print in infix order\n");
 #endif
         printf("(R)eturn\n\n");
 
@@ -394,6 +394,9 @@ void binary_search_tree()
         else if (choice == 'R' || choice == 'r') {
             // return
             clear_screen();
+
+            /*Should perform free() to all nodes using inorder traversal*/
+
             return;
         } else {
             printf("Invalid command\n");
