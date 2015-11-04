@@ -115,17 +115,61 @@ void BST_inorder_terversal(Node *curr)
     BST_inorder_terversal(curr->right);
 }
 
-void BST_delete(Node *curr)
-{
-    printf("Which number do you want to delete? ");
-    int inp;
-    scanf("%d", &inp);
+/*
+The parameter is a pointer to start themin_node search.
 
-    Node *to_delete = BST_search(curr, inp);
-    if (to_delete == NULL) {
-        printf("The number %d doesn't exist!\n", inp);
-        return;
+The return value is the pointer to the min_node.
+*/
+Node *min_node(Node *curr)
+{
+    if (curr->left == NULL)
+        return curr;
+    return min_node(curr->left);
+}
+
+/*
+The parameters are the pointer to the starting node, and the key to be deleted.
+*/
+Node *BST_delete(Node *curr, int key)
+{
+    if (curr == NULL) {
+        printf("The number %d doesn't exist.\n", key);
+        return curr;
     }
+
+    if (curr->key == key) {
+        /*
+        There are 3 cases for deletion.
+        1. Node with no children. (leaf node)
+        2. Node with one children.
+        3. Node with two children.
+        */
+
+        if (curr->left == NULL && curr->right == NULL) { // case 1, leaf
+            free(curr);
+            return NULL;
+        } else {
+            if (!(curr->left != NULL && curr->right != NULL)) {
+                // case 2, just move the child node to replace the deleted one.
+                if (curr->left == NULL) {
+                    Node *right = curr->right;
+                    free(curr);
+                    return right;
+                } else {
+                    Node *left = curr->left;
+                    free(curr);
+                    return left;
+                }
+            } else {
+                // case 3
+            }
+        }
+    } else if (curr->key < key) // go to right subtree
+        curr->right = BST_delete(curr->right, key);
+    else
+        curr->left = BST_delete(curr->left, key);
+
+    return curr;
 }
 
 /*
@@ -162,7 +206,11 @@ void binary_search_tree()
             BST_head = BST_insert(BST_head, key);
         } else if (choice == 'D' || choice == 'd') {
             // delete
-            BST_delete(BST_head);
+            printf("Which number do you want to delete? ");
+            int key;
+            scanf("%d", &key);
+
+            BST_head = BST_delete(BST_head, key);
         } else if (choice == 'S' || choice == 's') {
             // search
             printf("Which number do you want to search? ");
