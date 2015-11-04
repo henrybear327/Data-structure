@@ -7,6 +7,20 @@
 #define DEBUG 0
 #define MAX_NODE 5000 // max node for queue to hold
 
+/*
+Color
+http://stackoverflow.com/questions/3219393/stdlib-and-colored-output-in-c
+*/
+#define ANSI_COLOR_RED "\x1b[31m"
+#define ANSI_COLOR_GREEN "\x1b[32m"
+#define ANSI_COLOR_YELLOW "\x1b[33m"
+#define ANSI_COLOR_BLUE "\x1b[34m"
+#define ANSI_COLOR_MAGENTA "\x1b[35m"
+#define ANSI_COLOR_CYAN "\x1b[36m"
+#define ANSI_COLOR_RESET "\x1b[0m"
+
+/*printf(ANSI_COLOR_RED     "This text is RED!"     ANSI_COLOR_RESET "\n");*/
+
 typedef struct node {
     int key;
     struct node *left;
@@ -182,7 +196,8 @@ The parameters are the pointer to the starting node, and the key to be deleted.
 Node *BST_delete(Node *curr, int key)
 {
     if (curr == NULL) {
-        printf("The number %d doesn't exist.\n", key);
+        printf(ANSI_COLOR_RED "The number %d doesn't exist.\n" ANSI_COLOR_RESET,
+               key);
         return curr;
     }
 
@@ -381,9 +396,13 @@ void binary_search_tree()
             scanf("%d", &key);
 
             if (BST_search(BST_head, key) == NULL)
-                printf("The number %d doesn't exist in the BST.\n\n", key);
+                printf(ANSI_COLOR_RED
+                       "The number %d doesn't exist in the BST.\n\n" ANSI_COLOR_RESET,
+                       key);
             else
-                printf("The number %d exists in the BST.\n\n", key);
+                printf(ANSI_COLOR_GREEN
+                       "The number %d exists in the BST.\n\n" ANSI_COLOR_RESET,
+                       key);
         } else if (choice == 'P' || choice == 'p') {
             // print
             printf("The tree in infix order: ");
@@ -409,7 +428,7 @@ void binary_search_tree()
 
             return;
         } else {
-            printf("Invalid command\n");
+            printf(ANSI_COLOR_RED "Invalid command\n" ANSI_COLOR_RESET);
         }
     }
 }
@@ -478,10 +497,12 @@ void treasure_hunter()
     // can't use freopen because stdin will be changed to file!
     FILE *fptr = fopen(filename, "r");
     if (fptr == NULL) {
-        printf("The filename you entered wasn't correct! Returning to menu...\n\n");
+        printf(ANSI_COLOR_RED "The filename you entered doesn't exist! Returning "
+               "to menu...\n\n" ANSI_COLOR_RESET);
         return;
     } else {
-        printf("The file was loaded successfully!\n\n");
+        printf(ANSI_COLOR_GREEN
+               "The file was loaded successfully!\n\n" ANSI_COLOR_RESET);
     }
 
     /*Initialization*/
@@ -507,7 +528,8 @@ void treasure_hunter()
 #endif
 
     if (BST_head == NULL) {
-        printf("Empty file!! Returning to menu now...\n\n");
+        printf(ANSI_COLOR_RED
+               "Empty file!! Returning to menu now...\n\n" ANSI_COLOR_RESET);
         return;
     }
 
@@ -538,7 +560,7 @@ void treasure_hunter()
         }
         */
         key_exist = false;
-        printf("Key is not found.\n");
+        printf(ANSI_COLOR_RED "Key is not found.\n" ANSI_COLOR_RESET);
     }
 
     /*
@@ -553,7 +575,7 @@ void treasure_hunter()
         }
         */
         treasure_exist = false;
-        printf("Treasure is not found.\n");
+        printf(ANSI_COLOR_RED "Treasure is not found.\n" ANSI_COLOR_RESET);
     }
 
 #if DEBUG == 1
@@ -583,7 +605,7 @@ void treasure_hunter()
 #endif
 
     if (key_exist == true && treasure_exist == true) {
-        printf("\n\nThe shortest path is: ");
+        printf(ANSI_COLOR_GREEN "\n\nThe shortest path is: ");
         int idx = 0;
         while (path_to_key[idx] != INT_MIN) {
             printf("%d->", path_to_key[idx]);
@@ -610,7 +632,7 @@ void treasure_hunter()
 
         for (int i = cnt - 1; path_to_treasure[i] != INT_MIN; i++) {
             if (path_to_treasure[i + 1] == INT_MIN)
-                printf("%d\n\n", path_to_treasure[i]);
+                printf("%d\n\n" ANSI_COLOR_RESET, path_to_treasure[i]);
             else
                 printf("%d->", path_to_treasure[i]);
         }
@@ -633,14 +655,11 @@ int main()
         } else if (choice == 'T' || choice == 't') {
             treasure_hunter();
         } else if (choice == 'E' || choice == 'e') {
-            printf("=========\n");
-            printf("Exit\n");
-            printf("=========\n");
+            printf(ANSI_COLOR_RED "Shutting down...\n" ANSI_COLOR_RESET);
             break;
         } else {
-            printf("=============\n");
-            printf("Invalid input\n");
-            printf("=============\n");
+            printf(ANSI_COLOR_RED "Invalid input! Please take a look at the option "
+                   "presented carefully!\n" ANSI_COLOR_RESET);
         }
     }
 
