@@ -24,6 +24,7 @@ Print out the menu and return the first character in the input string.
 */
 int welcome_msg()
 {
+    printf("\nPlease make a choice: \n");
     printf("(B)inary Search Tree.\n");
     printf("(T)reasure Hunter\n");
     printf("(E)xit\n");
@@ -141,6 +142,7 @@ void binary_search_tree()
     Node *BST_head = NULL;
 
     while (1) {
+        printf("\nPlease make a choice: \n");
         printf("(I)nsert a number.\n");
         printf("(D)elete a number.\n");
         printf("(S)earch a number.\n");
