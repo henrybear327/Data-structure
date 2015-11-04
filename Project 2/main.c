@@ -77,8 +77,8 @@ Node *BST_search(Node *curr, int key)
 /*
 The parameters are the pointer to the starting node, and the key to be inserted.
 
-The key will be inserted according to the BST rule, and the BST_head pointer will
-be returned.
+The key will be inserted according to the BST rule, and the BST_head pointer
+will be returned.
 */
 Node *BST_insert(Node *BST_head, int key)
 {
@@ -89,8 +89,10 @@ Node *BST_insert(Node *BST_head, int key)
         BST_head->right = BST_insert(BST_head->right, key);
     else if (BST_head->key > key) // go to left subtree
         BST_head->left = BST_insert(BST_head->left, key);
-    else // duplicated key
+    else { // duplicated key
+        printf("The number %d already exists.\n\n", key);
         return BST_head;
+    }
 
     return BST_head;
 }
@@ -164,12 +166,14 @@ void binary_search_tree()
             printf("Which number do you want to search? ");
             int key;
             scanf("%d", &key);
+
             if (BST_search(BST_head, key) == NULL)
                 printf("The number %d doesn't exist in the BST.\n\n", key);
             else
-                printf("The number %d is in the tree.\n\n", key);
+                printf("The number %d already exists.\n\n", key);
         } else if (choice == 'P' || choice == 'p') {
             // print
+            printf("The tree in infix order: ");
             BST_inorder_terversal(BST_head);
             printf("\n");
         } else if (choice == 'R' || choice == 'r') {
