@@ -91,7 +91,11 @@ Node *BST_insert(Node *curr)
 }
 
 /*
+Teh parameter is the pointer to the starting node.
+
 Perform an inorder traversal on the given BST tree.
+
+Notice: Need to an \n after calling BST_inorder_terversal().
 */
 void BST_inorder_terversal(Node *curr)
 {
@@ -99,7 +103,7 @@ void BST_inorder_terversal(Node *curr)
         return;
 
     BST_inorder_terversal(curr->left);
-    printf("%d \n", curr->key);
+    printf("%d ", curr->key);
     BST_inorder_terversal(curr->right);
 }
 
@@ -158,6 +162,7 @@ void binary_search_tree()
         } else if (choice == 'P' || choice == 'p') {
             // print
             BST_inorder_terversal(BST_head);
+            printf("\n");
         } else if (choice == 'R' || choice == 'r') {
             // return
             clear_screen();
