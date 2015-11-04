@@ -123,6 +123,7 @@ void BST_inorder_terversal_verbose(Node *curr)
 {
     if (curr == NULL)
         return;
+
     printf("Traversal %p curr = %d, left %p, right %p\n", curr, curr->key,
            curr->left, curr->right);
 
@@ -300,6 +301,9 @@ bool queue_push(Node *queue[], int *q_start, int *q_end, Node *enqueue)
 
 void BST_level_order_terversal(Node *head)
 {
+    if (head == NULL)
+        return;
+
     Node *queue[MAX_NODE];
 
     int q_start = 0, q_end = 0;
