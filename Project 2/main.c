@@ -432,6 +432,16 @@ Node *modified_BST_search(Node *curr, int key, bool print_info)
     if (print_info)
         printf("%d ", curr->key);
 
+    /*
+    If the node with the bombs vi has two child nodes, the node with smaller
+    number burns when the bombs are triggered, and the other one remains intact.
+    Furthermore, if the burnt node(i.e., the deleted node) has two child nodes,
+    choose the smallest node in the right subtree to replace the deleted node.
+    If vi is a leaf node, nothing burns when the explosion happens. Therefore,
+    the maze would not be changed. Each bomb could only be triggered once.
+    Therefore, while passing the same node twice, the bomb would not be
+    triggered again.
+    */
     if (has_eight(curr->key) && curr->exploded == false) {
         curr->exploded = true;
         if (curr->left == NULL) {
