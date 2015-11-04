@@ -296,6 +296,17 @@ void BST_level_order_terversal(Node *head)
     int q_start = 0, q_end = 0;
 
     queue_push(queue, &q_start, &q_end, head);
+    while (is_queue_empty(q_start, q_end) == false) {
+        Node *top_element = queue_front(queue, &q_start, &q_end);
+        printf("%d ", top_element->key);
+
+        if (top_element->left != NULL)
+            queue_push(queue, &q_start, &q_end, top_element->left);
+        if (top_element->right != NULL)
+            queue_push(queue, &q_start, &q_end, top_element->right);
+
+        queue_pop(&q_start, &q_end);
+    }
 }
 
 /*
@@ -354,6 +365,10 @@ void binary_search_tree()
             // print
             printf("The tree in infix order: ");
             BST_inorder_terversal(BST_head);
+            printf("\n");
+
+            printf("The tree in level order: ");
+            BST_level_order_terversal(BST_head);
             printf("\n");
         }
 #if DEBUG == 1
