@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <assert.h>
 
-#define DEBUG 0
+#define DEBUG 1
 #define MAX_NODE 5000 // max node for queue to hold
 typedef struct node {
     int key;
@@ -210,18 +210,27 @@ Node *BST_delete(Node *curr, int key)
 #endif
                 // case 3, guaranteed to have 2 children
                 Node *min_right_subtree_node = min_node(curr->right);
+#if DEBUG == 1
+                printf("curr %d, min_key %d\n", curr->key, min_right_subtree_node->key);
+#endif
+
+                // deal with the min_node, find prev
+                Node *prev_min_node_ptr =
+                    prev_min_node(curr->right, min_right_subtree_node->key);
+#if DEBUG == 1
+                printf("prev %d\n",
+                       prev_min_node_ptr == NULL ? -1 : prev_min_node_ptr->key);
+#endif
 
                 // update curr
                 curr->key = min_right_subtree_node->key;
-                // deal with the min_node, find prev
-                Node *prev_min_node_ptr =
-                    prev_min_node(curr, min_right_subtree_node->key);
+
                 if (prev_min_node_ptr == NULL) {
                     assert(curr->right == min_right_subtree_node);
                     curr->right = min_right_subtree_node->right;
                     free(min_right_subtree_node);
                 } else {
-                    assert(prev_min_node_ptr->left != min_right_subtree_node);
+                    assert(prev_min_node_ptr->left == min_right_subtree_node);
                     prev_min_node_ptr->left = min_right_subtree_node->right;
                     free(min_right_subtree_node);
                 }
