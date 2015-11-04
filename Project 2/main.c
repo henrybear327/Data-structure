@@ -43,14 +43,14 @@ NULL.
 */
 Node *create_node(int key)
 {
-    Node *new = malloc(sizeof(Node));
-    assert(new != NULL);
+    Node *new_node = malloc(sizeof(Node));
+    assert(new_node != NULL);
 
-    new->key = key;
-    new->left = NULL;
-    new->right = NULL;
+    new_node->key = key;
+    new_node->left = NULL;
+    new_node->right = NULL;
 
-    return new;
+    return new_node;
 }
 
 /*
