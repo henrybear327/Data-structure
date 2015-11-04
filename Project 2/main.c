@@ -35,11 +35,12 @@ int welcome_msg()
 }
 
 /*
+The parameter is the key to be assigned.
+
 If a new node is successfully created, the return value will be a pointer to the
 newly created node.
-Also, the node will be initialized with key passed in, and left and right
-pointer to
-NULL.
+Also, the node will be initialized with the key passed in, and left and right
+pointer to NULL.
 */
 Node *create_node(int key)
 {
@@ -54,6 +55,8 @@ Node *create_node(int key)
 }
 
 /*
+The parameters are the pointer to the starting node, and the key to be searched.
+
 If the key is found, the return value will be the pointer to that node.
 Otherwise, the return value is NULL.
 */
@@ -64,9 +67,9 @@ Node *BST_search(Node *curr, int key)
     else if (curr->key == key)
         return curr;
     else {
-        if (curr->key < key)
+        if (curr->key < key) // right subtree
             return BST_search(curr->right, key);
-        else
+        else // left subtree
             return BST_search(curr->left, key);
     }
 }
