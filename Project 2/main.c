@@ -32,6 +32,10 @@ int welcome_msg()
     char command_prompt[1000];
     scanf("%s", command_prompt);
 
+#if DEBUG == 1
+    printf("Input received: %s\n", command_prompt);
+#endif
+
     return command_prompt[0];
 }
 
@@ -404,6 +408,28 @@ void binary_search_tree()
     }
 }
 
+void treasure_hunter()
+{
+    printf("===============\n");
+    printf("Treasure Hunter\n");
+    printf("===============\n");
+
+    printf("Please input the name of the map file without spaces: ");
+    char filename[1000];
+    scanf("%s", filename);
+
+    // can't use freopen because stdin will be changed to file!
+    FILE *fptr = fopen(filename, "r");
+    if (fptr == NULL) {
+        printf("The filename you entered wasn't correct! Returning to menu...\n\n");
+        return;
+    } else {
+        printf("The file was loaded successfully!\n\n");
+    }
+
+    return;
+}
+
 int main()
 {
     /*Initialization*/
@@ -416,9 +442,7 @@ int main()
         if (choice == 'B' || choice == 'b') {
             binary_search_tree();
         } else if (choice == 'T' || choice == 't') {
-            printf("===============\n");
-            printf("Treasure Hunter\n");
-            printf("===============\n");
+            treasure_hunter();
         } else if (choice == 'E' || choice == 'e') {
             printf("=========\n");
             printf("Exit\n");
