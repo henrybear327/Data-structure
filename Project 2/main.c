@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <assert.h>
+#include <limits.h>
 
 #define DEBUG 1
 #define MAX_NODE 5000 // max node for queue to hold
@@ -424,13 +425,15 @@ bool has_eight(int val)
     return false;
 }
 
-Node *modified_BST_search(Node *curr, int key, bool print_info)
+Node *modified_BST_search(Node *curr, int key, int path[], int idx)
 {
     if (curr == NULL)
         return NULL;
 
-    if (print_info)
-        printf("%d ", curr->key);
+#if DEBUG == 1
+    printf("%d ", curr->key);
+#endif
+    path[idx++] = curr->key;
 
     /*
     If the node with the bombs vi has two child nodes, the node with smaller
@@ -456,9 +459,9 @@ Node *modified_BST_search(Node *curr, int key, bool print_info)
         return curr;
     else {
         if (curr->key < key) // right subtree
-            return modified_BST_search(curr->right, key, false);
+            return modified_BST_search(curr->right, key, path, idx);
         else // left subtree
-            return modified_BST_search(curr->left, key, false);
+            return modified_BST_search(curr->left, key, path, idx);
     }
 }
 
@@ -518,11 +521,17 @@ void treasure_hunter()
     scanf("%d", &treasure_loc);
 
     bool key_exist = true, treasure_exist = true;
+    int path_to_key[MAX_NODE];
+    int path_to_treasure[MAX_NODE];
+    for (int i = 0; i < MAX_NODE; i++) {
+        path_to_key[i] = INT_MIN;
+        path_to_treasure[i] = INT_MIN;
+    }
     /*
     if (number_exists[key_loc] == false ||
         modified_BST_search(BST_head, key_loc, false) == NULL) {
     */
-    if (modified_BST_search(BST_head, key_loc, false) == NULL) {
+    if (modified_BST_search(BST_head, key_loc, path_to_key, 0) == NULL) {
         /*
         if (number_exists[key_loc] == true) {
             printf("The key is burned while searching!!\n");
@@ -536,7 +545,8 @@ void treasure_hunter()
     if (number_exists[treasure_loc] == false ||
         modified_BST_search(BST_head, treasure_loc, false) == NULL) {
     */
-    if (modified_BST_search(BST_head, treasure_loc, false) == NULL) {
+    if (modified_BST_search(BST_head, treasure_loc, path_to_treasure, 0) ==
+        NULL) {
         /*
         if (number_exists[treasure_loc] == true) {
             printf("The treasure is burned while searching!!\n");
@@ -553,8 +563,57 @@ void treasure_hunter()
 
     printf("The tree in level order after using modified_BST_search: ");
     BST_level_order_terversal(BST_head);
+    printf("\n\n\n");
+
+    printf("Path recorded:\n");
+    int tmp_idx = 0;
+
+    printf("path_to_key: ");
+    while (path_to_key[tmp_idx] != INT_MIN) {
+        printf("%d ", path_to_key[tmp_idx++]);
+    }
+    printf("\n");
+
+    tmp_idx = 0;
+    printf("path_to_treasure: ");
+    while (path_to_treasure[tmp_idx] != INT_MIN) {
+        printf("%d ", path_to_treasure[tmp_idx++]);
+    }
     printf("\n");
 #endif
+
+    if (key_exist == true && treasure_exist == true) {
+        printf("\n\nThe shortest path is: ");
+        int idx = 0;
+        while (path_to_key[idx] != INT_MIN) {
+            printf("%d->", path_to_key[idx]);
+            idx++;
+        }
+
+        // find the longest common substring
+        int cnt = 0;
+        for (int i = 0; path_to_key[i] != INT_MIN && path_to_treasure[i] != INT_MIN;
+             i++) {
+            if (path_to_key[i] == path_to_treasure[i]) {
+                cnt++;
+            } else {
+                break;
+            }
+        }
+
+        assert(cnt <= idx);
+
+        // cnt == 1 -> only root is in common
+        for (int i = idx - 2; i > cnt - 1; i--) {
+            printf("%d->", path_to_key[i]);
+        }
+
+        for (int i = cnt - 1; path_to_treasure[i] != INT_MIN; i++) {
+            if (path_to_treasure[i + 1] == INT_MIN)
+                printf("%d\n\n", path_to_treasure[i]);
+            printf("%d->", path_to_treasure[i]);
+        }
+    }
 
     return;
 }
