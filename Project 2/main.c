@@ -5,10 +5,15 @@
 
 #define DEBUG 1
 #define MAX_NODE 5000 // max node for queue to hold
+/* max number range for checking if the key/treasure is present in the map*/
+#define MAX_NUM_RANGE 10000
+
 typedef struct node {
     int key;
     struct node *left;
     struct node *right;
+
+    bool exploded;
 } Node;
 
 /*
@@ -55,6 +60,8 @@ Node *create_node(int key)
     new_node->key = key;
     new_node->left = NULL;
     new_node->right = NULL;
+
+    new_node->exploded = false;
 
     return new_node;
 }
@@ -408,6 +415,45 @@ void binary_search_tree()
     }
 }
 
+bool has_eight(int val)
+{
+    while (val) {
+        if (val % 10 == 8)
+            return true;
+        val /= 10;
+    }
+
+    return false;
+}
+
+Node *modified_BST_search(Node *curr, int key, bool print_info)
+{
+    if (curr == NULL)
+        return NULL;
+
+    if (print_info)
+        printf("%d ", curr->key);
+
+    if (has_eight(curr->key) && curr->exploded == false) {
+        curr->exploded = true;
+        if (curr->left == NULL) {
+            if (curr->right != NULL)
+                curr = BST_delete(curr, curr->right->key);
+        } else {
+            curr = BST_delete(curr, curr->left->key);
+        }
+    }
+
+    if (curr->key == key)
+        return curr;
+    else {
+        if (curr->key < key) // right subtree
+            return BST_search(curr->right, key);
+        else // left subtree
+            return BST_search(curr->left, key);
+    }
+}
+
 void treasure_hunter()
 {
     printf("===============\n");
@@ -426,6 +472,71 @@ void treasure_hunter()
     } else {
         printf("The file was loaded successfully!\n\n");
     }
+
+    /*Initialization*/
+    Node *BST_head = NULL;
+
+    // create BST
+    int inp;
+    bool number_exists[MAX_NUM_RANGE] = {false};
+    while (fscanf(fptr, "%d", &inp) != EOF) {
+        BST_head = BST_insert(BST_head, inp);
+        number_exists[inp] = true;
+    }
+    fclose(fptr);
+
+#if DEBUG == 1
+    printf("The tree in infix order before using modified_BST_search: ");
+    BST_inorder_terversal(BST_head);
+    printf("\n");
+
+    printf("The tree in level order before using modified_BST_search: ");
+    BST_level_order_terversal(BST_head);
+    printf("\n");
+#endif
+
+    if (BST_head == NULL) {
+        printf("Empty file!! Returning to menu now...\n\n");
+        return;
+    }
+
+    // Prompt the user for the key and Treasure
+    printf("Please input the key location: ");
+    int key_loc;
+    scanf("%d", &key_loc);
+
+    printf("Please input the treasure location: ");
+    int treasure_loc;
+    scanf("%d", &treasure_loc);
+
+    bool key_exist = true, treasure_exist = true;
+    if (number_exists[key_loc] == false ||
+        modified_BST_search(BST_head, key_loc, false) == NULL) {
+        if (number_exists[key_loc] == true) {
+            printf("The key is burned while searching!!\n");
+        }
+        key_exist = false;
+        printf("Key is not found.\n");
+    }
+
+    if (number_exists[treasure_loc] == false ||
+        modified_BST_search(BST_head, treasure_loc, false) == NULL) {
+        if (number_exists[treasure_loc] == true) {
+            printf("The treasure is burned while searching!!\n");
+        }
+        treasure_exist = false;
+        printf("Treasure is not found.\n");
+    }
+
+#if DEBUG == 1
+    printf("The tree in infix order after using modified_BST_search: ");
+    BST_inorder_terversal(BST_head);
+    printf("\n");
+
+    printf("The tree in level order after using modified_BST_search: ");
+    BST_level_order_terversal(BST_head);
+    printf("\n");
+#endif
 
     return;
 }
