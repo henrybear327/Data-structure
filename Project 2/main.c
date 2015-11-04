@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <assert.h>
 
-#define DEBUG 1
+#define DEBUG 0
 
 typedef struct node {
     int key;
@@ -109,9 +109,19 @@ void BST_inorder_terversal(Node *curr)
 {
     if (curr == NULL)
         return;
+#if DEBUG == 1
+    printf("Traversal %p curr = %d, left %p, right %p\n", curr, curr->key,
+           curr->left, curr->right);
+#endif
 
     BST_inorder_terversal(curr->left);
+#if DEBUG == 1
+    printf("Traversal print %p curr = %d, left %p, right %p\n", curr, curr->key,
+           curr->left, curr->right);
+#else
     printf("%d ", curr->key);
+#endif
+
     BST_inorder_terversal(curr->right);
 }
 
@@ -125,6 +135,24 @@ Node *min_node(Node *curr)
     if (curr->left == NULL)
         return curr;
     return min_node(curr->left);
+}
+
+/*
+The parameter is the starting node pointer to be searched.
+
+The return value is the pointer to the previous node of the min_node.
+If the node passed in can't be used to find prev_min_node, NULL is returned.
+*/
+Node *prev_min_node(Node *curr, int key)
+{
+    if (curr->key ==
+        key) // the node passed in can't be used to find prev_min_node
+        return NULL;
+
+    if (curr->left->key == key) // fonud
+        return curr;
+
+    return prev_min_node(curr->left, key);
 }
 
 /*
@@ -146,10 +174,16 @@ Node *BST_delete(Node *curr, int key)
         */
 
         if (curr->left == NULL && curr->right == NULL) { // case 1, leaf
+#if DEBUG == 1
+            printf("Deletion case 1\n");
+#endif
             free(curr);
             return NULL;
         } else {
             if (!(curr->left != NULL && curr->right != NULL)) {
+#if DEBUG == 1
+                printf("Deletion case 2\n");
+#endif
                 // case 2, just move the child node to replace the deleted one.
                 if (curr->left == NULL) {
                     Node *right = curr->right;
@@ -161,11 +195,30 @@ Node *BST_delete(Node *curr, int key)
                     return left;
                 }
             } else {
+#if DEBUG == 1
+                printf("Deletion case 3\n");
+#endif
                 // case 3, guaranteed to have 2 children
                 Node *min_right_subtree_node = min_node(curr->right);
-                Node *right = min_right_subtree_node->right;
-                free(min_right_subtree_node);
-                return right;
+#if DEBUG == 1
+                printf("min_right_subtree_node %p\n", min_right_subtree_node);
+#endif
+                // update curr
+                curr->key = min_right_subtree_node->key;
+                // deal with the min_node, find prev
+                Node *prev_min_node_ptr =
+                    prev_min_node(curr, min_right_subtree_node->key);
+                if (prev_min_node_ptr == NULL) {
+                    assert(curr->right == min_right_subtree_node);
+                    curr->right = min_right_subtree_node->right;
+                    free(min_right_subtree_node);
+                } else {
+                    assert(prev_min_node_ptr->left != min_right_subtree_node);
+                    prev_min_node_ptr->left = min_right_subtree_node->right;
+                    free(min_right_subtree_node);
+                }
+
+                return curr;
             }
         }
     } else if (curr->key < key) // go to right subtree
@@ -224,7 +277,7 @@ void binary_search_tree()
             if (BST_search(BST_head, key) == NULL)
                 printf("The number %d doesn't exist in the BST.\n\n", key);
             else
-                printf("The number %d already exists.\n\n", key);
+                printf("The number %d exists in the BST.\n\n", key);
         } else if (choice == 'P' || choice == 'p') {
             // print
             printf("The tree in infix order: ");
