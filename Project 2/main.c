@@ -5,8 +5,6 @@
 
 #define DEBUG 1
 #define MAX_NODE 5000 // max node for queue to hold
-/* max number range for checking if the key/treasure is present in the map*/
-#define MAX_NUM_RANGE 10000
 
 typedef struct node {
     int key;
@@ -448,9 +446,9 @@ Node *modified_BST_search(Node *curr, int key, bool print_info)
         return curr;
     else {
         if (curr->key < key) // right subtree
-            return BST_search(curr->right, key);
+            return modified_BST_search(curr->right, key, false);
         else // left subtree
-            return BST_search(curr->left, key);
+            return modified_BST_search(curr->left, key, false);
     }
 }
 
@@ -478,10 +476,10 @@ void treasure_hunter()
 
     // create BST
     int inp;
-    bool number_exists[MAX_NUM_RANGE] = {false};
+    // bool number_exists[MAX_NUM_RANGE] = {false};
     while (fscanf(fptr, "%d", &inp) != EOF) {
         BST_head = BST_insert(BST_head, inp);
-        number_exists[inp] = true;
+        // number_exists[inp] = true;
     }
     fclose(fptr);
 
@@ -510,20 +508,30 @@ void treasure_hunter()
     scanf("%d", &treasure_loc);
 
     bool key_exist = true, treasure_exist = true;
+    /*
     if (number_exists[key_loc] == false ||
         modified_BST_search(BST_head, key_loc, false) == NULL) {
+    */
+    if (modified_BST_search(BST_head, key_loc, false) == NULL) {
+        /*
         if (number_exists[key_loc] == true) {
             printf("The key is burned while searching!!\n");
         }
+        */
         key_exist = false;
         printf("Key is not found.\n");
     }
 
+    /*
     if (number_exists[treasure_loc] == false ||
         modified_BST_search(BST_head, treasure_loc, false) == NULL) {
+    */
+    if (modified_BST_search(BST_head, treasure_loc, false) == NULL) {
+        /*
         if (number_exists[treasure_loc] == true) {
             printf("The treasure is burned while searching!!\n");
         }
+        */
         treasure_exist = false;
         printf("Treasure is not found.\n");
     }
