@@ -161,7 +161,11 @@ Node *BST_delete(Node *curr, int key)
                     return left;
                 }
             } else {
-                // case 3
+                // case 3, guaranteed to have 2 children
+                Node *min_right_subtree_node = min_node(curr->right);
+                Node *right = min_right_subtree_node->right;
+                free(min_right_subtree_node);
+                return right;
             }
         }
     } else if (curr->key < key) // go to right subtree
