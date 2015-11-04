@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <limits.h>
 
-#define DEBUG 1
+#define DEBUG 0
 #define MAX_NODE 5000 // max node for queue to hold
 
 typedef struct node {
