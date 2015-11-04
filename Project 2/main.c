@@ -11,8 +11,6 @@ typedef struct node {
     struct node *right;
 } Node;
 
-Node *BST_start_ptr;
-
 /*
 Clears the terminal screen.
 */
@@ -80,40 +78,13 @@ The function first checks for duplicated key.
 If this happenes, the key is not inserted.
 Otherwise, the key will be inserted according to the BST rule.
 */
-void BST_insert()
+Node *BST_insert(Node *curr)
 {
     printf("Please enter a number: ");
     int key;
     scanf("%d", &key);
 
-    if (BST_search(BST_start_ptr, key) != NULL) {
-        printf("The number %d already exists.\n", key);
-        return;
-    }
-
-    if (BST_start_ptr == NULL) {
-        BST_start_ptr = create_node(key);
-    } else {
-        Node *curr = BST_start_ptr;
-        Node *to_insert = create_node(key);
-        while (1) {
-            if (key > curr->key) {
-                if (curr->right == NULL) {
-                    curr->right = to_insert;
-                    break;
-                } else {
-                    curr = curr->right;
-                }
-            } else {
-                if (curr->left == NULL) {
-                    curr->left = to_insert;
-                    break;
-                } else {
-                    curr = curr->left;
-                }
-            }
-        }
-    }
+    return curr;
 }
 
 /*
@@ -129,13 +100,13 @@ void BST_inorder_terversal(Node *curr)
     BST_inorder_terversal(curr->right);
 }
 
-void BST_delete()
+void BST_delete(Node *curr)
 {
     printf("Which number do you want to delete? ");
     int inp;
     scanf("%d", &inp);
 
-    Node *to_delete = BST_search(BST_start_ptr, inp);
+    Node *to_delete = BST_search(curr, inp);
     if (to_delete == NULL) {
         printf("The number %d doesn't exist!\n", inp);
         return;
@@ -152,8 +123,8 @@ void binary_search_tree()
     printf("Binary Search Tree\n");
     printf("==================\n\n");
 
-    // Init.
-    BST_start_ptr = NULL;
+    /*Initialization*/
+    Node *BST_head = NULL;
 
     while (1) {
         printf("(I)nsert a number.\n");
@@ -168,22 +139,22 @@ void binary_search_tree()
         char choice = command_prompt[0];
         if (choice == 'I' || choice == 'i') {
             // insert
-            BST_insert();
+            BST_insert(BST_head);
         } else if (choice == 'D' || choice == 'd') {
             // delete
-            BST_delete();
+            BST_delete(BST_head);
         } else if (choice == 'S' || choice == 's') {
             // search
             printf("Which number do you want to search? ");
             int key;
             scanf("%d", &key);
-            if (BST_search(BST_start_ptr, key) == NULL)
+            if (BST_search(BST_head, key) == NULL)
                 printf("The number %d doesn't exist in the BST.\n\n", key);
             else
                 printf("The number %d is in the tree.\n\n", key);
         } else if (choice == 'P' || choice == 'p') {
             // print
-            BST_inorder_terversal(BST_start_ptr);
+            BST_inorder_terversal(BST_head);
         } else if (choice == 'R' || choice == 'r') {
             // return
             clear_screen();
@@ -196,8 +167,10 @@ void binary_search_tree()
 
 int main()
 {
+    /*Initialization*/
     clear_screen();
 
+    /*Program starts!*/
     while (1) {
         char choice = welcome_msg();
 
