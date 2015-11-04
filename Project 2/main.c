@@ -3,8 +3,8 @@
 #include <stdbool.h>
 #include <assert.h>
 
-#define DEBUG 1
-
+#define DEBUG 0
+#define MAX_NODE 5000 // max node for queue to hold
 typedef struct node {
     int key;
     struct node *left;
@@ -235,6 +235,67 @@ Node *BST_delete(Node *curr, int key)
         curr->left = BST_delete(curr->left, key);
 
     return curr;
+}
+
+/*
+The parameters are the starting and ending idx of the queue
+
+If empty, return true. Otherwise, return false.
+*/
+bool is_queue_empty(int q_start, int q_end)
+{
+    return q_start == q_end;
+}
+
+/*
+The parameters are the pointer to the queue, the starting and ending idx of the
+queue.
+
+Return value is the front node.
+
+Warning! No empty queue check is performed.
+*/
+Node *queue_front(Node *queue[], int *q_start, int *q_end)
+{
+    assert(*q_start <= *q_end);
+    return queue[(*q_start)];
+}
+
+/*
+The parameters are the pointers of starting and ending idx of the queue
+*/
+bool queue_pop(int *q_start, int *q_end)
+{
+    if (is_queue_empty(*q_start, *q_end) == true)
+        return false;
+
+    (*q_start)++;
+    return true;
+}
+
+/*
+The parameters are the pointer to the queue, the starting and ending idx of the
+queue,
+and the Node to enqueue.
+
+Return value is the front node.
+*/
+bool queue_push(Node *queue[], int *q_start, int *q_end, Node *enqueue)
+{
+    assert(*q_start <= *q_end);
+    assert(*q_end < MAX_NODE);
+
+    queue[(*q_end)++] = enqueue;
+    return true;
+}
+
+void BST_level_order_terversal(Node *head)
+{
+    Node *queue[MAX_NODE];
+
+    int q_start = 0, q_end = 0;
+
+    queue_push(queue, &q_start, &q_end, head);
 }
 
 /*
