@@ -10,6 +10,9 @@
 /*
 Color
 http://stackoverflow.com/questions/3219393/stdlib-and-colored-output-in-c
+
+Sample usage:
+printf(ANSI_COLOR_RED     "This text is RED!"     ANSI_COLOR_RESET "\n");
 */
 #define ANSI_COLOR_RED "\x1b[31m"
 #define ANSI_COLOR_GREEN "\x1b[32m"
@@ -18,8 +21,6 @@ http://stackoverflow.com/questions/3219393/stdlib-and-colored-output-in-c
 #define ANSI_COLOR_MAGENTA "\x1b[35m"
 #define ANSI_COLOR_CYAN "\x1b[36m"
 #define ANSI_COLOR_RESET "\x1b[0m"
-
-/*printf(ANSI_COLOR_RED     "This text is RED!"     ANSI_COLOR_RESET "\n");*/
 
 typedef struct node {
     int key;
@@ -38,7 +39,9 @@ void clear_screen()
 }
 
 /*
-Print out the menu and return the first character in the input string.
+Print out the menu.
+
+The return value is the first character in the input string.
 */
 int welcome_msg()
 {
@@ -62,8 +65,8 @@ The parameter is the key to be assigned.
 
 If a new node is successfully created, the return value will be a pointer to the
 newly created node.
-Also, the node will be initialized with the key passed in, and left and right
-pointer to NULL.
+Also, the node will be initialized with the key being passed in, and left and right
+pointers pointing to NULL.
 */
 Node *create_node(int key)
 {
@@ -123,11 +126,11 @@ Node *BST_insert(Node *BST_head, int key)
 }
 
 /*
-Teh parameter is the pointer to the starting node.
+The parameter is the pointer to the starting node.
 
 Perform an inorder traversal on the given BST tree.
 
-Notice: Need to an \n after calling BST_inorder_terversal().
+Notice: Need to add a '\n' after calling BST_inorder_terversal().
 */
 void BST_inorder_terversal(Node *curr)
 {
@@ -141,7 +144,7 @@ void BST_inorder_terversal(Node *curr)
 
 #if DEBUG == 1
 /*
-More info BST_inorder_terversal() for debugging
+BST_inorder_terversal() -- a verbose version for debugging
 */
 void BST_inorder_terversal_verbose(Node *curr)
 {
@@ -161,7 +164,7 @@ void BST_inorder_terversal_verbose(Node *curr)
 #endif
 
 /*
-The parameter is a pointer to start the min_node search.
+The parameter is a pointer to the node for starting the min_node search.
 
 The return value is the pointer to the min_node.
 */
@@ -173,7 +176,7 @@ Node *min_node(Node *curr)
 }
 
 /*
-The parameter is the starting node pointer to be searched.
+The parameter is the pointer to the starting node to be searched.
 
 The return value is the pointer to the previous node of the min_node.
 If the node passed in can't be used to find prev_min_node, NULL is returned.
@@ -192,6 +195,9 @@ Node *prev_min_node(Node *curr, int key)
 
 /*
 The parameters are the pointer to the starting node, and the key to be deleted.
+
+The return value will be the addrss of the first pointer being passed in.
+(NULL when that starting node is deleted.)
 */
 Node *BST_delete(Node *curr, int key)
 {
@@ -286,7 +292,7 @@ bool is_queue_empty(int q_start, int q_end)
 The parameters are the pointer to the queue, the starting and ending idx of the
 queue.
 
-Return value is the front node.
+Return value is the pointer to the front node.
 
 Warning! No empty queue check is performed.
 */
@@ -298,6 +304,8 @@ Node *queue_front(Node *queue[], int *q_start, int *q_end)
 
 /*
 The parameters are the pointers of starting and ending idx of the queue
+
+The return value is true on successful popping action. Otherwise, false.
 */
 bool queue_pop(int *q_start, int *q_end)
 {
@@ -310,10 +318,9 @@ bool queue_pop(int *q_start, int *q_end)
 
 /*
 The parameters are the pointer to the queue, the starting and ending idx of the
-queue,
-and the Node to enqueue.
+queue, and the Node to enqueue.
 
-Return value is the front node.
+The return value is true on successful pushing action. Otherwise, false.
 */
 bool queue_push(Node *queue[], int *q_start, int *q_end, Node *enqueue)
 {
@@ -324,6 +331,13 @@ bool queue_push(Node *queue[], int *q_start, int *q_end, Node *enqueue)
     return true;
 }
 
+/*
+The parameter is the starting node to start the search.
+
+The nodes will be shown from level 0 ~ h - 1, and from left to right.
+
+No return value. 
+*/
 void BST_level_order_terversal(Node *head)
 {
     if (head == NULL)
@@ -349,7 +363,7 @@ void BST_level_order_terversal(Node *head)
 
 /*
 Prints the menu for BST homework.
-Also, calls the appropriate functions to do the demanded jobs.
+Also, calls the appropriate functions to do the demanded jobs for part 1.
 */
 void binary_search_tree()
 {
