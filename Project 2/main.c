@@ -375,21 +375,23 @@ void binary_search_tree()
         char choice = command_prompt[0];
         if (choice == 'I' || choice == 'i') {
             // insert
-            printf("Please enter a number: ");
+            printf(ANSI_COLOR_YELLOW "Please enter a number: " ANSI_COLOR_RESET);
             int key;
             scanf("%d", &key);
 
             BST_head = BST_insert(BST_head, key);
         } else if (choice == 'D' || choice == 'd') {
             // delete
-            printf("Which number do you want to delete? ");
+            printf(ANSI_COLOR_YELLOW
+                   "Which number do you want to delete? " ANSI_COLOR_RESET);
             int key;
             scanf("%d", &key);
 
             BST_head = BST_delete(BST_head, key);
         } else if (choice == 'S' || choice == 's') {
             // search
-            printf("Which number do you want to search? ");
+            printf(ANSI_COLOR_YELLOW
+                   "Which number do you want to search? " ANSI_COLOR_RESET);
             int key;
             scanf("%d", &key);
 
@@ -489,7 +491,8 @@ void treasure_hunter()
     printf("Treasure Hunter\n");
     printf("===============\n" ANSI_COLOR_RESET);
 
-    printf(ANSI_COLOR_YELLOW "Please input the name of the map file without spaces: " ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_YELLOW "Please input the name of the map file without "
+           "spaces: " ANSI_COLOR_RESET);
     char filename[1000];
     scanf("%s", filename);
 
@@ -537,7 +540,8 @@ void treasure_hunter()
     int key_loc;
     scanf("%d", &key_loc);
 
-    printf(ANSI_COLOR_YELLOW "Please input the treasure location: " ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_YELLOW
+           "Please input the treasure location: " ANSI_COLOR_RESET);
     int treasure_loc;
     scanf("%d", &treasure_loc);
 
