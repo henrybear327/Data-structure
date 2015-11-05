@@ -45,7 +45,7 @@ The return value is the first character in the input string.
 */
 int welcome_msg()
 {
-    printf("\nPlease make a choice: \n");
+    printf(ANSI_COLOR_YELLOW "\nPlease make a choice: \n" ANSI_COLOR_RESET);
     printf("(B)inary Search Tree.\n");
     printf("(T)reasure Hunter\n");
     printf("(E)xit\n");
@@ -350,15 +350,16 @@ Also, calls the appropriate functions to do the demanded jobs for part 1.
 */
 void binary_search_tree()
 {
-    printf("==================\n");
+    clear_screen();
+    printf(ANSI_COLOR_YELLOW "==================\n");
     printf("Binary Search Tree\n");
-    printf("==================\n\n");
+    printf("==================\n" ANSI_COLOR_RESET);
 
     /*Initialization*/
     Node *BST_head = NULL;
 
     while (1) {
-        printf("\nPlease make a choice: \n");
+        printf(ANSI_COLOR_YELLOW "\nPlease make a choice: \n" ANSI_COLOR_RESET);
         printf("(I)nsert a number.\n");
         printf("(D)elete a number.\n");
         printf("(S)earch a number.\n");
@@ -374,21 +375,23 @@ void binary_search_tree()
         char choice = command_prompt[0];
         if (choice == 'I' || choice == 'i') {
             // insert
-            printf("Please enter a number: ");
+            printf(ANSI_COLOR_YELLOW "Please enter a number: " ANSI_COLOR_RESET);
             int key;
             scanf("%d", &key);
 
             BST_head = BST_insert(BST_head, key);
         } else if (choice == 'D' || choice == 'd') {
             // delete
-            printf("Which number do you want to delete? ");
+            printf(ANSI_COLOR_YELLOW
+                   "Which number do you want to delete? " ANSI_COLOR_RESET);
             int key;
             scanf("%d", &key);
 
             BST_head = BST_delete(BST_head, key);
         } else if (choice == 'S' || choice == 's') {
             // search
-            printf("Which number do you want to search? ");
+            printf(ANSI_COLOR_YELLOW
+                   "Which number do you want to search? " ANSI_COLOR_RESET);
             int key;
             scanf("%d", &key);
 
@@ -483,11 +486,13 @@ Node *modified_BST_search(Node *curr, int key, int path[], int idx)
 
 void treasure_hunter()
 {
-    printf("===============\n");
+    clear_screen();
+    printf(ANSI_COLOR_YELLOW "===============\n");
     printf("Treasure Hunter\n");
-    printf("===============\n");
+    printf("===============\n" ANSI_COLOR_RESET);
 
-    printf("Please input the name of the map file without spaces: ");
+    printf(ANSI_COLOR_YELLOW "Please input the name of the map file without "
+           "spaces: " ANSI_COLOR_RESET);
     char filename[1000];
     scanf("%s", filename);
 
@@ -526,16 +531,17 @@ void treasure_hunter()
 
     if (BST_head == NULL) {
         printf(ANSI_COLOR_RED
-               "Empty file!! Returning to menu now...\n\n" ANSI_COLOR_RESET);
+               "Empty file!! Returning to main menu now...\n\n" ANSI_COLOR_RESET);
         return;
     }
 
     // Prompt the user for the key and Treasure
-    printf("Please input the key location: ");
+    printf(ANSI_COLOR_YELLOW "Please input the key location: " ANSI_COLOR_RESET);
     int key_loc;
     scanf("%d", &key_loc);
 
-    printf("Please input the treasure location: ");
+    printf(ANSI_COLOR_YELLOW
+           "Please input the treasure location: " ANSI_COLOR_RESET);
     int treasure_loc;
     scanf("%d", &treasure_loc);
 
@@ -602,7 +608,8 @@ void treasure_hunter()
 #endif
 
     if (key_exist == true && treasure_exist == true) {
-        printf(ANSI_COLOR_GREEN "\n\nThe shortest path is: ");
+        printf(ANSI_COLOR_GREEN "\n\nAdventurer successfully found the treasure. "
+               "Shortest path to find the treasure:\n");
         int idx = 0;
         while (path_to_key[idx] != INT_MIN) {
             printf("%d->", path_to_key[idx]);
