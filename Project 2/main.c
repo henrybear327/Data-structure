@@ -65,7 +65,8 @@ The parameter is the key to be assigned.
 
 If a new node is successfully created, the return value will be a pointer to the
 newly created node.
-Also, the node will be initialized with the key being passed in, and left and right
+Also, the node will be initialized with the key being passed in, and left and
+right
 pointers pointing to NULL.
 */
 Node *create_node(int key)
@@ -242,30 +243,12 @@ Node *BST_delete(Node *curr, int key)
 #endif
                 // case 3, guaranteed to have 2 children
                 Node *min_right_subtree_node = min_node(curr->right);
-#if DEBUG == 1
-                printf("curr %d, min_key %d\n", curr->key, min_right_subtree_node->key);
-#endif
 
-                // deal with the min_node, find prev
-                Node *prev_min_node_ptr =
-                    prev_min_node(curr->right, min_right_subtree_node->key);
-#if DEBUG == 1
-                printf("prev %d\n",
-                       prev_min_node_ptr == NULL ? -1 : prev_min_node_ptr->key);
-#endif
-
-                // update curr
+                // update curr key value
                 curr->key = min_right_subtree_node->key;
 
-                if (prev_min_node_ptr == NULL) {
-                    assert(curr->right == min_right_subtree_node);
-                    curr->right = min_right_subtree_node->right;
-                    free(min_right_subtree_node);
-                } else {
-                    assert(prev_min_node_ptr->left == min_right_subtree_node);
-                    prev_min_node_ptr->left = min_right_subtree_node->right;
-                    free(min_right_subtree_node);
-                }
+                // use recursive way to delete
+                curr->right = BST_delete(curr->right, min_right_subtree_node->key);
 
                 return curr;
             }
@@ -336,7 +319,7 @@ The parameter is the starting node to start the search.
 
 The nodes will be shown from level 0 ~ h - 1, and from left to right.
 
-No return value. 
+No return value.
 */
 void BST_level_order_terversal(Node *head)
 {
