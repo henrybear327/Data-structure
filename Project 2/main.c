@@ -345,6 +345,21 @@ void BST_level_order_terversal(Node *head)
 }
 
 /*
+Free the nodes starting from the given head node
+*/
+Node *BST_free(Node *head)
+{
+    if (head == NULL)
+        return NULL;
+
+    BST_free(head->left);
+    BST_free(head->right);
+
+    free(head);
+    return NULL;
+}
+
+/*
 Prints the menu for BST homework.
 Also, calls the appropriate functions to do the demanded jobs for part 1.
 */
@@ -424,7 +439,9 @@ void binary_search_tree()
             // return
             clear_screen();
 
-            /*Should perform free() to all nodes using inorder traversal*/
+            /*Should perform free() to all nodes*/
+            BST_head = BST_free(BST_head);
+            assert(BST_head == NULL);
 
             return;
         } else {
@@ -641,6 +658,10 @@ void treasure_hunter()
                 printf("%d->", path_to_treasure[i]);
         }
     }
+
+    /*Should perform free() to all nodes*/
+    BST_head = BST_free(BST_head);
+    assert(BST_head == NULL);
 
     return;
 }
