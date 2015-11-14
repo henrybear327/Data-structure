@@ -27,6 +27,24 @@ void inorder(struct node *root)
     }
 }
 
+/*
+An utility function to do key searching of BST.
+Return the addr of the key node, or NULL if key not found.
+*/
+struct node *search(struct node *node, int number_to_search)
+{
+    if (node == NULL)
+        return NULL;
+
+    if (number_to_search == node->key)
+        return node;
+
+    if (number_to_search > node->key)
+        return search(node->right, number_to_search);
+    else
+        return search(node->left, number_to_search);
+}
+
 /* A utility function to insert a new node with given key in BST */
 struct node *insert(struct node *node, int key)
 {
@@ -170,9 +188,21 @@ int main()
     inorder(root);
 
     struct node *root2 = copy_BST(root);
+    printf("\n\nVerify %s\n", verify(root, root2) == true ? "true" : "false");
+
     root = deleteNode(root, 80);
 
-    printf("\n\nVerify %s\n", verify(root, root2) == true ? "true" : "false");
+    printf("\n\nVerify %s\n\n", verify(root, root2) == true ? "true" : "false");
+
+    if (search(root, 50) == NULL)
+        printf("50 is not in the tree\n");
+    else
+        printf("50 is in the tree\n");
+
+    if (search(root, 40) == NULL)
+        printf("40 is not in the tree\n");
+    else
+        printf("40 is in the tree\n");
 
     return 0;
 }
