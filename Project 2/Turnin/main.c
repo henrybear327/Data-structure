@@ -177,24 +177,6 @@ Node *min_node(Node *curr)
 }
 
 /*
-The parameter is the pointer to the starting node to be searched.
-
-The return value is the pointer to the previous node of the min_node.
-If the node passed in can't be used to find prev_min_node, NULL is returned.
-*/
-Node *prev_min_node(Node *curr, int key)
-{
-    if (curr->key ==
-        key) // the node passed in can't be used to find prev_min_node
-        return NULL;
-
-    if (curr->left->key == key) // fonud
-        return curr;
-
-    return prev_min_node(curr->left, key);
-}
-
-/*
 The parameters are the pointer to the starting node, and the key to be deleted.
 
 The return value will be the addrss of the first pointer being passed in.
@@ -345,6 +327,21 @@ void BST_level_order_terversal(Node *head)
 }
 
 /*
+Free the nodes starting from the given head node
+*/
+Node *BST_free(Node *head)
+{
+    if (head == NULL)
+        return NULL;
+
+    BST_free(head->left);
+    BST_free(head->right);
+
+    free(head);
+    return NULL;
+}
+
+/*
 Prints the menu for BST homework.
 Also, calls the appropriate functions to do the demanded jobs for part 1.
 */
@@ -424,7 +421,9 @@ void binary_search_tree()
             // return
             clear_screen();
 
-            /*Should perform free() to all nodes using inorder traversal*/
+            /*Should perform free() to all nodes*/
+            BST_head = BST_free(BST_head);
+            assert(BST_head == NULL);
 
             return;
         } else {
@@ -608,16 +607,24 @@ void treasure_hunter()
 #endif
 
     if (key_exist == true && treasure_exist == true) {
-        printf(ANSI_COLOR_GREEN "\n\nAdventurer successfully found the treasure. "
+        printf(ANSI_COLOR_GREEN "\n\nAdventurer successfully found the treasure.\n"
                "Shortest path to find the treasure:\n");
         int idx = 0;
         while (path_to_key[idx] != INT_MIN) {
-            printf("%d->", path_to_key[idx]);
             idx++;
         }
 
+        int idx_treasure = 0;
+        for (int i = 0; path_to_treasure[i] != INT_MIN; i++)
+            idx_treasure++;
+
         // find the longest common substring
-        int cnt = 0;
+        /*
+        The longest common substring should be 1 <= len < min(key_path,
+        treasure_path)
+        */
+
+        int cnt = 0; // common length
         for (int i = 0; path_to_key[i] != INT_MIN && path_to_treasure[i] != INT_MIN;
              i++) {
             if (path_to_key[i] == path_to_treasure[i]) {
@@ -628,19 +635,42 @@ void treasure_hunter()
         }
 
         assert(cnt <= idx);
+        assert(cnt >= 1); // root
 
-        // cnt == 1 -> only root is in common
-        for (int i = idx - 2; i > cnt - 1; i--) {
-            printf("%d->", path_to_key[i]);
+        if (cnt < idx && cnt < idx_treasure) {
+            // not aligned
+            for (int i = 0; i < idx; i++)
+                printf("%d->", path_to_key[i]);
+            for (int i = idx - 2; i >= cnt - 1; i--)
+                printf("%d->", path_to_key[i]);
+            for (int i = cnt; path_to_treasure[i] != INT_MIN; i++)
+                printf("%d%s", path_to_treasure[i],
+                       path_to_treasure[i + 1] == INT_MIN ? "\n" : "->");
+        } else {
+            if (idx < idx_treasure) {
+                // case 1: key is before treasure
+                for (int i = 0; i < idx_treasure; i++)
+                    printf("%d%s", path_to_treasure[i],
+                           i == idx_treasure - 1 ? "\n" : "->");
+            } else if (idx > idx_treasure) {
+                // case 2: key is after treasure
+                for (int i = 0; i < idx; i++)
+                    printf("%d->", path_to_key[i]);
+                for (int i = idx - 2; i >= cnt - 1; i--)
+                    printf("%d%s", path_to_key[i], i == cnt - 1 ? "\n" : "->");
+            } else {
+                // case 3: key is at the same location as treasure
+                for (int i = 0; i < idx; i++)
+                    printf("%d%s", path_to_key[i], i == idx - 1 ? "\n" : "->");
+            }
         }
 
-        for (int i = cnt - 1; path_to_treasure[i] != INT_MIN; i++) {
-            if (path_to_treasure[i + 1] == INT_MIN)
-                printf("%d\n\n" ANSI_COLOR_RESET, path_to_treasure[i]);
-            else
-                printf("%d->", path_to_treasure[i]);
-        }
+        printf("\n" ANSI_COLOR_RESET);
     }
+
+    /*Should perform free() to all nodes*/
+    BST_head = BST_free(BST_head);
+    assert(BST_head == NULL);
 
     return;
 }
