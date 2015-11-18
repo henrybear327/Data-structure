@@ -1,6 +1,6 @@
-*.main.c.swp
-*.main.cpp.swp
+*.swp
 *.o
-*.c.orig
-*.cpp.orig
-makefile~
+*.orig
+
+*.*~
+*~
