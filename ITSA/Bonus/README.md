@@ -6,13 +6,13 @@
 
 # Details
 
-Solved (met requirement): 11
+Solved (met requirement): 12
 
 1. AR
     * 02, 08, 13, 23, 26,27
 2. BT
     * 01
 3. CH
-    * 03, 05
+    * 03, 05, 06
 4. DT
     * 03
