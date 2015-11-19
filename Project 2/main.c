@@ -119,7 +119,8 @@ Node *BST_insert(Node *BST_head, int key)
     else if (BST_head->key > key) // go to left subtree
         BST_head->left = BST_insert(BST_head->left, key);
     else { // duplicated key
-        printf("The number %d already exists.\n\n", key);
+        printf(ANSI_COLOR_RED "The number %d already exists.\n\n" ANSI_COLOR_RESET,
+               key);
         return BST_head;
     }
 
@@ -402,13 +403,17 @@ void binary_search_tree()
                        key);
         } else if (choice == 'P' || choice == 'p') {
             // print
-            printf("The tree in infix order: ");
-            BST_inorder_terversal(BST_head);
-            printf("\n");
+            if (BST_head == NULL)
+                printf(ANSI_COLOR_RED "BST is empty!\n" ANSI_COLOR_RESET);
+            else {
+                printf(ANSI_COLOR_GREEN "The tree in infix order: ");
+                BST_inorder_terversal(BST_head);
+                printf("\n");
 
-            printf("The tree in level order: ");
-            BST_level_order_terversal(BST_head);
-            printf("\n");
+                printf("The tree in level order: ");
+                BST_level_order_terversal(BST_head);
+                printf("\n" ANSI_COLOR_RESET);
+            }
         }
 #if DEBUG == 1
         else if (choice == 'V' || choice == 'v') {
