@@ -6,7 +6,7 @@
 
 # Details
 
-Solved (met requirement): 12
+Solved (met requirement): 13
 
 1. AR
     * 02, 08, 13, 23, 26,27
@@ -15,4 +15,4 @@ Solved (met requirement): 12
 3. CH
     * 03, 05, 06
 4. DT
-    * 03
+    * 03, 13
