@@ -6,7 +6,7 @@
 
 # Details
 
-Solved (met requirement): 28
+Solved (met requirement): 30
 
 1. AR
     * 02, 05, 08, 13, 23, 26, 27
@@ -25,4 +25,4 @@ Solved (met requirement): 28
 8. ST
     * 02, 13, 18, 22
 9. SL
-    * 07, 11
+    * 07, 11, 12, 24
