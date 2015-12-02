@@ -6,7 +6,7 @@
 
 # Details
 
-Solved (met requirement): 32
+## Solved: 32
 
 1. AR
     * 02, 05, 08, 13, 23, 26, 27
@@ -28,3 +28,6 @@ Solved (met requirement): 32
     * 07, 11, 12, 24
 10. OT
     * 23
+
+# Currently working on:
+CH02, RU02
