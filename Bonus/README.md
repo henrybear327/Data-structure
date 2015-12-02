@@ -21,4 +21,4 @@ Solved (met requirement): 19
 6. RU
     * 03, 05
 7. SO
-    * 03
+    * 03, 05
