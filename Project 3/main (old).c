@@ -20,23 +20,21 @@ void floyd_walshall()
 }
 
 int curr_path[MAX_CAP], ans_path[MAX_CAP];
-int ans_path_length, ans_bike_out, ans_bike_in;
+int ans_path_length, ans_bike;
 int visited[MAX_CAP];
-void dfs(int curr, int path_length, int total_dist, int bike_out, int bike_in)
+void dfs(int curr, int path_length, int total_dist, int bike)
 {
     if (total_dist > dist[source][destination])
         return;
     if (curr == destination) {
         if (total_dist == dist[source][destination]) {
-            if (bike_out + bike_in < ans_bike_out + ans_bike_in) {
-                ans_bike_out = bike_out;
-                ans_bike_in = bike_in;
+            if (abs(bike) < abs(ans_bike)) {
+                ans_bike = bike;
                 ans_path_length = path_length;
                 for (int i = 0; i < path_length; i++) {
                     ans_path[i] = curr_path[i];
                 }
-            } else if (bike_out + bike_in == ans_bike_out + ans_bike_in &&
-                       path_length < ans_path_length) {
+            } else if (bike == ans_bike && path_length < ans_path_length) {
                 ans_path_length = path_length;
                 for (int i = 0; i < path_length; i++) {
                     ans_path[i] = curr_path[i];
@@ -51,19 +49,8 @@ void dfs(int curr, int path_length, int total_dist, int bike_out, int bike_in)
         if (orig[curr][i] != 0 && visited[i] == 0) {
             visited[i] = 1;
             curr_path[path_length] = i;
-            int diff = bike_in_station[i] - capacity / 2;
-
-            if (diff >= 0) {
-                dfs(i, path_length + 1, total_dist + orig[curr][i], bike_out,
-                    bike_in + diff);
-            } else {
-                if (bike_in > abs(diff))
-                    dfs(i, path_length + 1, total_dist + orig[curr][i], bike_out,
-                        bike_in - abs(diff));
-                else
-                    dfs(i, path_length + 1, total_dist + orig[curr][i],
-                        bike_out + abs(diff) - bike_in, 0);
-            }
+            dfs(i, path_length + 1, total_dist + orig[curr][i],
+                bike + (bike_in_station[i] - capacity / 2));
             visited[i] = 0;
         }
     }
@@ -109,15 +96,15 @@ int main()
     printf("\n");
 #endif
 
-    ans_path_length = ans_bike_out = ans_bike_in = (int)1e9;
+    ans_path_length = ans_bike = (int)1e9;
     memset(visited, 0, sizeof(visited));
     visited[0] = 1;
-    dfs(0, 1, 0, 0, 0);
+    dfs(0, 1, 0, 0);
 
-    printf("%d ", ans_bike_out);
+    printf("%d ", ans_bike < 0 ? -ans_bike : 0);
     for (int i = 0; i < ans_path_length; i++)
         printf("%d%c", ans_path[i], i == ans_path_length - 1 ? ' ' : '>');
-    printf("%d\n", ans_bike_in);
+    printf("%d\n", ans_bike > 0 ? ans_bike : 0);
 
     return 0;
 }
