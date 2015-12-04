@@ -11,7 +11,7 @@ int orig[MAX_CAP][MAX_CAP];
 int dist[MAX_CAP][MAX_CAP];
 
 #define MIN(x, y) ((x) < (y) ? (x) : (y))
-void floyd_walshall()
+void floyd_warshall()
 {
     for (int k = 0; k <= station; k++)
         for (int i = 0; i <= station; i++)
@@ -94,7 +94,7 @@ int main()
         orig[from][to] = orig[to][from] = weight;
     }
 
-    floyd_walshall();
+    floyd_warshall();
 #if DEBUG == 1
     printf("floyd_walshall\n");
     for (int i = 0; i <= station; i++)
