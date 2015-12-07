@@ -22,7 +22,7 @@ void floyd_warshall()
 int curr_path[MAX_CAP], ans_path[MAX_CAP];
 int ans_path_length, ans_bike_out, ans_bike_in;
 int visited[MAX_CAP];
-void dfs(int curr, int path_length, int total_dist, int bike_out, int bike_in)
+void dfs(int curr, int level, int total_dist, int bike_out, int bike_in)
 {
     if (total_dist > dist[source][destination])
         return;
@@ -31,14 +31,14 @@ void dfs(int curr, int path_length, int total_dist, int bike_out, int bike_in)
             if (bike_out + bike_in < ans_bike_out + ans_bike_in) {
                 ans_bike_out = bike_out;
                 ans_bike_in = bike_in;
-                ans_path_length = path_length;
-                for (int i = 0; i < path_length; i++) {
+                ans_path_length = level;
+                for (int i = 0; i < level; i++) {
                     ans_path[i] = curr_path[i];
                 }
             } else if (bike_out + bike_in == ans_bike_out + ans_bike_in &&
-                       path_length < ans_path_length) {
-                ans_path_length = path_length;
-                for (int i = 0; i < path_length; i++) {
+                       level < ans_path_length) {
+                ans_path_length = level;
+                for (int i = 0; i < level; i++) {
                     ans_path[i] = curr_path[i];
                 }
             }
@@ -50,18 +50,17 @@ void dfs(int curr, int path_length, int total_dist, int bike_out, int bike_in)
     for (int i = 0; i <= station; i++) {
         if (orig[curr][i] != 0 && visited[i] == 0) {
             visited[i] = 1;
-            curr_path[path_length] = i;
+            curr_path[level] = i;
             int diff = bike_in_station[i] - capacity / 2;
 
             if (diff >= 0) {
-                dfs(i, path_length + 1, total_dist + orig[curr][i], bike_out,
-                    bike_in + diff);
+                dfs(i, level + 1, total_dist + orig[curr][i], bike_out, bike_in + diff);
             } else {
                 if (bike_in > abs(diff))
-                    dfs(i, path_length + 1, total_dist + orig[curr][i], bike_out,
+                    dfs(i, level + 1, total_dist + orig[curr][i], bike_out,
                         bike_in - abs(diff));
                 else
-                    dfs(i, path_length + 1, total_dist + orig[curr][i],
+                    dfs(i, level + 1, total_dist + orig[curr][i],
                         bike_out + abs(diff) - bike_in, 0);
             }
             visited[i] = 0;
