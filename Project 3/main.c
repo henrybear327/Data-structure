@@ -5,6 +5,7 @@
 
 #define MAX_CAP 1000
 #define DEBUG 0
+
 int capacity, station, source, destination, edge;
 int bike_in_station[MAX_CAP];
 int orig[MAX_CAP][MAX_CAP];
@@ -19,9 +20,19 @@ void floyd_warshall()
                 dist[i][j] = MIN(dist[i][j], dist[i][k] + dist[k][j]);
 }
 
+/*
+curr_path records the current path taken by DFS traversal
+
+ans_path is updated together with ans_path_length, ans_bike_out, and
+ans_bike_in
+*/
 int curr_path[MAX_CAP], ans_path[MAX_CAP];
 int ans_path_length, ans_bike_out, ans_bike_in;
+
 int visited[MAX_CAP];
+/*
+Level is the parameter for setting the curr_path
+*/
 void dfs(int curr, int level, int total_dist, int bike_out, int bike_in)
 {
     if (total_dist > dist[source][destination])
@@ -70,6 +81,10 @@ void dfs(int curr, int level, int total_dist, int bike_out, int bike_in)
 
 int main()
 {
+    /*
+    Run floyd_warshall() to get the shortest path distance (n < 400),
+    then use DFS to explore all possible paths
+    */
     source = 0;
     scanf("%d %d %d %d", &capacity, &station, &destination, &edge);
     for (int i = 1; i <= station; i++)

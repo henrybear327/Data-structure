@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+// The program to check the test cases on PC2
+
 int main()
 {
     int capacity, station, dest, segment;
