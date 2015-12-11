@@ -1,16 +1,17 @@
 # Personal info
 
-* Name: Chun-Hung, Tseng
+* Name: Chun-Hung Tseng
 * Student ID: 403410033
 * Department: Computer Science and Information Engineering
+* E-tutor ID: henrybear327
 
-# Details
+# Problem list
 
 ## Solved: 35
 
 1. AR
     * 02, 05, 08, 13, 23, 26, 27
-2. BT
+2. B
     * 01
 3. CH
     * 03, 05, 06
