@@ -35,3 +35,7 @@ output:
 # Link to Github
 
 [README](https://github.com/henrybear327/Data-structure/tree/master/Project%203)
+
+# Great explanation
+
+Credited to [Pi-You Chen](https://gist.github.com/BeMg/fc15ad1c3fdb8cbc5cde)
