@@ -1,6 +1,8 @@
 /*
 Basic idea behind DFS
 This code is INCOMPLETE!
+
+https://gist.github.com/BeMg/fc15ad1c3fdb8cbc5cde
 */
 #include <stdio.h>
 
