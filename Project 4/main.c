@@ -181,12 +181,14 @@ bool check_column_name(char input_token[50][20])
     int end = core_command_location[1];
 
     for (int i = start + 1; i < end; i++) {
-        if (strcmp("*", input_token[i])) {
+        if (strcmp("*", input_token[i]) == 0) {
 #if DEBUG == 1
             printf("Show all columns\n");
 #endif
             for (int j = 0; j < 6; j++)
                 show_column[j] = true;
+
+            return true;
         } else {
             bool found = false;
             for (int j = 0; j < 6; j++) {
@@ -224,7 +226,8 @@ The return value is a integer, where 0 is an input with errors,
 #define PASS_CHECKS 1
 #define QUIT 2
 
-int parse_input(char *input)
+int parse_input(char *input, char input_token[50][20],
+                char input_token_lower[50][20])
 {
     // clear \n \r
     sanitize_string(input);
@@ -233,7 +236,6 @@ int parse_input(char *input)
         return QUIT;
     else {
         // split the input
-        char input_token[50][20], input_token_lower[50][20];
         split_input(input, input_token, input_token_lower);
 
 #if DEBUG == 1
@@ -273,7 +275,8 @@ int main()
         // read_data("Contacts.csv"); // debug file
 
         // check input
-        int result = parse_input(input);
+        char input_token[50][20], input_token_lower[50][20];
+        int result = parse_input(input, input_token, input_token_lower);
         if (result == ERROR)
             continue;
         else if (result == QUIT)
@@ -281,6 +284,9 @@ int main()
         else {
             // passed all input checks
             // know what column to print now
+
+            // read data from .cvs using info from core_command_location[1] + 1
+            read_data(input_token[core_command_location[1] + 1]);
         }
     }
 
