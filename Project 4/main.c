@@ -53,7 +53,7 @@ void sanitize_string(char *input)
 This function reads the data from the .csv file
 and stores the data in the data array of structure.
 */
-void read_data(char *file_path)
+bool read_data(char *file_path)
 {
     // init.
     memset(data, 0, sizeof(data));
@@ -62,7 +62,10 @@ void read_data(char *file_path)
     sanitize_string(file_path);
 
     FILE *pFile = fopen(file_path, "r");
-    assert(pFile != NULL);
+    if (pFile == NULL) {
+        printf("This file does not exist!\n");
+        return false;
+    }
 
     data_idx = 0;
     char input[10000];
@@ -88,6 +91,7 @@ void read_data(char *file_path)
 #endif
 
     fclose(pFile);
+    return true;
 }
 
 void string_to_lower(char *input)
@@ -257,6 +261,8 @@ int parse_input(char *input, char input_token[50][20],
             printf("You have an error in your SQL syntax.\n");
             return ERROR;
         }
+
+        // parse order by if order by command is present
     }
 
     return PASS_CHECKS;
@@ -271,16 +277,19 @@ int main()
         // check input
         char input_token[50][20], input_token_lower[50][20];
         int result = parse_input(input, input_token, input_token_lower);
+
         if (result == ERROR)
             continue;
         else if (result == QUIT)
             return 0;
         else {
+            // read data from .cvs using info from core_command_location[1] + 1
+            if (read_data(input_token[core_command_location[1] + 1]) == false) {
+                continue;
+            }
+
             // passed all input checks
             // know what column to print now
-
-            // read data from .cvs using info from core_command_location[1] + 1
-            read_data(input_token[core_command_location[1] + 1]);
         }
     }
 
