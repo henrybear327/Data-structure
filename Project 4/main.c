@@ -104,17 +104,43 @@ void split_input(char *input, char input_token[50][20],
     }
 }
 
-char *core_command[3] = {"select", "from", "order by"}; // case-insensitive
-bool core_command_present(char input_token_lower[50][20])
+const char *core_command[3] = {"select", "from",
+                               "order by"
+                              }; // case-insensitive
+int core_command_location[3];               // select from order by
+
+/*
+Checks is select, from, and order by is present.
+If yes, record their position, too.
+
+Checks for duplicated core command, too.
+*/
+bool check_core_command_present(char input_token_lower[50][20])
 {
+    memset(core_command_location, -1, sizeof(core_command_location));
+
     bool has_select = false, has_from = false;
     for (int i = 0; i < total_command; i++) {
         for (int j = 0; j < 3; j++) {
             if (strcmp(input_token_lower[i], core_command[j]) == 0) {
-                if (j == 0)
+                if (j == 0) {
                     has_select = true;
-                else if (j == 1)
+                    if (core_command_location[0] == -1)
+                        core_command_location[0] = j;
+                    else
+                        return false;
+                } else if (j == 1) {
                     has_from = true;
+                    if (core_command_location[1] == -1)
+                        core_command_location[1] = j;
+                    else
+                        return false;
+                } else {
+                    if (core_command_location[2] == -1)
+                        core_command_location[2] = j;
+                    else
+                        return false;
+                }
             }
         }
     }
@@ -125,7 +151,6 @@ bool core_command_present(char input_token_lower[50][20])
 #endif
         return true;
     } else {
-        printf("You have an error in your SQL syntax.\n");
         return false;
     }
 }
@@ -168,10 +193,10 @@ int parse_input(char *input)
 #endif
 
         // check if select and from exist
-        if (core_command_present(input_token_lower) == false)
+        if (check_core_command_present(input_token_lower) == false) {
+            printf("You have an error in your SQL syntax.\n");
             return ERROR;
-
-        
+        }
     }
 
     return PASS_CHECKS;
