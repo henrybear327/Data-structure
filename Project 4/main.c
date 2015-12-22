@@ -104,6 +104,32 @@ void split_input(char *input, char input_token[50][20],
     }
 }
 
+char *core_command[3] = {"select", "from", "order by"}; // case-insensitive
+bool core_command_present(char input_token_lower[50][20])
+{
+    bool has_select = false, has_from = false;
+    for (int i = 0; i < total_command; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (strcmp(input_token_lower[i], core_command[j]) == 0) {
+                if (j == 0)
+                    has_select = true;
+                else if (j == 1)
+                    has_from = true;
+            }
+        }
+    }
+
+    if (has_select && has_from) {
+#if DEBUG == 1
+        printf("SELECT and FROM is present\n");
+#endif
+        return true;
+    } else {
+        printf("You have an error in your SQL syntax.\n");
+        return false;
+    }
+}
+
 /*
 This function parses the input and identify errors.
 
@@ -115,7 +141,6 @@ The return value is a integer, where 0 is an input with errors,
 #define PASS_CHECKS 1
 #define QUIT 2
 
-char *core_command[3] = {"select", "from", "order by"}; // case-insensitive
 int parse_input(char *input)
 {
     // clear \n \r
@@ -143,27 +168,10 @@ int parse_input(char *input)
 #endif
 
         // check if select and from exist
-        bool has_select = false, has_from = false;
-        for (int i = 0; i < total_command; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (strcmp(input_token_lower[i], core_command[j]) == 0) {
-                    if (j == 0)
-                        has_select = true;
-                    else if (j == 1)
-                        has_from = true;
-                }
-            }
-        }
-
-        if (!(has_select && has_from)) {
-            printf("You have an error in your SQL syntax.\n");
+        if (core_command_present(input_token_lower) == false)
             return ERROR;
-        }
-#if DEBUG == 1
-        else {
-            printf("SELECT and FROM is present\n");
-        }
-#endif
+
+        
     }
 
     return PASS_CHECKS;
