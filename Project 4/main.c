@@ -260,8 +260,16 @@ int main()
     while (fgets(input, 10000, stdin) != NULL) {
         // read_data("Contacts.csv"); // debug file
 
-        if (parse_input(input) == ERROR)
+        // check input
+        int result = parse_input(input);
+        if (result == ERROR)
             continue;
+        else if (result == QUIT)
+            return 0;
+        else {
+            // passed all input checks
+            // know what column to print now
+        }
     }
 
     return 0;
