@@ -115,10 +115,10 @@ void split_input(char *input, char input_token[50][20],
 }
 
 /*
-Checks is select, from, and order by is present.
-If yes, record their position, too.
+Checks if select, from, and order by is present.
+If yes, record their positions.
 
-Checks for duplicated core command, too. (confirmed by TA, no need to check)
+Checks for duplicated core commands. (confirmed by TA, no need to check)
 */
 bool check_core_command_present(char input_token_lower[50][20])
 {
@@ -169,7 +169,7 @@ bool check_core_command_present(char input_token_lower[50][20])
 }
 
 /*
-Confirmed by TA, no need to check for upper/lower letter error
+Confirmed by TA, no need to check for upper/lower letter errors
 */
 bool check_column_name(char input_token[50][20])
 {
@@ -214,9 +214,9 @@ bool check_column_name(char input_token[50][20])
 }
 
 /*
-This function parses the input and identify errors.
+This function parses the input and identifies errors.
 
-The return value is a integer, where 0 is an input with errors,
+The return value is an integer, where 0 is an input with errors,
 1 is an input to be executed, and 2 being the quit command.
 */
 
