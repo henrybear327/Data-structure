@@ -114,7 +114,7 @@ int core_command_location[3];               // select from order by
 Checks is select, from, and order by is present.
 If yes, record their position, too.
 
-Checks for duplicated core command, too.
+Checks for duplicated core command, too. (confirmed by TA, no need to check)
 */
 bool check_core_command_present(char input_token_lower[50][20])
 {
@@ -146,6 +146,11 @@ bool check_core_command_present(char input_token_lower[50][20])
         }
     }
 
+    for (int i = 1; i < (core_command_location[2] == -1 ? 2 : 3); i++) {
+        if (core_command_location[i] < core_command_location[i - 1])
+            return false;
+    }
+
     if (has_select && has_from) {
 #if DEBUG == 1
         printf("SELECT and FROM is present\n");
@@ -160,6 +165,9 @@ const char *column_name[6] = {"Id",     "FirstName", "LastName",
                               "Gender", "Age",       "PhoneNum"
                              };
 bool show_column[6];
+/*
+Confirmed by TA, no need to check for upper/lower letter error
+*/
 bool check_column_name(char input_token[50][20])
 {
     memset(show_column, false, sizeof(show_column));
