@@ -961,3 +961,14 @@
 151207 151121.892|INFO|Thread-21|dumpPacket|   key: RUN is: edu.csus.ecs.pc2.core.model.Run Run 301 JUDGED349293300 ms from TEAM403410033 @ site 1 id Run-3251845439751264496
 151207 151122.624|INFO|Thread-21|info| receiveObject(S) end   got Packet[RUN_JUDGEMENT] #2463 SERVER0 @ site 1 -> TEAM403410033 @ site 1
 151207 151123.170|INFO|Thread-20|info| receiveObject(S) end   got Packet[RUN_SUBMISSION_CONFIRM] #2459 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151222 162043.312|CONFIG|Thread-3|setFileHandlers|Now logging to /home/henrybear327/Desktop/Data-structure/Project 4/pc2-9.2.3 - student/bin/logs directory.
+151222 162043.312|INFO|Thread-3|info|
+151222 162043.312|INFO|Thread-3|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.7.0_91 build 2565 Linux 3.19.0-32-generic (amd64) 
+151222 162043.312|INFO|Thread-3|info|Login: team403410033 (aka team403410033)
+151222 162043.312|INFO|Thread-3|startLog|Working directory is /home/henrybear327/Desktop/Data-structure/Project 4/pc2-9.2.3 - student/bin
+151222 162043.313|INFO|Thread-3|startLog|Process id is 28093@Henry-Linux
+151222 162043.314|INFO|Thread-3|info|Attempting to load UI class edu.csus.ecs.pc2.ui.team.TeamView
+151222 162043.345|INFO|Thread-3|info|Loaded UI class edu.csus.ecs.pc2.ui.team.TeamView
+151222 162043.781|INFO|Thread-3|info| handlePacket original LOGIN_SUCCESS after -- all settings loaded 
+151222 162043.782|INFO|Thread-3|info|handlePacket end Packet[LOGIN_SUCCESS] #28224 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151222 162043.783|INFO|Thread-3|info| receiveObject(S) end   got Packet[LOGIN_SUCCESS] #28224 SERVER0 @ site 1 -> TEAM403410033 @ site 1
