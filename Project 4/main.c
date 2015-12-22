@@ -21,6 +21,23 @@ typedef struct {
 int data_idx;
 Data data[DATA_ROW];
 
+int total_command;
+
+const char *core_command[3] = {"select", "from",
+                               "order by"
+                              }; // case-insensitive
+int core_command_location[3];               // select from order by
+
+const char *column_name[6] = {"Id",     "FirstName", "LastName",
+                              "Gender", "Age",       "PhoneNum"
+                             };
+bool show_column[6];
+
+// define state constant
+#define ERROR 0
+#define PASS_CHECKS 1
+#define QUIT 2
+
 /*
 Remove \n\r from the string
 */
@@ -44,19 +61,12 @@ void read_data(char *file_path)
     // clean up \n\r for file_path
     sanitize_string(file_path);
 
-#if DEBUG == 1
-    printf("file_path: %s\n", file_path);
-#endif
-
     FILE *pFile = fopen(file_path, "r");
     assert(pFile != NULL);
 
     data_idx = 0;
     char input[10000];
     while (fgets(input, 10000, pFile) != NULL) {
-#if DEBUG == 1
-        printf("%s", input);
-#endif
         // change all " and , to space in order for scanf to work
         for (int i = 0; input[i] != '\0'; i++) {
             if (input[i] == '\"' || input[i] == ',')
@@ -71,7 +81,7 @@ void read_data(char *file_path)
 #if DEBUG == 1
     printf("\n");
     for (int i = 0; i < data_idx; i++) {
-        printf("Record %d: %d %s %s %s %d %s\n", i, data[i].id, data[i].FirstName,
+        printf("Record %d: %s %s %s %d %s\n", data[i].id, data[i].FirstName,
                data[i].LastName, data[i].Gender, data[i].Age, data[i].PhoneNum);
     }
     printf("\n");
@@ -89,7 +99,6 @@ void string_to_lower(char *input)
     }
 }
 
-int total_command;
 void split_input(char *input, char input_token[50][20],
                  char input_token_lower[50][20])
 {
@@ -104,11 +113,6 @@ void split_input(char *input, char input_token[50][20],
         command = strtok(NULL, " ,\n\r");
     }
 }
-
-const char *core_command[3] = {"select", "from",
-                               "order by"
-                              }; // case-insensitive
-int core_command_location[3];               // select from order by
 
 /*
 Checks is select, from, and order by is present.
@@ -145,10 +149,6 @@ bool check_core_command_present(char input_token_lower[50][20])
             }
         }
     }
-#if DEBUG == 1
-    for (int i = 0; i < 3; i++)
-        printf("%d%c", core_command_location[i], i == 2 ? '\n' : ' ');
-#endif
 
     for (int i = 1; i < (core_command_location[2] == -1 ? 2 : 3); i++) {
         if (core_command_location[i] < core_command_location[i - 1])
@@ -161,14 +161,13 @@ bool check_core_command_present(char input_token_lower[50][20])
 #endif
         return true;
     } else {
+#if DEBUG == 1
+        printf("SELECT and FROM is missing\n");
+#endif
         return false;
     }
 }
 
-const char *column_name[6] = {"Id",     "FirstName", "LastName",
-                              "Gender", "Age",       "PhoneNum"
-                             };
-bool show_column[6];
 /*
 Confirmed by TA, no need to check for upper/lower letter error
 */
@@ -209,7 +208,7 @@ bool check_column_name(char input_token[50][20])
     }
 
 #if DEBUG == 1
-    printf("Columns are found and set\n");
+    printf("Columns are found and show_column is set\n");
 #endif
     return true;
 }
@@ -220,11 +219,6 @@ This function parses the input and identify errors.
 The return value is a integer, where 0 is an input with errors,
 1 is an input to be executed, and 2 being the quit command.
 */
-
-// define state constant
-#define ERROR 0
-#define PASS_CHECKS 1
-#define QUIT 2
 
 int parse_input(char *input, char input_token[50][20],
                 char input_token_lower[50][20])
