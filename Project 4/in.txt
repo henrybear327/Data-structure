@@ -1,3 +1,4 @@
 SELECT FirstName, LastName FROM Contacts.csv
 SELECT Age, PhoneNum, Id FROM Contacts.csv
 SELECT * FROM Contacts.csv
+FROM Contacts.csv SELECT FirstName, LastName

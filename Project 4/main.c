@@ -127,24 +127,28 @@ bool check_core_command_present(char input_token_lower[50][20])
                 if (j == 0) {
                     has_select = true;
                     if (core_command_location[0] == -1)
-                        core_command_location[0] = j;
+                        core_command_location[0] = i;
                     else
                         return false;
                 } else if (j == 1) {
                     has_from = true;
                     if (core_command_location[1] == -1)
-                        core_command_location[1] = j;
+                        core_command_location[1] = i;
                     else
                         return false;
                 } else {
                     if (core_command_location[2] == -1)
-                        core_command_location[2] = j;
+                        core_command_location[2] = i;
                     else
                         return false;
                 }
             }
         }
     }
+#if DEBUG == 1
+    for (int i = 0; i < 3; i++)
+        printf("%d%c", core_command_location[i], i == 2 ? '\n' : ' ');
+#endif
 
     for (int i = 1; i < (core_command_location[2] == -1 ? 2 : 3); i++) {
         if (core_command_location[i] < core_command_location[i - 1])
