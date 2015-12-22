@@ -155,6 +155,50 @@ bool check_core_command_present(char input_token_lower[50][20])
     }
 }
 
+const char *column_name[6] = {"Id",     "FirstName", "LastName",
+                              "Gender", "Age",       "PhoneNum"
+                             };
+bool show_column[6];
+bool check_column_name(char input_token[50][20])
+{
+    memset(show_column, false, sizeof(show_column));
+
+    // get the select starting and ending position
+    int start = core_command_location[0];
+    int end = core_command_location[1];
+
+    for (int i = start + 1; i < end; i++) {
+        if (strcmp("*", input_token[i])) {
+#if DEBUG == 1
+            printf("Show all columns\n");
+#endif
+            for (int j = 0; j < 6; j++)
+                show_column[j] = true;
+        } else {
+            bool found = false;
+            for (int j = 0; j < 6; j++) {
+                if (strcmp(column_name[j], input_token[i]) == 0) {
+                    found = true;
+                    show_column[j] = true;
+                    break;
+                }
+            }
+
+            if (found == false) {
+#if DEBUG == 1
+                printf("%s not found\n", input_token[i]);
+#endif
+                return false;
+            }
+        }
+    }
+
+#if DEBUG == 1
+    printf("Columns are found and set\n");
+#endif
+    return true;
+}
+
 /*
 This function parses the input and identify errors.
 
@@ -194,6 +238,12 @@ int parse_input(char *input)
 
         // check if select and from exist
         if (check_core_command_present(input_token_lower) == false) {
+            printf("You have an error in your SQL syntax.\n");
+            return ERROR;
+        }
+
+        // check for column names correctness
+        if (check_column_name(input_token) == false) {
             printf("You have an error in your SQL syntax.\n");
             return ERROR;
         }
