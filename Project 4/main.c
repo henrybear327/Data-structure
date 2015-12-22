@@ -89,10 +89,11 @@ void string_to_lower(char *input)
     }
 }
 
-int total_command = 0;
+int total_command;
 void split_input(char *input, char input_token[50][20],
                  char input_token_lower[50][20])
 {
+    total_command = 0;
     char *command = strtok(input, " ,\n\r");
     while (command != NULL) {
         strcpy(input_token[total_command], command);
@@ -206,6 +207,7 @@ The return value is a integer, where 0 is an input with errors,
 1 is an input to be executed, and 2 being the quit command.
 */
 
+// define state constant
 #define ERROR 0
 #define PASS_CHECKS 1
 #define QUIT 2
@@ -258,7 +260,7 @@ int main()
     while (fgets(input, 10000, stdin) != NULL) {
         // read_data("Contacts.csv"); // debug file
 
-        if (parse_input(input) == false)
+        if (parse_input(input) == ERROR)
             continue;
     }
 
