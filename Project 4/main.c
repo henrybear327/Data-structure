@@ -23,10 +23,8 @@ Data data[DATA_ROW];
 
 int total_command;
 
-const char *core_command[3] = {"select", "from",
-                               "order by"
-                              }; // case-insensitive
-int core_command_location[3];               // select from order by
+const char *core_command[3] = {"select", "from", "order"}; // case-insensitive
+int core_command_location[3]; // select from order by
 
 const char *column_name[6] = {"Id",     "FirstName", "LastName",
                               "Gender", "Age",       "PhoneNum"
@@ -187,6 +185,12 @@ bool check_core_command_present(char input_token_lower[50][20])
         if (core_command_location[i] < core_command_location[i - 1])
             return false;
     }
+#if DEBUG == 1
+    for (int i = 0; i < 3; i++) {
+        printf("%d ", core_command_location[i]);
+    }
+    printf("\n");
+#endif
 
     if (has_select && has_from) {
 #if DEBUG == 1
@@ -253,15 +257,20 @@ bool get_order_by_command(char input_token[50][20])
     sorting_parameter[1] = sorting_parameter[4] = 1; // default ASC
 
     bool is_first = true;
-    for (int i = core_command_location[2] + 1; i < total_command; i++) {
+    for (int i = core_command_location[2] + 2; i < total_command; i++) {
+        // need to get pass "order" and "by"
         int result;
         if ((result = get_column(input_token[i])) == -1) {
             if ((result = get_order_by_param(input_token[i])) == -1) {
                 if ((result = get_order_by_sorting(input_token[i])) == -1) {
+#if DEBUG == 1
+                    printf("order by parameter %s error\n", input_token[i]);
+#endif
                     return false;
                 }
             }
         }
+        printf("%d\n", result);
 
         if (result < 6) {
             if (sorting_parameter[0] != -1) {
