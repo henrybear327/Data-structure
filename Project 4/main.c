@@ -1,3 +1,9 @@
+/*
+程式碼未完成
+請勿嘗試閱讀
+
+目前情況: What the hell is this source code about?!
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
