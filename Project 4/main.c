@@ -250,7 +250,9 @@ int sorting_parameter[6];
 bool get_order_by_command(char input_token[50][20])
 {
     memset(sorting_parameter, -1, sizeof(sorting_parameter));
+    sorting_parameter[1] = sorting_parameter[4] = 1; // default ASC
 
+    bool is_first = true;
     for (int i = core_command_location[2] + 1; i < total_command; i++) {
         int result;
         if ((result = get_column(input_token[i])) == -1) {
@@ -262,19 +264,20 @@ bool get_order_by_command(char input_token[50][20])
         }
 
         if (result < 6) {
-            if (sorting_parameter[0] != -1)
+            if (sorting_parameter[0] != -1) {
+                is_first = false;
                 sorting_parameter[3] = result;
-            else
+            } else
                 sorting_parameter[0] = result;
         } else if (result == 6 || result == 7) {
             // 1 for ASC, 2 for DESC
-            if (sorting_parameter[1] != -1)
+            if (is_first == false)
                 sorting_parameter[4] = result - 5;
             else
                 sorting_parameter[1] = result - 5;
         } else {
             // 1 for sotring 1, 2 for sorting 2
-            if (sorting_parameter[2] != -1)
+            if (is_first == false)
                 sorting_parameter[5] = result - 7;
             else
                 sorting_parameter[2] = result - 7;
