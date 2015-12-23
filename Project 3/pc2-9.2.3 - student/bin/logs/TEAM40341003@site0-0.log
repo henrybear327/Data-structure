@@ -1,0 +1,24 @@
+151205 001107.834|CONFIG|AWT-EventQueue-0|setFileHandlers|Now logging to C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin\logs directory.
+151205 001107.835|INFO|AWT-EventQueue-0|info|
+151205 001107.836|INFO|AWT-EventQueue-0|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Windows 10 10.0 (amd64) 
+151205 001107.837|INFO|AWT-EventQueue-0|info|Login: 40341003 (aka team40341003)
+151205 001107.838|INFO|AWT-EventQueue-0|startLog|Working directory is C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin
+151205 001107.844|INFO|AWT-EventQueue-0|startLog|Process id is 16212@DESKTOP-PBDLUD6
+151205 001107.845|INFO|AWT-EventQueue-0|info|Contacting server at 140.123.102.47:50002 as TEAM40341003 @ site 0
+151205 001107.846|INFO|AWT-EventQueue-0|info|sendLoginRequest start - sending from TEAM40341003 @ site 0
+151205 001107.874|INFO|AWT-EventQueue-0|sendToLocalServer|Sending packet to server Packet[LOGIN_REQUEST] #1 TEAM40341003 @ site 0 -> SERVER0 @ site 0
+151205 001107.878|INFO|Thread-4|run|send(Serializable)
+151205 001107.882|INFO|AWT-EventQueue-0|sendToLocalServer|Sent    packet to server Packet[LOGIN_REQUEST] #1 TEAM40341003 @ site 0 -> SERVER0 @ site 0
+151205 001107.883|INFO|AWT-EventQueue-0|info|sendLoginRequest end - packet sent.
+151205 001108.731|INFO|Thread-1|receive|public void receive(SealedObject TransportPacket, ConnectionHandlerID connectionHandlerID)
+151205 001108.740|INFO|Thread-5|info| receiveObject(S) start got Packet[LOGIN_FAILED] #974 SERVER0 @ site 1 -> TEAM40341003 @ site 0
+151205 001108.740|INFO|Thread-5|dumpPacket|Packet LOGIN_FAILED (Seq #974 ) recieveObject
+151205 001108.741|INFO|Thread-5|dumpPacket|  From: SERVER0 @ site 1 (Andy-PC @ 140.123.102.47) (Contest Id: Default--2130692983820777626)
+151205 001108.742|INFO|Thread-5|dumpPacket|    To: TEAM40341003 @ site 0
+151205 001108.742|INFO|Thread-5|dumpPacket|   key: MESSAGE_STRING is: java.lang.String No such account
+151205 001108.743|INFO|Thread-5|info|handlePacket start Packet[LOGIN_FAILED] #974 SERVER0 @ site 1 -> TEAM40341003 @ site 0
+151205 001108.743|INFO|Thread-5|dumpPacket|Packet LOGIN_FAILED (Seq #974 ) handlePacket
+151205 001108.744|INFO|Thread-5|dumpPacket|  From: SERVER0 @ site 1 (Andy-PC @ 140.123.102.47) (Contest Id: Default--2130692983820777626)
+151205 001108.744|INFO|Thread-5|dumpPacket|    To: TEAM40341003 @ site 0
+151205 001108.745|INFO|Thread-5|dumpPacket|   key: MESSAGE_STRING is: java.lang.String No such account
+151205 001108.762|INFO|Thread-5|info| receiveObject(S) end   got Packet[LOGIN_FAILED] #974 SERVER0 @ site 1 -> TEAM40341003 @ site 0

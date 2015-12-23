@@ -1,0 +1,324 @@
+151203 191749.075|CONFIG|main|setFileHandlers|Now logging to C:\Users\Chun-Hung Tseng\Downloads\pc2-9.2.3 - student\bin\logs directory.
+151203 191749.075|INFO|main|info|
+151203 191749.090|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Windows 10 10.0 (amd64) 
+151203 191749.090|INFO|main|startLog|Working directory is C:\Users\Chun-Hung Tseng\Downloads\pc2-9.2.3 - student\bin
+151203 191749.121|INFO|main|startLog|Process id is 9224@DESKTOP-PBDLUD6
+151203 191749.121|INFO|main|start|Starting ConnectionManager...
+151203 191749.418|INFO|main|start|Started ConnectionManager
+151203 191749.434|INFO|main|setClientServerAndPort|INI File location: file:/C:/Users/Chun-Hung%20Tseng/Downloads/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+151203 191749.434|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+151203 191749.434|INFO|main|info|Contacting server at 140.123.102.47:50002
+151203 191749.434|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+151203 191749.856|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=51673]-72038581830579875)
+151203 191750.043|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=51673]-72038581830579875 key is com.sun.crypto.provider.DESKey@fffe7f90
+151203 191750.043|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+151203 191750.043|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    48129590 6b72f37e aefb8133 96a9269a e52c618b 327e7bae 7b63bbb5 98383c85
+    460b0dc4 83a9c92c 93b891b1 8de4eed7 163bc300 53f6dc52 a7d57fb3 90857d52
+    52c143a4 de65e5a0 f5cdb180 1782bb21 60780026 b4d29519 d9318824 21f90ef1
+    6830b3d1 cc50806c b3274193 b44b5fcc 2f553bb7 bcd02ed4 5750fa7f 8b5e3fdc
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+151203 191750.043|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@430097a
+151203 202045.475|CONFIG|main|setFileHandlers|Now logging to C:\Users\Chun-Hung Tseng\Downloads\pc2-9.2.3 - student\bin\logs directory.
+151203 202045.475|INFO|main|info|
+151203 202045.506|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Windows 10 10.0 (amd64) 
+151203 202045.506|INFO|main|startLog|Working directory is C:\Users\Chun-Hung Tseng\Downloads\pc2-9.2.3 - student\bin
+151203 202045.553|INFO|main|startLog|Process id is 5244@DESKTOP-PBDLUD6
+151203 202045.553|INFO|main|start|Starting ConnectionManager...
+151203 202046.621|INFO|main|start|Started ConnectionManager
+151203 202046.649|INFO|main|setClientServerAndPort|INI File location: file:/C:/Users/Chun-Hung%20Tseng/Downloads/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+151203 202046.649|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+151203 202046.653|INFO|main|info|Contacting server at 140.123.102.47:50002
+151203 202046.661|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+151203 202046.861|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=51995]--8987704059966287476)
+151203 202047.421|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=51995]--8987704059966287476 key is com.sun.crypto.provider.DESKey@18050
+151203 202047.421|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+151203 202047.425|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    cfca09f4 81d43ea3 15dd39d0 a4110186 2fef3d07 900b18dd ca028297 92e4690a
+    e588177e aee7896a 01cb9015 e373c98c b6342a50 2102f916 32bd5ec7 77ef6d17
+    d7018c0e 97006a11 1606be9c 0b0ac2fb 19fab4f0 d0f458f9 c897dcc4 21b75036
+    ca6082ba 601668a4 e0f9404f b4e24247 66609ed0 b59cebfe 8e5d9be7 55089930
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+151203 202047.429|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@7a83b694
+151204 210449.740|CONFIG|main|setFileHandlers|Now logging to C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin\logs directory.
+151204 210449.755|INFO|main|info|
+151204 210449.771|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Windows 10 10.0 (amd64) 
+151204 210449.787|INFO|main|startLog|Working directory is C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin
+151204 210449.880|INFO|main|startLog|Process id is 7176@DESKTOP-PBDLUD6
+151204 210449.880|INFO|main|start|Starting ConnectionManager...
+151204 210450.833|INFO|main|start|Started ConnectionManager
+151204 210450.833|INFO|main|setClientServerAndPort|INI File location: file:/C:/Users/Chun-Hung%20Tseng/Google%20雲端硬碟/中正大學/二上/DS/HW3/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+151204 210450.833|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+151204 210450.833|INFO|main|info|Contacting server at 140.123.102.47:50002
+151204 210450.849|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+151204 210451.067|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=54502]--7333254700341262350)
+151204 210451.878|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=54502]--7333254700341262350 key is com.sun.crypto.provider.DESKey@fffe7a8b
+151204 210451.878|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+151204 210451.893|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    1ac927e4 46a4873d c90e5076 3dd7db49 491b1e1d ed0c9e48 9fb3d54f a1ef2c49
+    4c23ba65 bd89ef3d 9bf12961 67c7f1d4 c2ac8bd3 086c0f25 ae2be339 e8fd50c7
+    72118f52 a05f21af 975eea78 dad4e4f8 0e235f33 3136c038 d4a489b2 5ec340e3
+    2663640d c8b05d25 e1014a07 d918912c 9613460c a9e37f41 dcf7d034 6c9300ce
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+151204 210451.893|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@1210d5ef
+151204 235438.137|CONFIG|main|setFileHandlers|Now logging to C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin\logs directory.
+151204 235438.145|INFO|main|info|
+151204 235438.169|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Windows 10 10.0 (amd64) 
+151204 235438.172|INFO|main|startLog|Working directory is C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin
+151204 235438.259|INFO|main|startLog|Process id is 15440@DESKTOP-PBDLUD6
+151204 235438.260|INFO|main|start|Starting ConnectionManager...
+151204 235439.300|INFO|main|start|Started ConnectionManager
+151204 235439.315|INFO|main|setClientServerAndPort|INI File location: file:/C:/Users/Chun-Hung%20Tseng/Google%20雲端硬碟/中正大學/二上/DS/HW3/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+151204 235439.317|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+151204 235439.318|INFO|main|info|Contacting server at 140.123.102.47:50002
+151204 235439.321|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+151204 235439.516|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=54934]--1764181702003263090)
+151204 235440.098|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=54934]--1764181702003263090 key is com.sun.crypto.provider.DESKey@184cd
+151204 235440.099|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+151204 235440.119|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    0efbaa83 82f376fc c62ca6f0 34593e00 d3f48f14 a3b5ee69 6764eaff eb6c043a
+    26b6ebde ba25ba2d 8be8c18c c45e8c4c 2e6f6276 516eb1d5 64cb32cf 88e98f4e
+    80ea6991 dc46a5b9 d630f27d 7bf0a9dd de0e6bd6 d118a729 e50fcc7f d1b6157e
+    c34fe476 c360aaff 38f38e75 858a1972 d880fccd 3bcdc233 6e7c979f 7e2b6b35
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+151204 235440.120|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@7563b72f
+151205 000423.371|INFO|Thread-1|receive|Exception in receive for Socket[addr=/140.123.102.47,port=50002,localport=54934]--1764181702003263090
+|java.net.SocketTimeoutException: Read timed out
+|    at java.net.SocketInputStream.socketRead0 (Unknown Source)
+|    at java.net.SocketInputStream.socketRead (Unknown Source)
+|    at java.net.SocketInputStream.read (Unknown Source)
+|    at java.net.SocketInputStream.read (Unknown Source)
+|    at java.net.SocketInputStream.read (Unknown Source)
+|    at java.io.ObjectInputStream$PeekInputStream.peek (Unknown Source)
+|    at java.io.ObjectInputStream$BlockDataInputStream.peek (Unknown Source)
+|    at java.io.ObjectInputStream$BlockDataInputStream.peekByte (Unknown Source)
+|    at java.io.ObjectInputStream.readObject0 (Unknown Source)
+|    at java.io.ObjectInputStream.readObject (Unknown Source)
+|    at edu.csus.ecs.pc2.core.transport.ConnectionHandlerThread.receive (ConnectionHandlerThread.java:151)
+|    at edu.csus.ecs.pc2.core.transport.ConnectionHandlerClientThread.run (ConnectionHandlerClientThread.java:65)
+151205 000423.404|FINER|Thread-1|run|THROW
+|edu.csus.ecs.pc2.core.transport.TransportException: Read timed out
+|    at edu.csus.ecs.pc2.core.transport.ConnectionHandlerThread.receive (ConnectionHandlerThread.java:161)
+|    at edu.csus.ecs.pc2.core.transport.ConnectionHandlerClientThread.run (ConnectionHandlerClientThread.java:65)
+151205 000423.405|INFO|Thread-1|receive|SocketException in receive for Socket[addr=/140.123.102.47,port=50002,localport=54934]--1764181702003263090
+|java.net.SocketException: Connection reset
+|    at java.net.SocketInputStream.read (Unknown Source)
+|    at java.net.SocketInputStream.read (Unknown Source)
+|    at java.net.SocketInputStream.read (Unknown Source)
+|    at java.io.ObjectInputStream$PeekInputStream.peek (Unknown Source)
+|    at java.io.ObjectInputStream$BlockDataInputStream.peek (Unknown Source)
+|    at java.io.ObjectInputStream$BlockDataInputStream.peekByte (Unknown Source)
+|    at java.io.ObjectInputStream.readObject0 (Unknown Source)
+|    at java.io.ObjectInputStream.readObject (Unknown Source)
+|    at edu.csus.ecs.pc2.core.transport.ConnectionHandlerThread.receive (ConnectionHandlerThread.java:151)
+|    at edu.csus.ecs.pc2.core.transport.ConnectionHandlerClientThread.run (ConnectionHandlerClientThread.java:65)
+151205 000423.406|FINER|Thread-1|run|THROW
+|edu.csus.ecs.pc2.core.transport.TransportException: Connection reset
+|    at edu.csus.ecs.pc2.core.transport.ConnectionHandlerThread.receive (ConnectionHandlerThread.java:155)
+|    at edu.csus.ecs.pc2.core.transport.ConnectionHandlerClientThread.run (ConnectionHandlerClientThread.java:65)
+151205 001059.859|CONFIG|main|setFileHandlers|Now logging to C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin\logs directory.
+151205 001059.867|INFO|main|info|
+151205 001059.897|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Windows 10 10.0 (amd64) 
+151205 001059.902|INFO|main|startLog|Working directory is C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin
+151205 001059.954|INFO|main|startLog|Process id is 16212@DESKTOP-PBDLUD6
+151205 001059.955|INFO|main|start|Starting ConnectionManager...
+151205 001100.757|INFO|main|start|Started ConnectionManager
+151205 001100.772|INFO|main|setClientServerAndPort|INI File location: file:/C:/Users/Chun-Hung%20Tseng/Google%20雲端硬碟/中正大學/二上/DS/HW3/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+151205 001100.774|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+151205 001100.775|INFO|main|info|Contacting server at 140.123.102.47:50002
+151205 001100.778|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+151205 001100.997|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=55030]-1758997572681480872)
+151205 001101.625|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=55030]-1758997572681480872 key is com.sun.crypto.provider.DESKey@fffe7a7c
+151205 001101.626|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+151205 001101.631|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    59d51d74 395f5d61 06acf07e 4de84736 1f8c8d4d da038fd5 9a95b413 9339f402
+    a49b6bb3 65e23b5c 3ccbc7e3 a0d080dc bf26ec33 c12b1f18 6fc0c08a 8dcf7ae1
+    b0edb983 82d823f4 ef9986aa b0893e1a f58ab129 03c00e41 0d8aa80a ae5d831f
+    ce476e9d a0f80055 5e7d8138 15821d5e 7f800ccd c8b60bf9 c591dcd0 aa75a5db
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+151205 001101.632|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@754439bd
+151205 005338.132|CONFIG|main|setFileHandlers|Now logging to C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin\logs directory.
+151205 005338.148|INFO|main|info|
+151205 005338.191|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Windows 10 10.0 (amd64) 
+151205 005338.194|INFO|main|startLog|Working directory is C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin
+151205 005338.290|INFO|main|startLog|Process id is 8480@DESKTOP-PBDLUD6
+151205 005338.290|INFO|main|start|Starting ConnectionManager...
+151205 005339.145|INFO|main|start|Started ConnectionManager
+151205 005339.152|INFO|main|setClientServerAndPort|INI File location: file:/C:/Users/Chun-Hung%20Tseng/Google%20雲端硬碟/中正大學/二上/DS/HW3/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+151205 005339.153|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+151205 005339.154|INFO|main|info|Contacting server at 140.123.102.47:50002
+151205 005339.164|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+151205 005339.339|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=55263]-628178943892207212)
+151205 005339.611|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=55263]-628178943892207212 key is com.sun.crypto.provider.DESKey@1875d
+151205 005339.612|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+151205 005339.614|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    884dfd7d 979f27e7 90f63c8e 65b71d55 068e3fee 951d5637 adeed5c9 7606889c
+    fa810367 28077007 73a8b28b 695a29bb bac1e61a 47600c92 41565765 b17cdb32
+    11027262 3db06463 ffe80f32 7ccafe08 b060e08a accc5955 16491556 0a8f2f20
+    a1d3bdf4 4697b171 f5ea50e2 feb8f461 fd66b3f3 7b2255ce 6241a74c 55e79b62
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+151205 005339.615|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@7563b72f
+151207 151033.036|CONFIG|main|setFileHandlers|Now logging to C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin\logs directory.
+151207 151033.039|INFO|main|info|
+151207 151033.046|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Windows 10 10.0 (amd64) 
+151207 151033.048|INFO|main|startLog|Working directory is C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin
+151207 151033.083|INFO|main|startLog|Process id is 8392@DESKTOP-PBDLUD6
+151207 151033.083|INFO|main|start|Starting ConnectionManager...
+151207 151033.430|INFO|main|start|Started ConnectionManager
+151207 151033.435|INFO|main|setClientServerAndPort|INI File location: file:/C:/Users/Chun-Hung%20Tseng/Google%20雲端硬碟/中正大學/二上/DS/HW3/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+151207 151033.435|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+151207 151033.436|INFO|main|info|Contacting server at 140.123.102.47:50002
+151207 151033.436|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+151207 151033.640|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=51547]-2215481497277085238)
+151207 151033.806|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=51547]-2215481497277085238 key is com.sun.crypto.provider.DESKey@fffe7a5e
+151207 151033.806|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+151207 151033.808|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    8afb1fc4 4aa3ccb4 93482e82 fd7bcf74 a8021350 597550ac af080368 1be9e263
+    bb661425 e2669245 78e228e8 b210feb7 a4cee64d 3d95cf3d d1bce061 d1df4075
+    b4d2e484 2116a86b af81a541 0dac698a e4fa42e2 15b3deb2 2bdbb97d 52d34f43
+    91345802 27e4955d 71e0fc32 4bb817a0 59cac480 2c91c39a 3b9858f1 610e4e6c
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+151207 151033.809|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@7563b72f
+151211 123547.005|CONFIG|main|setFileHandlers|Now logging to C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin\logs directory.
+151211 123547.008|INFO|main|info|
+151211 123547.014|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Windows 10 10.0 (amd64) 
+151211 123547.016|INFO|main|startLog|Working directory is C:\Users\Chun-Hung Tseng\Google 雲端硬碟\中正大學\二上\DS\HW3\pc2-9.2.3 - student\bin
+151211 123547.037|INFO|main|startLog|Process id is 37612@DESKTOP-PBDLUD6
+151211 123547.037|INFO|main|start|Starting ConnectionManager...
+151211 123547.289|INFO|main|start|Started ConnectionManager
+151211 123547.294|INFO|main|setClientServerAndPort|INI File location: file:/C:/Users/Chun-Hung%20Tseng/Google%20雲端硬碟/中正大學/二上/DS/HW3/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+151211 123547.294|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+151211 123547.294|INFO|main|info|Contacting server at 140.123.102.47:50002
+151211 123547.295|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+151211 123608.303|INFO|main|<init>|IO Exception:140.123.102.47
+151211 123608.304|INFO|main|connectToMyServer|Could not ConnectToMyServer()
+151211 123608.304|INFO|main|start|Exception logged 
+|edu.csus.ecs.pc2.core.transport.TransportException: Connection timed out: connect
+|    at edu.csus.ecs.pc2.core.transport.TransportManager.connectToMyServer (TransportManager.java:197)
+|    at edu.csus.ecs.pc2.core.transport.connection.ConnectionManager.connectToMyServer (ConnectionManager.java:99)
+|    at edu.csus.ecs.pc2.core.InternalController.start (InternalController.java:2288)
+|    at edu.csus.ecs.pc2.Starter.main (Starter.java:49)
+151211 123608.305|INFO|main|info|Unable to contact server at 140.123.102.47:0 Connection timed out: connect
+151217 215759.676|CONFIG|main|setFileHandlers|Now logging to /home/henrybear327/Desktop/Data-structure/Project 3/pc2-9.2.3 - student/bin/logs directory.
+151217 215759.678|INFO|main|info|
+151217 215759.683|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.7.0_91 build 2565 Linux 3.19.0-32-generic (amd64) 
+151217 215759.683|INFO|main|startLog|Working directory is /home/henrybear327/Desktop/Data-structure/Project 3/pc2-9.2.3 - student/bin
+151217 215759.693|INFO|main|startLog|Process id is 10366@Henry-Linux
+151217 215759.693|INFO|main|start|Starting ConnectionManager...
+151217 215759.792|INFO|main|start|Started ConnectionManager
+151217 215759.796|INFO|main|setClientServerAndPort|INI File location: file:/home/henrybear327/Desktop/Data-structure/Project%203/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+151217 215759.797|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+151217 215759.797|INFO|main|info|Contacting server at 140.123.102.47:50002
+151217 215759.798|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+151217 215759.971|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=60111]--501169098588254)
+151217 215800.007|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=60111]--501169098588254 key is com.sun.crypto.provider.DESKey@fffe7aae
+151217 215800.008|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+151217 215800.011|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    1cf67304 863d1dca 3262ab5c 536d0e03 65cd98de 74072acf b008edda 2561a673
+    78676ddc 27c8c521 26fc695e 5eabbb4c dc17a0ac 61a576f4 bb0b4c60 9fab38b5
+    4a817ee7 53967a9b 54a28722 314a2c44 8b6edaad 60ed3b11 297204c9 fd7cc86a
+    6efed9e2 5bf4949a 60a4ae34 3f48b371 d663e544 4d431b13 775c2b58 1a2262cf
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+151217 215800.011|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@58f7d8e3
+151219 154506.288|CONFIG|main|setFileHandlers|Now logging to /home/henrybear327/Desktop/Data-structure/Project 3/pc2-9.2.3 - student/bin/logs directory.
+151219 154506.294|INFO|main|info|
+151219 154506.303|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.7.0_91 build 2565 Linux 3.19.0-32-generic (amd64) 
+151219 154506.303|INFO|main|startLog|Working directory is /home/henrybear327/Desktop/Data-structure/Project 3/pc2-9.2.3 - student/bin
+151219 154506.327|INFO|main|startLog|Process id is 14489@Henry-Linux
+151219 154506.327|INFO|main|start|Starting ConnectionManager...
+151219 154506.457|INFO|main|start|Started ConnectionManager
+151219 154506.463|INFO|main|setClientServerAndPort|INI File location: file:/home/henrybear327/Desktop/Data-structure/Project%203/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+151219 154506.463|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+151219 154506.463|INFO|main|info|Contacting server at 140.123.102.47:50002
+151219 154506.465|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+151219 154506.600|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=60556]--8452696406989841439)
+151219 154506.699|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=60556]--8452696406989841439 key is com.sun.crypto.provider.DESKey@fffe7955
+151219 154506.700|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+151219 154506.703|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    214b3938 ca37dfb5 a222e55a 78c73f62 23f4f39d 27f82063 5995710d 71bd171c
+    a5fb5a8e 9020e6c7 479c582d 9e2e2095 071eb231 9873bbeb 48160358 17a36b7b
+    a96d11c3 0b9c4e6e d2088f09 77cb7e85 c0edaacc 03a4be04 c6f4cec6 cd232f4d
+    8fc02764 6c53ee7f e37b4703 3001c032 fc61fba5 54f565ee 349f7690 e6ff576f
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+151219 154506.704|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@22c1609b
