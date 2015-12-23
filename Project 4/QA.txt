@@ -1,0 +1,22 @@
+Q:請問sorting 要做stable sort嗎？
+A:是的需要!
+
+--------
+Q:輸入的 command 順序被打亂，Syntax算對還是錯
+  例如： SELECT * FROM Contact.cvs 變成 FROM Contact.cvs SELECT *
+A:錯!
+Q:請問 有沒有需要防FROM SELECT ORDER BY等等順序錯誤? (ex: FROM LastName SELECT *)
+A:不需要喔! 只需要防呆講的那三項就可以了
+
+--------
+Q:SELECT FORM ORDER BY 會不會出現大小寫參差不齊的狀況
+  例如： SelecT fOrm
+A:可能喔! 但是基本上測資就是有時候大寫'SELECT'有時候小寫'select'，沒有混用的測資
+
+--------
+Q:col 是不是一定要是，原定的格式？ LastName 一定要 LastName 才合法嗎？
+  如果是的話，在出現 LaStName 時，需要視為 Syntax error 嗎？
+A:col的名稱一定要一模一樣喔! 錯的話需要視為Syntax error。
+Q:請問 有沒有需要防lastname等等的大小寫錯誤 (ex: laSTNAme)
+A:不用!
+

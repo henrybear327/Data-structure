@@ -26,19 +26,122 @@ int total_command;
 const char *core_command[3] = {"select", "from", "order"}; // case-insensitive
 int core_command_location[3]; // select from order by
 
-const char *column_name[6] = {"Id",     "FirstName", "LastName",
+const char *column_name[6] = {"id",     "FirstName", "LastName",
                               "Gender", "Age",       "PhoneNum"
                              };
 bool show_column[6];
+
+int sorting_parameter[6];
+bool sort_one_column;
 
 // define state constant
 #define ERROR 0
 #define PASS_CHECKS 1
 #define QUIT 2
 
+int cmp_id(Data *first, Data *second)
+{
+    return first->id - second->id;
+}
+
+bool now_second;
 int cmp(const void *a, const void *b)
 {
-    return *(int *)a - *(int *)b;
+    Data *first = (Data *)a;
+    Data *second = (Data *)b;
+
+    int is_ASC = now_second ? sorting_parameter[4] : sorting_parameter[1];
+
+    switch (now_second == false ? sorting_parameter[0] : sorting_parameter[3]) {
+    case 0:
+        if (first->id == second->id) {
+            if (sort_one_column == false && now_second == false) {
+                now_second = true;
+                int result = cmp(first, second);
+                now_second = false;
+                return result == 0 ? cmp_id(first, second) : result;
+            } else
+                return cmp_id(first, second);
+        } else {
+            return (is_ASC == 1 ? first->id - second->id : second->id - first->id);
+        }
+        break;
+    case 1:
+        if (strcmp(first->FirstName, second->FirstName) == 0) {
+            if (sort_one_column == false && now_second == false) {
+                now_second = true;
+                int result = cmp(first, second);
+                now_second = false;
+                return result == 0 ? cmp_id(first, second) : result;
+            } else
+                return cmp_id(first, second);
+        } else {
+            return (is_ASC == 1 ? strcmp(first->FirstName, second->FirstName)
+                    : strcmp(first->FirstName, second->FirstName) * -1);
+        }
+        break;
+    case 2:
+        if (strcmp(first->LastName, second->LastName) == 0) {
+            if (sort_one_column == false && now_second == false) {
+                now_second = true;
+                int result = cmp(first, second);
+                now_second = false;
+                return result == 0 ? cmp_id(first, second) : result;
+            } else
+                return cmp_id(first, second);
+        } else {
+            return (is_ASC == 1 ? strcmp(first->LastName, second->LastName)
+                    : strcmp(first->LastName, second->LastName) * -1);
+        }
+        break;
+    case 3:
+        if (strcmp(first->Gender, second->Gender) == 0) {
+            if (sort_one_column == false && now_second == false) {
+                now_second = true;
+                int result = cmp(first, second);
+                now_second = false;
+                return result == 0 ? cmp_id(first, second) : result;
+            } else
+                return cmp_id(first, second);
+        } else {
+            return (is_ASC == 1 ? strcmp(first->Gender, second->Gender)
+                    : strcmp(first->Gender, second->Gender) * -1);
+        }
+        break;
+    case 4:
+        if (first->Age == second->Age) {
+            if (sort_one_column == false && now_second == false) {
+                now_second = true;
+                int result = cmp(first, second);
+                now_second = false;
+                return result == 0 ? cmp_id(first, second) : result;
+            } else
+                return cmp_id(first, second);
+        } else {
+            return (is_ASC == 1 ? first->Age - second->Age
+                    : second->Age - first->Age);
+        }
+        break;
+    case 5:
+        if (strcmp(first->PhoneNum, second->PhoneNum) == 0) {
+            if (sort_one_column == false && now_second == false) {
+                now_second = true;
+                int result = cmp(first, second);
+                now_second = false;
+                return result == 0 ? cmp_id(first, second) : result;
+            } else
+                return cmp_id(first, second);
+        } else {
+            return (is_ASC == 1 ? strcmp(first->PhoneNum, second->PhoneNum)
+                    : strcmp(first->PhoneNum, second->PhoneNum) * -1);
+        }
+        break;
+    default:
+        break;
+    }
+
+    assert(1 == -1);
+    return 0;
 }
 
 void q_sort(void *mem_start, size_t total_member, size_t member_size,
@@ -303,7 +406,6 @@ bool check_column_name(char input_token[50][20])
     return true;
 }
 
-int sorting_parameter[6];
 bool get_order_by_command(char input_token[50][20])
 {
     memset(sorting_parameter, -1, sizeof(sorting_parameter));
@@ -417,26 +519,21 @@ int parse_input(char *input, char input_token[50][20],
 
 void print_column(Data data_show[DATA_ROW])
 {
-    int count = 0;
     // print title bar
     for (int i = 0; i < 6; i++) {
         if (show_column[i] == true) {
-            if (count)
-                printf("\t");
             printf("%s", column_name[i]);
-            count++;
+            printf("\t");
         }
     }
     printf("\n");
 
     // print data
     for (int row = 0; row < data_idx; row++) {
-        count = 0;
-
         for (int i = 0; i < 6; i++) {
             if (show_column[i] == true) {
-                if (count)
-                    printf("\t");
+                // if (count)
+                // printf("\t");
                 if (i == 0) {
                     printf("%d", data_show[row].id);
                 } else if (i == 1) {
@@ -450,8 +547,7 @@ void print_column(Data data_show[DATA_ROW])
                 } else {
                     printf("%s", data_show[row].PhoneNum);
                 }
-
-                count++;
+                printf("\t");
             }
         }
         printf("\n");
@@ -495,7 +591,15 @@ int main()
                 Data data_show[data_idx];
                 memcpy(data_show, data, sizeof(Data) * data_idx);
 
-                // qsort(data_show, data_idx, sizeof(data_show));
+#if DEBUG == 1
+                printf("Before qsort\n");
+                print_column(data_show);
+                printf("\n");
+#endif
+
+                sort_one_column = sorting_parameter[3] == -1 ? true : false;
+                now_second = false;
+                qsort(data_show, data_idx, sizeof(Data), cmp);
 
                 print_column(data_show);
             }
