@@ -150,23 +150,6 @@ int cmp(const void *a, const void *b)
     return 0;
 }
 
-void bubble_sort(void *mem_start, size_t total_member, size_t member_size,
-                 int (*cmp)(const void *, const void *))
-{
-    for (int i = 0; i < (int)total_member; i++) {
-        for (int j = i + 1; j < (int)total_member; j++) {
-            if (cmp(mem_start + i * member_size, mem_start + j * member_size) > 0) {
-                void *temp = malloc(member_size);
-                memcpy(temp, mem_start + i * member_size, member_size);
-                memcpy(mem_start + i * member_size, mem_start + j * member_size,
-                       member_size);
-                memcpy(mem_start + j * member_size, temp, member_size);
-                free(temp);
-            }
-        }
-    }
-}
-
 void q_sort(void *mem_start, size_t total_member, size_t member_size,
             int (*cmp)(const void *, const void *))
 {
@@ -385,7 +368,7 @@ bool check_core_command_present(char input_token_lower[50][20])
 }
 
 /*
-Confirmed by TA, no need to check for mixed upper/lower letter
+Confirmed by TA, no need to check for upper/lower letter errors
 */
 bool check_column_name(char input_token[50][20])
 {
@@ -622,34 +605,7 @@ int main()
 
                 sort_one_column = sorting_parameter[3] == -1 ? true : false;
                 now_second = false;
-
-                if(sort_one_column == true) {
-                    if(sorting_parameter[2] == 1)
-                        qsort(data_show, data_idx, sizeof(Data), cmp);
-                    else
-                        bubble_sort(data_show, data_idx, sizeof(Data), cmp);
-                } else {
-                    //double sort with same algo
-                    if(sorting_parameter[2] == sorting_parameter[5]) {
-                        if(sorting_parameter[2] == 1)
-                            qsort(data_show, data_idx, sizeof(Data), cmp);
-                        else
-                            bubble_sort(data_show, data_idx, sizeof(Data), cmp);
-                    } else {
-                        //let the first run sort based on first req.
-                        sort_one_column =true;
-                        if(sorting_parameter[2] == 1)
-                            qsort(data_show, data_idx, sizeof(Data), cmp);
-                        else
-                            bubble_sort(data_show, data_idx, sizeof(Data), cmp);
-                        //let the second run sort based on two req
-                        sort_one_column =false;
-                        if(sorting_parameter[5] == 1)
-                            qsort(data_show, data_idx, sizeof(Data), cmp);
-                        else
-                            bubble_sort(data_show, data_idx, sizeof(Data), cmp);
-                    }
-                }
+                qsort(data_show, data_idx, sizeof(Data), cmp);
 
                 print_column(data_show);
             }
