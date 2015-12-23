@@ -49,6 +49,35 @@ void sanitize_string(char *input)
             input[i] = '\0';
 }
 
+int get_column(char *name)
+{
+    for (int i = 0; i < 6; i++) {
+        if (strcmp(column_name[i], name) == 0)
+            return i;
+    }
+    return -1;
+}
+
+int get_order_by_param(char *param)
+{
+    if (strcmp(param, "ASC") == 0)
+        return 6;
+    else if (strcmp(param, "DESC") == 0)
+        return 7;
+    else
+        return -1;
+}
+
+int get_order_by_sorting(char *param)
+{
+    if (strcmp(param, "-1") == 0)
+        return 8;
+    else if (strcmp(param, "-2") == 0)
+        return 9;
+    else
+        return -1;
+}
+
 /*
 This function reads the data from the .csv file
 and stores the data in the data array of structure.
@@ -217,6 +246,53 @@ bool check_column_name(char input_token[50][20])
     return true;
 }
 
+int sorting_parameter[6];
+bool get_order_by_command(char input_token[50][20])
+{
+    memset(sorting_parameter, -1, sizeof(sorting_parameter));
+
+    for (int i = core_command_location[2] + 1; i < total_command; i++) {
+        int result;
+        if ((result = get_column(input_token[i])) == -1) {
+            if ((result = get_order_by_param(input_token[i])) == -1) {
+                if ((result = get_order_by_sorting(input_token[i])) == -1) {
+                    return false;
+                }
+            }
+        }
+
+        if (result < 6) {
+            if (sorting_parameter[0] != -1)
+                sorting_parameter[3] = result;
+            else
+                sorting_parameter[0] = result;
+        } else if (result == 6 || result == 7) {
+            // 1 for ASC, 2 for DESC
+            if (sorting_parameter[1] != -1)
+                sorting_parameter[4] = result - 5;
+            else
+                sorting_parameter[1] = result - 5;
+        } else {
+            // 1 for sotring 1, 2 for sorting 2
+            if (sorting_parameter[2] != -1)
+                sorting_parameter[5] = result - 7;
+            else
+                sorting_parameter[2] = result - 7;
+        }
+    }
+
+    assert(sorting_parameter[0] != -1);
+#if DEBUG == 1
+    printf("Order by paramenetr: ");
+    for (int i = 0; i < 6; i++) {
+        printf("%d%c", sorting_parameter[i], i == 5 ? '\n' : ' ');
+    }
+    printf("\n");
+#endif
+
+    return true;
+}
+
 /*
 This function parses the input and identifies errors.
 
@@ -237,17 +313,18 @@ int parse_input(char *input, char input_token[50][20],
         split_input(input, input_token, input_token_lower);
 
 #if DEBUG == 1
-        printf("Parsed input: ");
+        printf("================================================\n");
+        printf("Parsed input:\n");
         for (int i = 0; i < total_command; i++) {
             printf("%s ", input_token[i]);
         }
         printf("\n");
 
-        printf("Parsed input to lower: ");
+        printf("Parsed input to lower:\n");
         for (int i = 0; i < total_command; i++) {
             printf("%s ", input_token_lower[i]);
         }
-        printf("\n");
+        printf("\n\n");
 #endif
 
         // check if select and from exist
@@ -263,6 +340,12 @@ int parse_input(char *input, char input_token[50][20],
         }
 
         // parse order by if order by command is present
+        if (core_command_location[2] != -1) {
+            if (get_order_by_command(input_token) == false) {
+                printf("You have an error in your SQL syntax.\n");
+                return ERROR;
+            }
+        }
     }
 
     return PASS_CHECKS;
@@ -288,8 +371,11 @@ int main()
                 continue;
             }
 
-            // passed all input checks
-            // know what column to print now
+// passed all input checks
+// know what column to print now
+#if DEBUG == 1
+            printf("All checks passed!\n\n");
+#endif
         }
     }
 
