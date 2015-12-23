@@ -1070,3 +1070,61 @@
 151223 140400.225|INFO|Thread-12|dumpPacket|   key: RUN is: edu.csus.ecs.pc2.core.model.Run Run 2190 JUDGED1727655437 ms from TEAM403410033 @ site 1 id Run--1854679038352014582
 151223 140401.008|INFO|Thread-12|info| receiveObject(S) end   got Packet[RUN_JUDGEMENT] #28838 SERVER0 @ site 1 -> TEAM403410033 @ site 1
 151223 140401.654|INFO|Thread-11|info| receiveObject(S) end   got Packet[RUN_SUBMISSION_CONFIRM] #28832 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 141511.487|INFO|AWT-EventQueue-0|testOrSubmitRun|submitRun for D1 - User interface, mistake proofing GNU C - c99 file: /home/henrybear327/Desktop/Data-structure/Project 4/main.c
+151223 141511.490|INFO|AWT-EventQueue-0|sendToLocalServer|Sending packet to server Packet[RUN_SUBMISSION] #5 TEAM403410033 @ site 1 -> SERVER0 @ site 1
+151223 141511.490|INFO|AWT-EventQueue-0|sendToLocalServer|Sent    packet to server Packet[RUN_SUBMISSION] #5 TEAM403410033 @ site 1 -> SERVER0 @ site 1
+151223 141511.663|INFO|Thread-14|info| receiveObject(S) start got Packet[RUN_SUBMISSION_CONFIRM] #28854 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 141511.664|INFO|Thread-14|dumpPacket|Packet RUN_SUBMISSION_CONFIRM (Seq #28854 ) recieveObject
+151223 141511.665|INFO|Thread-14|dumpPacket|  From: SERVER0 @ site 1 (Leon-PC @ 140.123.102.47) (Contest Id: Default--2130692983820777626)
+151223 141511.665|INFO|Thread-14|dumpPacket|    To: TEAM403410033 @ site 1
+151223 141511.665|INFO|Thread-14|dumpPacket|   key: RUN is: edu.csus.ecs.pc2.core.model.Run Run 2192 QUEUED_FOR_COMPUTER_JUDGEMENT1728327272 ms from TEAM403410033 @ site 1 id Run--7369556589497533953
+151223 141511.666|INFO|Thread-14|info|handlePacket start Packet[RUN_SUBMISSION_CONFIRM] #28854 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 141511.666|INFO|Thread-14|dumpPacket|Packet RUN_SUBMISSION_CONFIRM (Seq #28854 ) handlePacket
+151223 141511.666|INFO|Thread-14|dumpPacket|  From: SERVER0 @ site 1 (Leon-PC @ 140.123.102.47) (Contest Id: Default--2130692983820777626)
+151223 141511.666|INFO|Thread-14|dumpPacket|    To: TEAM403410033 @ site 1
+151223 141511.667|INFO|Thread-14|dumpPacket|   key: RUN is: edu.csus.ecs.pc2.core.model.Run Run 2192 QUEUED_FOR_COMPUTER_JUDGEMENT1728327272 ms from TEAM403410033 @ site 1 id Run--7369556589497533953
+151223 141512.572|INFO|Thread-15|info| receiveObject(S) start got Packet[RUN_JUDGEMENT] #28860 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 141512.572|INFO|Thread-15|dumpPacket|Packet RUN_JUDGEMENT (Seq #28860 ) recieveObject
+151223 141512.573|INFO|Thread-15|dumpPacket|  From: SERVER0 @ site 1 (Leon-PC @ 140.123.102.47) (Contest Id: Default--2130692983820777626)
+151223 141512.573|INFO|Thread-15|dumpPacket|    To: TEAM403410033 @ site 1
+151223 141512.573|INFO|Thread-15|dumpPacket|   key: CLIENT_ID is: edu.csus.ecs.pc2.core.model.ClientId SERVER0 @ site 1
+151223 141512.574|INFO|Thread-15|dumpPacket|   key: JUDGEMENT_RECORD is: edu.csus.ecs.pc2.core.model.JudgementRecord Yes by JUDGE3 @ site 1 judgement Yes--3579890597510385850 id JudgementRecord-7297008341873564921
+151223 141512.574|INFO|Thread-15|dumpPacket|   key: RUN is: edu.csus.ecs.pc2.core.model.Run Run 2192 JUDGED1728327272 ms from TEAM403410033 @ site 1 id Run--7369556589497533953
+151223 141512.574|INFO|Thread-15|info|handlePacket start Packet[RUN_JUDGEMENT] #28860 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 141512.574|INFO|Thread-15|dumpPacket|Packet RUN_JUDGEMENT (Seq #28860 ) handlePacket
+151223 141512.575|INFO|Thread-15|dumpPacket|  From: SERVER0 @ site 1 (Leon-PC @ 140.123.102.47) (Contest Id: Default--2130692983820777626)
+151223 141512.575|INFO|Thread-15|dumpPacket|    To: TEAM403410033 @ site 1
+151223 141512.575|INFO|Thread-15|dumpPacket|   key: CLIENT_ID is: edu.csus.ecs.pc2.core.model.ClientId SERVER0 @ site 1
+151223 141512.575|INFO|Thread-15|dumpPacket|   key: JUDGEMENT_RECORD is: edu.csus.ecs.pc2.core.model.JudgementRecord Yes by JUDGE3 @ site 1 judgement Yes--3579890597510385850 id JudgementRecord-7297008341873564921
+151223 141512.576|INFO|Thread-15|dumpPacket|   key: RUN is: edu.csus.ecs.pc2.core.model.Run Run 2192 JUDGED1728327272 ms from TEAM403410033 @ site 1 id Run--7369556589497533953
+151223 141513.709|INFO|Thread-15|info| receiveObject(S) end   got Packet[RUN_JUDGEMENT] #28860 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 141514.403|INFO|Thread-14|info| receiveObject(S) end   got Packet[RUN_SUBMISSION_CONFIRM] #28854 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 142043.731|INFO|AWT-EventQueue-0|testOrSubmitRun|submitRun for D1 - User interface, mistake proofing GNU C - c99 file: /home/henrybear327/Desktop/Data-structure/Project 4/main.c
+151223 142043.733|INFO|AWT-EventQueue-0|sendToLocalServer|Sending packet to server Packet[RUN_SUBMISSION] #6 TEAM403410033 @ site 1 -> SERVER0 @ site 1
+151223 142043.733|INFO|AWT-EventQueue-0|sendToLocalServer|Sent    packet to server Packet[RUN_SUBMISSION] #6 TEAM403410033 @ site 1 -> SERVER0 @ site 1
+151223 142043.959|INFO|Thread-17|info| receiveObject(S) start got Packet[RUN_SUBMISSION_CONFIRM] #28870 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 142043.959|INFO|Thread-17|dumpPacket|Packet RUN_SUBMISSION_CONFIRM (Seq #28870 ) recieveObject
+151223 142043.960|INFO|Thread-17|dumpPacket|  From: SERVER0 @ site 1 (Leon-PC @ 140.123.102.47) (Contest Id: Default--2130692983820777626)
+151223 142043.960|INFO|Thread-17|dumpPacket|    To: TEAM403410033 @ site 1
+151223 142043.960|INFO|Thread-17|dumpPacket|   key: RUN is: edu.csus.ecs.pc2.core.model.Run Run 2194 QUEUED_FOR_COMPUTER_JUDGEMENT1728659513 ms from TEAM403410033 @ site 1 id Run--2239960181675400843
+151223 142043.960|INFO|Thread-17|info|handlePacket start Packet[RUN_SUBMISSION_CONFIRM] #28870 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 142043.960|INFO|Thread-17|dumpPacket|Packet RUN_SUBMISSION_CONFIRM (Seq #28870 ) handlePacket
+151223 142043.960|INFO|Thread-17|dumpPacket|  From: SERVER0 @ site 1 (Leon-PC @ 140.123.102.47) (Contest Id: Default--2130692983820777626)
+151223 142043.961|INFO|Thread-17|dumpPacket|    To: TEAM403410033 @ site 1
+151223 142043.961|INFO|Thread-17|dumpPacket|   key: RUN is: edu.csus.ecs.pc2.core.model.Run Run 2194 QUEUED_FOR_COMPUTER_JUDGEMENT1728659513 ms from TEAM403410033 @ site 1 id Run--2239960181675400843
+151223 142044.790|INFO|Thread-18|info| receiveObject(S) start got Packet[RUN_JUDGEMENT] #28875 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 142044.791|INFO|Thread-18|dumpPacket|Packet RUN_JUDGEMENT (Seq #28875 ) recieveObject
+151223 142044.791|INFO|Thread-18|dumpPacket|  From: SERVER0 @ site 1 (Leon-PC @ 140.123.102.47) (Contest Id: Default--2130692983820777626)
+151223 142044.791|INFO|Thread-18|dumpPacket|    To: TEAM403410033 @ site 1
+151223 142044.792|INFO|Thread-18|dumpPacket|   key: CLIENT_ID is: edu.csus.ecs.pc2.core.model.ClientId SERVER0 @ site 1
+151223 142044.792|INFO|Thread-18|dumpPacket|   key: JUDGEMENT_RECORD is: edu.csus.ecs.pc2.core.model.JudgementRecord Yes by JUDGE3 @ site 1 judgement Yes--3579890597510385850 id JudgementRecord--6498299975819220969
+151223 142044.792|INFO|Thread-18|dumpPacket|   key: RUN is: edu.csus.ecs.pc2.core.model.Run Run 2194 JUDGED1728659513 ms from TEAM403410033 @ site 1 id Run--2239960181675400843
+151223 142044.792|INFO|Thread-18|info|handlePacket start Packet[RUN_JUDGEMENT] #28875 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 142044.793|INFO|Thread-18|dumpPacket|Packet RUN_JUDGEMENT (Seq #28875 ) handlePacket
+151223 142044.793|INFO|Thread-18|dumpPacket|  From: SERVER0 @ site 1 (Leon-PC @ 140.123.102.47) (Contest Id: Default--2130692983820777626)
+151223 142044.793|INFO|Thread-18|dumpPacket|    To: TEAM403410033 @ site 1
+151223 142044.794|INFO|Thread-18|dumpPacket|   key: CLIENT_ID is: edu.csus.ecs.pc2.core.model.ClientId SERVER0 @ site 1
+151223 142044.794|INFO|Thread-18|dumpPacket|   key: JUDGEMENT_RECORD is: edu.csus.ecs.pc2.core.model.JudgementRecord Yes by JUDGE3 @ site 1 judgement Yes--3579890597510385850 id JudgementRecord--6498299975819220969
+151223 142044.794|INFO|Thread-18|dumpPacket|   key: RUN is: edu.csus.ecs.pc2.core.model.Run Run 2194 JUDGED1728659513 ms from TEAM403410033 @ site 1 id Run--2239960181675400843
+151223 142045.701|INFO|Thread-18|info| receiveObject(S) end   got Packet[RUN_JUDGEMENT] #28875 SERVER0 @ site 1 -> TEAM403410033 @ site 1
+151223 142046.413|INFO|Thread-17|info| receiveObject(S) end   got Packet[RUN_SUBMISSION_CONFIRM] #28870 SERVER0 @ site 1 -> TEAM403410033 @ site 1

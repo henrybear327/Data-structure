@@ -487,11 +487,17 @@ int main()
 
             if (core_command_location[2] == -1) {
                 // just print it
-                Data data_show[DATA_ROW];
-                memcpy(data_show, data, sizeof(data));
+                Data data_show[data_idx];
+                memcpy(data_show, data, sizeof(Data) * data_idx);
                 print_column(data_show);
             } else {
                 // sort and print
+                Data data_show[data_idx];
+                memcpy(data_show, data, sizeof(Data) * data_idx);
+
+                // qsort(data_show, data_idx, sizeof(data_show));
+
+                print_column(data_show);
             }
         }
     }
