@@ -6,7 +6,7 @@
 #include <ctype.h>
 
 // debug mode switch
-#define DEBUG 1
+#define DEBUG 0
 
 // total data that can be added to the database
 #define DATA_ROW 500
@@ -270,7 +270,6 @@ bool get_order_by_command(char input_token[50][20])
                 }
             }
         }
-        printf("%d\n", result);
 
         if (result < 6) {
             if (sorting_parameter[0] != -1) {
@@ -363,6 +362,49 @@ int parse_input(char *input, char input_token[50][20],
     return PASS_CHECKS;
 }
 
+void print_column(Data data_show[DATA_ROW])
+{
+    int count = 0;
+    // print title bar
+    for (int i = 0; i < 6; i++) {
+        if (show_column[i] == true) {
+            if (count)
+                printf("\t");
+            printf("%s", column_name[i]);
+            count++;
+        }
+    }
+    printf("\n");
+
+    // print data
+    for (int row = 0; row < data_idx; row++) {
+        count = 0;
+
+        for (int i = 0; i < 6; i++) {
+            if (show_column[i] == true) {
+                if (count)
+                    printf("\t");
+                if (i == 0) {
+                    printf("%d", data_show[row].id);
+                } else if (i == 1) {
+                    printf("%s", data_show[row].FirstName);
+                } else if (i == 2) {
+                    printf("%s", data_show[row].LastName);
+                } else if (i == 3) {
+                    printf("%s", data_show[row].Gender);
+                } else if (i == 4) {
+                    printf("%d", data_show[row].Age);
+                } else {
+                    printf("%s", data_show[row].PhoneNum);
+                }
+
+                count++;
+            }
+        }
+        printf("\n");
+    }
+}
+
 int main()
 {
     char input[10000];
@@ -383,11 +425,21 @@ int main()
                 continue;
             }
 
-// passed all input checks
-// know what column to print now
 #if DEBUG == 1
             printf("All checks passed!\n\n");
 #endif
+
+            // passed all input checks
+            // know what column to print now
+
+            if (core_command_location[2] == -1) {
+                // just print it
+                Data data_show[DATA_ROW];
+                memcpy(data_show, data, sizeof(data));
+                print_column(data_show);
+            } else {
+                // sort and print
+            }
         }
     }
 

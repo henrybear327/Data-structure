@@ -7,3 +7,4 @@ SELECT * FROM Contacts.csv ORDER BY LastName ASC -2
 FROM Contacts.csv SELECT FirstName, LastName
 SELECT * FROM Contacts1.csv
 SELECT * FROM Contacts.csv ORDER BY columns [ASC/DESC] [-1/-2]
+quit
