@@ -577,6 +577,11 @@ void print_column(Data data_show[DATA_ROW])
     }
 }
 
+/*
+程式碼未完成
+請勿嘗試閱讀
+目前情況: What the hell is this source code about?!
+*/
 int main()
 {
     char input[10000];
