@@ -382,3 +382,123 @@ g:
 l:
     512
 151223 212159.479|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@38559e4f
+160106 233508.106|CONFIG|main|setFileHandlers|Now logging to /Users/henrybear327/Documents/Data-structure/Project 4/pc2-9.2.3 - student/bin/logs directory.
+160106 233508.108|INFO|main|info|
+160106 233508.117|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Mac OS X 10.11.2 (x86_64) 
+160106 233508.117|INFO|main|startLog|Working directory is /Users/henrybear327/Documents/Data-structure/Project 4/pc2-9.2.3 - student/bin
+160106 233508.460|INFO|main|startLog|Process id is 37571@Chun-Hungs-MacBook-Pro.local
+160106 233508.460|INFO|main|start|Starting ConnectionManager...
+160106 233508.672|INFO|main|start|Started ConnectionManager
+160106 233508.675|INFO|main|setClientServerAndPort|INI File location: file:/Users/henrybear327/Documents/Data-structure/Project%204/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+160106 233508.675|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+160106 233508.675|INFO|main|info|Contacting server at 140.123.102.47:50002
+160106 233508.675|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+160106 233508.882|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=65121]-6719837946697254619)
+160106 233509.267|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=65121]-6719837946697254619 key is com.sun.crypto.provider.DESKey@fffe7ef2
+160106 233509.267|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+160106 233509.268|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    44fcc067 906ed34e a58a88a6 d0c3774d 12be467e e7fa4f2a e12412d8 12c2fa4b
+    ef5f5c1d b1e5a36b 705546e8 7bdf723a 93e457fd 68f3cd42 c22e7a7f 085fbbd8
+    fe5abb3f 1af37e6a 86b0e717 57ca0b84 a5794a25 74303866 6c150ff6 89f854c5
+    1b2a8128 ad0e135b 10837f87 e9951922 7caef9e9 f505e4ae 95ec899d 4a44c054
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+160106 233509.269|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@67786afa
+160108 000515.190|CONFIG|main|setFileHandlers|Now logging to /Users/henrybear327/Documents/Data-structure/Project 4/pc2-9.2.3 - student/bin/logs directory.
+160108 000515.192|INFO|main|info|
+160108 000515.200|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Mac OS X 10.11.2 (x86_64) 
+160108 000515.201|INFO|main|startLog|Working directory is /Users/henrybear327/Documents/Data-structure/Project 4/pc2-9.2.3 - student/bin
+160108 000515.418|INFO|main|startLog|Process id is 42290@Chun-Hungs-MacBook-Pro.local
+160108 000515.418|INFO|main|start|Starting ConnectionManager...
+160108 000515.601|INFO|main|start|Started ConnectionManager
+160108 000515.605|INFO|main|setClientServerAndPort|INI File location: file:/Users/henrybear327/Documents/Data-structure/Project%204/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+160108 000515.605|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+160108 000515.607|INFO|main|info|Contacting server at 140.123.102.47:50002
+160108 000515.607|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+160108 000515.808|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=57187]-1104392341731977203)
+160108 000516.238|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=57187]-1104392341731977203 key is com.sun.crypto.provider.DESKey@fffe7b35
+160108 000516.239|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+160108 000516.240|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    e371903d 8457d078 d569e8be 11a79756 073478fd a1d95161 652573a4 933e3504
+    cbb2de05 ab1e502b 36c55c01 1efe7c5b d13dd8aa 77171719 02f1c31e 79d959e3
+    4ca5e5e9 29f7f322 dd5e733d 93716b94 ff15905d 5682974e 1fc43683 609ec232
+    699f2dd6 53de6f0f 3f9747c2 a5962058 2c8a4192 d00d8f56 50a8caa4 a72aea06
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+160108 000516.241|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@f00ab4c
+160109 221102.821|CONFIG|main|setFileHandlers|Now logging to /Users/henrybear327/Documents/Data-structure/Project 4/pc2-9.2.3 - student/bin/logs directory.
+160109 221102.824|INFO|main|info|
+160109 221102.835|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Mac OS X 10.11.2 (x86_64) 
+160109 221102.836|INFO|main|startLog|Working directory is /Users/henrybear327/Documents/Data-structure/Project 4/pc2-9.2.3 - student/bin
+160109 221102.882|INFO|main|startLog|Process id is 1735@Chun-Hungs-MBP
+160109 221102.883|INFO|main|start|Starting ConnectionManager...
+160109 221103.087|INFO|main|start|Started ConnectionManager
+160109 221103.091|INFO|main|setClientServerAndPort|INI File location: file:/Users/henrybear327/Documents/Data-structure/Project%204/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+160109 221103.091|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+160109 221103.091|INFO|main|info|Contacting server at 140.123.102.47:50002
+160109 221103.092|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+160109 221103.296|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=65190]-3619811138431531294)
+160109 221103.757|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=65190]-3619811138431531294 key is com.sun.crypto.provider.DESKey@186a6
+160109 221103.758|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+160109 221103.760|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    51f71570 7588d1ae 3e66f363 ad73eb60 e58fcca5 a8cea995 ec9b8401 1ea2c286
+    4f1c09a6 9648f812 b2a0ba2e 83cbd5a6 a9ef92ad 0347fe65 8006ad01 b60f3726
+    6e637257 77c16740 a383b7e4 a38ee0d5 5844cc98 3867981a fc5bc2ba 51ce6c54
+    5dbe882c 50c5deed 327141d6 eb928c35 194c84f1 f3ba0a59 b190146d f0c1102e
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+160109 221103.761|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@67786afa
+160109 225017.903|CONFIG|main|setFileHandlers|Now logging to /Users/henrybear327/Documents/Data-structure/Project 4/pc2-9.2.3 - student/bin/logs directory.
+160109 225017.906|INFO|main|info|
+160109 225017.912|INFO|main|info|Version 9.2.3 20120910 (Monday, September 10th 2012 16:20 UTC) Java ver 1.8.0_66 build 2565 Mac OS X 10.11.2 (x86_64) 
+160109 225017.913|INFO|main|startLog|Working directory is /Users/henrybear327/Documents/Data-structure/Project 4/pc2-9.2.3 - student/bin
+160109 225017.934|INFO|main|startLog|Process id is 2042@Chun-Hungs-MBP
+160109 225017.934|INFO|main|start|Starting ConnectionManager...
+160109 225018.063|INFO|main|start|Started ConnectionManager
+160109 225018.066|INFO|main|setClientServerAndPort|INI File location: file:/Users/henrybear327/Documents/Data-structure/Project%204/pc2-9.2.3%20-%20student/bin/pc2v9.ini
+160109 225018.067|INFO|main|setClientServerAndPort|setClientServerAndPort 140.123.102.47 parsed as 140.123.102.47 port 50002
+160109 225018.067|INFO|main|info|Contacting server at 140.123.102.47:50002
+160109 225018.067|INFO|main|connectToMyServer|Connecting to 140.123.102.47:50002
+160109 225018.135|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted(TransportWrapper, ConnectionHandlerID=Socket[addr=/140.123.102.47,port=50002,localport=51863]--5004658723744614612)
+160109 225018.517|INFO|Thread-1|receiveUnencrypted|receiveUnencrypted Made a secret key for Socket[addr=/140.123.102.47,port=50002,localport=51863]--5004658723744614612 key is com.sun.crypto.provider.DESKey@185ad
+160109 225018.518|INFO|Thread-1|getPublicKeyPacket|Generating Unencrypted Public Key Packet
+160109 225018.520|INFO|Thread-1|getPublicKeyPacket|checking key:= SunJCE Diffie-Hellman Public Key:
+y:
+    f254d60a 90fa7e80 93c23159 72c698e3 0c7b8fb8 3a8cafc7 053db84c 3d8aea53
+    011bf5ee b5606cee 320f52a4 49a66994 3665150b d7e38a9b f5e50606 1cb1f5d7
+    eac02745 5b594b41 7bce3e33 819d5096 3ef5d0a0 60d66f37 6a4c5d08 5f3de0d4
+    d5cf793a 2e1839cc 080a554e 8357b1de a5b8f4df f37cb639 591147ea 26723694
+p:
+    f488fd58 4e49dbcd 20b49de4 9107366b 336c380d 451d0f7c 88b31c7c 5b2d8ef6
+    f3c923c0 43f0a55b 188d8ebb 558cb85d 38d334fd 7c175743 a31d186c de33212c
+    b52aff3c e1b12940 18118d7c 84a70a72 d686c403 19c80729 7aca950c d9969fab
+    d00a509b 0246d308 3d66a45d 419f9c7c bd894b22 1926baab a25ec355 e92f78c7
+g:
+    02
+l:
+    512
+160109 225018.520|INFO|Thread-1|getPublicKeyPacket|packet:= edu.csus.ecs.pc2.core.transport.TransportWrapper@71cf43de
